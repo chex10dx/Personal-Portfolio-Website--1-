@@ -1,9 +1,10 @@
 import { motion } from 'motion/react';
 import { useInView } from 'motion/react';
 import { useRef, useState } from 'react';
-import { Mail, Github, Linkedin, Send, MapPin, Phone } from 'lucide-react';
+import { Mail, Send, MapPin, MessageCircle, Facebook, Linkedin, ArrowUpRight } from 'lucide-react';
 
 export function Contact() {
+  const recipientEmail = 'tareqyasser.dev@gmail.com';
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
   const [formData, setFormData] = useState({
@@ -14,8 +15,12 @@ export function Contact() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Form submission logic would go here
-    alert('Thank you for your message! I\'ll get back to you soon.');
+    const subject = encodeURIComponent(`Portfolio Contact from ${formData.name}`);
+    const body = encodeURIComponent(
+      `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
+    );
+
+    window.location.href = `mailto:${recipientEmail}?subject=${subject}&body=${body}`;
     setFormData({ name: '', email: '', message: '' });
   };
 
@@ -30,47 +35,37 @@ export function Contact() {
     {
       icon: Mail,
       label: 'Email',
-      value: 'tareq.yasser@example.com',
-      link: 'mailto:tareq.yasser@example.com',
+      value: 'tareqyasser.dev@gmail.com',
+      link: 'mailto:tareqyasser.dev@gmail.com',
     },
     {
-      icon: Phone,
-      label: 'Phone',
-      value: '+1 (555) 123-4567',
-      link: 'tel:+15551234567',
+      icon: MessageCircle,
+      label: 'WhatsApp',
+      value: '+963930675426',
+      link: 'https://wa.me/963930675426',
     },
     {
-      icon: MapPin,
-      label: 'Location',
-      value: 'San Francisco, CA',
-      link: null,
-    },
-  ];
-
-  const socialLinks = [
-    {
-      icon: Github,
-      label: 'GitHub',
-      link: 'https://github.com',
-      gradient: 'from-gray-600 to-gray-800',
+      icon: Facebook,
+      label: 'Facebook',
+      value: 'facebook.com/tareq.yasser.1',
+      link: 'https://www.facebook.com/tareq.yasser.1/',
     },
     {
       icon: Linkedin,
       label: 'LinkedIn',
-      link: 'https://linkedin.com',
-      gradient: 'from-blue-600 to-blue-800',
+      value: 'linkedin.com/in/tariq-yasser-78982731a',
+      link: 'https://www.linkedin.com/in/tariq-yasser-78982731a',
     },
     {
-      icon: Mail,
-      label: 'Email',
-      link: 'mailto:tareq.yasser@example.com',
-      gradient: 'from-purple-600 to-purple-800',
+      icon: MapPin,
+      label: 'Location',
+      value: 'Damascus, Syria',
+      link: null,
     },
   ];
 
   return (
     <section id="contact" className="relative py-24 md:py-32 bg-slate-950 overflow-hidden">
-      {/* Background effects */}
       <div className="absolute inset-0">
         <div className="absolute top-1/4 left-1/2 w-96 h-96 bg-purple-600/10 rounded-full blur-3xl"></div>
         <div className="absolute bottom-1/4 right-1/2 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl"></div>
@@ -98,7 +93,7 @@ export function Contact() {
               transition={{ delay: 0.3, duration: 0.6 }}
               className="text-4xl md:text-5xl lg:text-6xl text-white mb-6"
             >
-              Let's Work Together
+              Let&apos;s Work Together
             </motion.h2>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -106,12 +101,11 @@ export function Contact() {
               transition={{ delay: 0.4, duration: 0.6 }}
               className="text-lg md:text-xl text-slate-400 max-w-3xl mx-auto"
             >
-              Have a project in mind or just want to chat? I'd love to hear from you!
+              Open to freelance and full-time opportunities in .NET and full-stack development.
             </motion.p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-12">
-            {/* Contact form */}
+          <div className="grid gap-12 lg:grid-cols-[minmax(0,1.1fr)_minmax(320px,0.9fr)]">
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               animate={isInView ? { opacity: 1, x: 0 } : {}}
@@ -173,62 +167,56 @@ export function Contact() {
               </form>
             </motion.div>
 
-            {/* Contact info */}
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               animate={isInView ? { opacity: 1, x: 0 } : {}}
               transition={{ delay: 0.6, duration: 0.6 }}
-              className="space-y-8"
+              className="space-y-6"
             >
-              <div className="p-8 bg-gradient-to-br from-slate-900/80 to-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-2xl">
-                <h3 className="text-2xl text-white mb-6">Contact Information</h3>
-                <div className="space-y-4">
+              <div className="rounded-[2rem] border border-white/10 bg-white/[0.04] p-6 shadow-[0_18px_60px_rgba(15,23,42,0.28)] backdrop-blur-xl md:p-8">
+                <div className="mb-6">
+                  <h3 className="text-2xl text-white">Contact Information</h3>
+                  <p className="mt-2 max-w-md text-sm leading-7 text-slate-300">
+                    Reach out through the channel that feels easiest for you. Everything here is
+                    direct, clickable, and kept intentionally simple.
+                  </p>
+                </div>
+                <div className="space-y-3">
                   {contactInfo.map((info) => (
-                    <div key={info.label} className="flex items-start gap-4">
-                      <div className="p-3 bg-gradient-to-br from-purple-600/20 to-blue-600/20 rounded-lg">
-                        <info.icon className="w-5 h-5 text-purple-400" />
-                      </div>
-                      <div>
-                        <p className="text-slate-400 text-sm">{info.label}</p>
-                        {info.link ? (
-                          <a
-                            href={info.link}
-                            className="text-white hover:text-purple-400 transition-colors duration-300"
-                          >
-                            {info.value}
-                          </a>
-                        ) : (
-                          <p className="text-white">{info.value}</p>
-                        )}
+                    <div
+                      key={info.label}
+                      className="rounded-2xl border border-white/8 bg-slate-900/45 p-4 transition-colors duration-300 hover:border-cyan-300/20 hover:bg-slate-900/65"
+                    >
+                      <div className="flex items-start gap-4">
+                        <div className="rounded-2xl bg-gradient-to-br from-cyan-400/12 to-blue-400/10 p-3 ring-1 ring-white/8">
+                          <info.icon className="h-5 w-5 text-cyan-200" />
+                        </div>
+                        <div className="min-w-0 flex-1">
+                          <p className="text-sm uppercase tracking-[0.22em] text-slate-400">{info.label}</p>
+                          {info.link ? (
+                            <a
+                              href={info.link}
+                              target="_blank"
+                              rel="noreferrer"
+                              className="mt-2 inline-flex items-center gap-2 break-all text-base text-white transition-colors duration-300 hover:text-cyan-200"
+                            >
+                              <span>{info.value}</span>
+                              <ArrowUpRight className="h-4 w-4 shrink-0" />
+                            </a>
+                          ) : (
+                            <p className="mt-2 text-base text-white">{info.value}</p>
+                          )}
+                        </div>
                       </div>
                     </div>
                   ))}
                 </div>
               </div>
 
-              <div className="p-8 bg-gradient-to-br from-slate-900/80 to-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-2xl">
-                <h3 className="text-2xl text-white mb-6">Connect With Me</h3>
-                <div className="flex gap-4">
-                  {socialLinks.map((social) => (
-                    <a
-                      key={social.label}
-                      href={social.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={`group p-4 bg-gradient-to-br ${social.gradient} rounded-lg hover:scale-110 transition-transform duration-300`}
-                      aria-label={social.label}
-                    >
-                      <social.icon className="w-6 h-6 text-white" />
-                    </a>
-                  ))}
-                </div>
-              </div>
-
-              <div className="p-8 bg-gradient-to-br from-purple-600/10 to-blue-600/10 border border-purple-500/30 rounded-2xl">
+              <div className="rounded-[2rem] border border-cyan-200/10 bg-gradient-to-br from-cyan-400/10 via-slate-900/40 to-blue-500/10 p-6 shadow-[0_12px_40px_rgba(8,47,73,0.2)] md:p-8">
                 <h3 className="text-xl text-white mb-3">Open to Opportunities</h3>
-                <p className="text-slate-300">
-                  I'm currently available for freelance projects and full-time positions. 
-                  Let's discuss how we can work together to bring your ideas to life!
+                <p className="text-slate-300 leading-7">
+                  I am currently available for freelance projects and full-time positions in backend and full-stack roles.
                 </p>
               </div>
             </motion.div>

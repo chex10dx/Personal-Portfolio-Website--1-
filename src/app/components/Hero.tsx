@@ -40,7 +40,7 @@ export function Hero() {
             >
               <span className="h-2.5 w-2.5 rounded-full bg-cyan-300 shadow-[0_0_14px_rgba(103,232,249,0.9)]" />
               <span className="text-sm uppercase tracking-[0.28em] text-cyan-100/80 md:text-base">
-                Full Stack Developer
+                Full Stack Web Developer
               </span>
             </motion.div>
 
@@ -48,11 +48,11 @@ export function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.25, duration: 0.8 }}
-              className="mb-6 text-5xl leading-none md:text-6xl lg:text-7xl xl:text-[6.75rem]"
+              className="mb-6 text-5xl leading-none md:text-6xl lg:text-7xl xl:text-[4.75rem]"
             >
-              <span className="block text-white">Designing digital products</span>
+              <span className="block text-white">Building scalable systems</span>
               <span className="mt-2 block bg-gradient-to-r from-cyan-200 via-violet-200 to-blue-300 bg-clip-text text-transparent">
-                with depth, speed, and glow.
+                with .NET precision and API performance.
               </span>
             </motion.h1>
 
@@ -62,12 +62,9 @@ export function Hero() {
               transition={{ delay: 0.38, duration: 0.8 }}
               className="mx-auto mb-10 max-w-3xl text-lg leading-8 text-slate-300 md:text-2xl lg:mx-0"
             >
-              I'm <span className="text-white">Tareq Yasser</span>, building premium web experiences with
-              neon clarity, scalable engineering, and a product eye shaped by{' '}
-              <span className="bg-gradient-to-r from-violet-300 to-cyan-300 bg-clip-text text-transparent">
-                8+ years
-              </span>{' '}
-              of hands-on delivery.
+              I'm <span className="text-white">Tariq Yasser</span>, a Full Stack Web Developer and
+              System Architect based in Damascus, Syria. Strong in C# and JavaScript, with
+              hands-on experience designing, coding, and testing complex systems.
             </motion.p>
 
             <motion.div
@@ -100,15 +97,15 @@ export function Hero() {
             >
               <div className="rounded-3xl border border-white/8 bg-white/[0.04] p-5 text-left backdrop-blur-xl">
                 <p className="text-sm uppercase tracking-[0.22em] text-slate-400">Specialty</p>
-                <p className="mt-3 text-lg text-white">React, Node.js, system design</p>
+                <p className="mt-3 text-lg text-white">C#, .NET, ASP.NET Core, Next.js</p>
               </div>
               <div className="rounded-3xl border border-white/8 bg-white/[0.04] p-5 text-left backdrop-blur-xl">
                 <p className="text-sm uppercase tracking-[0.22em] text-slate-400">Focus</p>
-                <p className="mt-3 text-lg text-white">Premium interfaces and resilient architecture</p>
+                <p className="mt-3 text-lg text-white">Microservices, APIs, and performance optimization</p>
               </div>
               <div className="rounded-3xl border border-white/8 bg-white/[0.04] p-5 text-left backdrop-blur-xl">
                 <p className="text-sm uppercase tracking-[0.22em] text-slate-400">Based In</p>
-                <p className="mt-3 text-lg text-white">Iraq, building globally</p>
+                <p className="mt-3 text-lg text-white">Damascus, Syria</p>
               </div>
             </motion.div>
             <motion.div

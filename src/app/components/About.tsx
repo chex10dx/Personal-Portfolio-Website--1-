@@ -10,18 +10,18 @@ export function About() {
   const highlights = [
     {
       icon: Code2,
-      title: 'Clean Code',
-      description: 'Writing maintainable, scalable, and efficient code that stands the test of time',
+      title: 'System Architecture',
+      description: 'Designing robust and scalable systems with .NET, APIs, and service-oriented approaches',
     },
     {
       icon: Zap,
       title: 'Performance',
-      description: 'Optimizing applications for speed, efficiency, and exceptional user experience',
+      description: 'Improving backend and database performance with measurable impact',
     },
     {
       icon: Users,
-      title: 'Collaboration',
-      description: 'Working seamlessly with teams to deliver innovative solutions',
+      title: 'Leadership',
+      description: 'Leading engineering teams and improving quality, delivery speed, and reliability',
     },
   ];
 
@@ -54,7 +54,7 @@ export function About() {
               transition={{ delay: 0.3, duration: 0.6 }}
               className="text-4xl md:text-5xl lg:text-6xl text-white mb-6"
             >
-              Building the Future of Web
+              Software Developer and System Architect
             </motion.h2>
           </div>
 
@@ -66,20 +66,17 @@ export function About() {
               className="space-y-6"
             >
               <p className="text-lg md:text-xl text-slate-300 leading-relaxed">
-                With over <span className="text-purple-400">8 years of professional experience</span>, 
-                I specialize in architecting and developing robust, scalable web applications that solve 
-                real-world problems.
+                I am a Full Stack Web Developer focused on building and optimizing complex systems
+                using <span className="text-purple-400">C# and JavaScript</span>.
               </p>
               <p className="text-lg md:text-xl text-slate-300 leading-relaxed">
-                My expertise spans the entire development stack, from crafting intuitive user interfaces 
-                with <span className="text-blue-400">React</span> to building high-performance backends 
-                with <span className="text-blue-400">Node.js</span>. I'm passionate about leveraging 
-                modern technologies to create solutions that are not only functional but exceptional.
+                My background includes designing, coding, and testing solutions across microservices,
+                REST and gRPC APIs, and full-stack web platforms using{' '}
+                <span className="text-blue-400">.NET Core, ASP.NET Core, Blazor, and Next.js</span>.
               </p>
               <p className="text-lg md:text-xl text-slate-300 leading-relaxed">
-                I believe in writing clean, maintainable code and following best practices to ensure 
-                scalability and longevity. Every project is an opportunity to push boundaries and deliver 
-                excellence.
+                I prioritize clean architecture, maintainable code, and performance optimization to
+                deliver reliable products that scale.
               </p>
             </motion.div>
 

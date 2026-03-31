@@ -6,7 +6,6 @@ export function Footer() {
 
   return (
     <footer className="relative py-12 bg-slate-950 border-t border-slate-800/50 overflow-hidden">
-      {/* Background gradient */}
       <div className="absolute inset-0">
         <div className="absolute bottom-0 left-1/2 w-96 h-96 bg-purple-600/5 rounded-full blur-3xl"></div>
       </div>
@@ -21,15 +20,15 @@ export function Footer() {
         >
           <div className="mb-6">
             <h3 className="text-3xl md:text-4xl bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent mb-2">
-              Tareq Yasser
+              Tariq Yasser
             </h3>
             <p className="text-slate-400">Full Stack Web Developer</p>
           </div>
 
           <div className="flex items-center justify-center gap-2 text-slate-400">
-            <span>Â© {currentYear} Built with</span>
+            <span>© {currentYear} Built with</span>
             <Heart className="w-4 h-4 text-purple-400 fill-purple-400" />
-            <span>by Tareq Yasser</span>
+            <span>by Tariq Yasser</span>
           </div>
         </motion.div>
       </div>

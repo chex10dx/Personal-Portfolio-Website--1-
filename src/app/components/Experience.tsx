@@ -1,4 +1,4 @@
-import { motion } from 'motion/react';
+﻿import { motion } from 'motion/react';
 import { useInView } from 'motion/react';
 import { useRef } from 'react';
 import { Briefcase, Award, TrendingUp } from 'lucide-react';
@@ -9,53 +9,62 @@ export function Experience() {
 
   const experiences = [
     {
-      role: 'Senior Full Stack Developer',
-      company: 'Tech Innovations Inc.',
-      period: '2021 - Present',
-      description: 'Leading development of enterprise-scale applications, mentoring junior developers, and implementing best practices across the engineering team.',
+      role: 'Software Developer (.NET)',
+      company: 'Mis Company.',
+      period: 'December 2023 - Present',
+      description:
+        'Leading development efforts on key projects using .NET technologies and coordinating with stakeholders to gather requirements and deliver solutions.',
       achievements: [
-        'Architected and deployed microservices infrastructure serving 1M+ users',
-        'Reduced application load time by 65% through optimization',
-        'Led team of 5 developers on multiple high-impact projects',
+        'Improved application performance by 30% through optimization of database queries.',
+        'Successfully collaborated with a team of 5 developers to complete a major project, delivering the final product 1 week ahead of the 6-month deadline and under budget by 15%.',
+        'Implemented automated testing procedures that reduced bug reports by 40%, increasing overall software reliability and customer satisfaction.',
+        'Major Projects: Remittance system (Microservices, Blazor WebAssembly, RabbitMQ, Hangfire) and ERP system (Monolith, Blazor WebAssembly).',
+        'Mentoring junior developers and contributing to team knowledge sharing.',
       ],
       icon: Briefcase,
     },
     {
-      role: 'Full Stack Developer',
-      company: 'Digital Solutions Co.',
-      period: '2018 - 2021',
-      description: 'Developed and maintained multiple client-facing applications, collaborated with cross-functional teams, and delivered projects on time and within budget.',
-      achievements: [
-        'Built 15+ production-ready web applications',
-        'Implemented CI/CD pipelines reducing deployment time by 80%',
-        'Improved code quality and test coverage to 90%+',
-      ],
-      icon: TrendingUp,
+      role: 'Freelance Next.js Developer',
+      company: 'Self-Employed',
+      period: 'June 2021 - Dec 2022',
+      description: 'Delivered custom web solutions for client-specific business needs.',
+      achievements: ['Built ERP system for a clinic', 'Delivered custom software aligned with client requirements'],
+      icon: Award,
     },
     {
-      role: 'Junior Web Developer',
-      company: 'StartUp Ventures',
-      period: '2016 - 2018',
-      description: 'Started my professional journey building responsive websites, learning best practices, and contributing to various projects.',
+      role: 'ASP.NET Core Developer',
+      company: 'LLC Company.',
+      period: 'April 2020 - June 2021',
+      description: '.NET backend-focused role delivering secure web platforms and scalable app architecture.',
       achievements: [
-        'Developed responsive interfaces for 20+ client projects',
-        'Mastered modern JavaScript frameworks and tools',
-        'Consistently delivered ahead of deadlines',
+        'Developed an e-commerce platform with payment integration',
+        'Applied .NET best practices across application development',
       ],
-      icon: Award,
+      icon: Briefcase,
+    },
+    {
+      role: 'Junior .NET Developer',
+      company: 'SYC Solution',
+      period: 'May 2019 - April 2020',
+      description: 'Contributed to API development and backend foundations in early-career .NET projects.',
+      achievements: [
+        'Built REST APIs with Swagger and Postman',
+        'Implemented JWT authentication and authorization',
+        'Worked with SQL Server and Entity Framework Core',
+      ],
+      icon: TrendingUp,
     },
   ];
 
   const stats = [
-    { number: '8+', label: 'Years Experience' },
-    { number: '50+', label: 'Projects Completed' },
-    { number: '30+', label: 'Happy Clients' },
-    { number: '15+', label: 'Technologies' },
+    { number: '4', label: 'Key Roles' },
+    { number: '10', label: 'Engineers Led' },
+    { number: '40%', label: 'Performance Gain' },
+    { number: '40%', label: 'Bug Reduction' },
   ];
 
   return (
     <section id="experience" className="relative py-24 md:py-32 bg-gradient-to-b from-slate-900 to-slate-950 overflow-hidden">
-      {/* Background effects */}
       <div className="absolute inset-0">
         <div className="absolute top-1/3 right-1/4 w-96 h-96 bg-purple-600/10 rounded-full blur-3xl"></div>
       </div>
@@ -82,7 +91,7 @@ export function Experience() {
               transition={{ delay: 0.3, duration: 0.6 }}
               className="text-4xl md:text-5xl lg:text-6xl text-white mb-6"
             >
-              Professional Journey
+              Professional Experience
             </motion.h2>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -90,11 +99,10 @@ export function Experience() {
               transition={{ delay: 0.4, duration: 0.6 }}
               className="text-lg md:text-xl text-slate-400 max-w-3xl mx-auto"
             >
-              Years of dedication to crafting exceptional digital experiences
+              Building .NET systems, APIs, and scalable architectures with measurable impact
             </motion.p>
           </div>
 
-          {/* Stats */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -117,25 +125,22 @@ export function Experience() {
             ))}
           </motion.div>
 
-          {/* Experience timeline */}
           <div className="space-y-8">
             {experiences.map((exp, index) => (
               <motion.div
-                key={exp.role}
+                key={`${exp.role}-${index}`}
                 initial={{ opacity: 0, x: -50 }}
                 animate={isInView ? { opacity: 1, x: 0 } : {}}
-                transition={{ delay: 0.7 + index * 0.2, duration: 0.6 }}
+                transition={{ delay: 0.7 + index * 0.12, duration: 0.6 }}
                 className="relative"
               >
                 <div className="flex flex-col md:flex-row gap-6 p-8 bg-gradient-to-br from-slate-900/80 to-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-2xl hover:border-purple-500/50 transition-all duration-300">
-                  {/* Icon */}
                   <div className="flex-shrink-0">
                     <div className="w-16 h-16 bg-gradient-to-br from-purple-600/20 to-blue-600/20 rounded-xl flex items-center justify-center">
                       <exp.icon className="w-8 h-8 text-purple-400" />
                     </div>
                   </div>
 
-                  {/* Content */}
                   <div className="flex-grow">
                     <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
                       <div>
@@ -152,7 +157,7 @@ export function Experience() {
                     <ul className="space-y-2">
                       {exp.achievements.map((achievement, idx) => (
                         <li key={idx} className="flex items-start gap-2 text-slate-400">
-                          <span className="text-purple-400 mt-1">▹</span>
+                          <span className="text-purple-400 mt-1">-</span>
                           <span>{achievement}</span>
                         </li>
                       ))}

@@ -86,11 +86,7 @@ export function FloatingProfile() {
           className="absolute overflow-hidden rounded-full border border-white/10 bg-slate-950"
           style={{ inset: imageInset }}
         >
-          <img
-            src={profileImage}
-            alt="Tareq Yasser"
-            className="h-full w-full object-cover"
-          />
+          <img src={profileImage} alt="Tariq Yasser" className="h-full w-full object-cover" />
         </motion.div>
       </motion.div>
     </motion.div>
