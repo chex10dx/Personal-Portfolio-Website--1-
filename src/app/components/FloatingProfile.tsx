@@ -12,7 +12,8 @@ function getProfileMetrics(viewportWidth: number, viewportHeight: number) {
   return {
     startX: isDesktop ? Math.max(24, viewportWidth * 0.08) : Math.max(20, (viewportWidth - startSize) / 2),
     startY: isDesktop ? Math.max(126, viewportHeight * 0.22) : 104,
-    finalX: isDesktop ? 92 : 72,
+    // Clear the navbar wordmark when its padding and font size increase at md.
+    finalX: viewportWidth >= 768 ? 112 : 72,
     finalY: isDesktop ? 14 : 18,
     startSize,
     finalSize,
