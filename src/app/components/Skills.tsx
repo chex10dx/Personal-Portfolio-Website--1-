@@ -1,43 +1,12 @@
-import { motion } from 'motion/react';
-import { useInView } from 'motion/react';
+import { motion, useInView, useReducedMotion } from 'motion/react';
 import { useRef } from 'react';
+import { skillCategories } from '../data/techStack';
+import { TechStackNetwork } from './skills/TechStackNetwork';
 
 export function Skills() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
-
-  const skillCategories = [
-    {
-      title: 'Languages',
-      skills: ['C#', 'JavaScript'],
-      gradient: 'from-purple-700 to-pink-700 dark:from-purple-600 dark:to-pink-600',
-    },
-    {
-      title: 'Frameworks',
-      skills: ['.NET Core', 'ASP.NET', 'Next.js', 'Vue', 'Blazor'],
-      gradient: 'from-blue-700 to-cyan-700 dark:from-blue-600 dark:to-cyan-600',
-    },
-    {
-      title: 'Databases',
-      skills: ['SQL Server', 'Redis', 'Entity Framework Core'],
-      gradient: 'from-green-700 to-emerald-700 dark:from-green-600 dark:to-emerald-600',
-    },
-    {
-      title: 'APIs and Architecture',
-      skills: ['REST APIs', 'gRPC', 'Microservices', 'Monolith'],
-      gradient: 'from-orange-700 to-red-700 dark:from-orange-600 dark:to-red-600',
-    },
-    {
-      title: 'Cloud and Tools',
-      skills: ['Azure', 'AWS', 'RabbitMQ', 'Hangfire', 'Git', 'Swagger', 'Postman'],
-      gradient: 'from-fuchsia-700 to-violet-700 dark:from-fuchsia-600 dark:to-violet-600',
-    },
-    {
-      title: 'Testing',
-      skills: ['Unit Testing', 'Integration Testing'],
-      gradient: 'from-teal-700 to-sky-700 dark:from-teal-600 dark:to-sky-600',
-    },
-  ];
+  const reducedMotion = useReducedMotion();
 
   return (
     <section id="skills" className="relative py-24 md:py-32 bg-gradient-to-b from-section to-section-alt overflow-hidden">
@@ -48,13 +17,13 @@ export function Skills() {
       <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12">
         <motion.div
           ref={ref}
-          initial={{ opacity: 0, y: 50 }}
+          initial={reducedMotion ? false : { opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
         >
           <div className="text-center mb-16">
             <motion.span
-              initial={{ opacity: 0, y: 20 }}
+              initial={reducedMotion ? false : { opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.2, duration: 0.6 }}
               className="inline-block text-brand-purple mb-4 text-sm md:text-base tracking-wider uppercase"
@@ -62,7 +31,7 @@ export function Skills() {
               Skills and Expertise
             </motion.span>
             <motion.h2
-              initial={{ opacity: 0, y: 20 }}
+              initial={reducedMotion ? false : { opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.3, duration: 0.6 }}
               className="text-4xl md:text-5xl lg:text-6xl text-foreground mb-6"
@@ -70,7 +39,7 @@ export function Skills() {
               Technical Stack
             </motion.h2>
             <motion.p
-              initial={{ opacity: 0, y: 20 }}
+              initial={reducedMotion ? false : { opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.4, duration: 0.6 }}
               className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto"
@@ -79,11 +48,13 @@ export function Skills() {
             </motion.p>
           </div>
 
+          <TechStackNetwork />
+
           <div className="grid md:grid-cols-2 gap-8">
             {skillCategories.map((category, categoryIndex) => (
               <motion.div
                 key={category.title}
-                initial={{ opacity: 0, y: 30 }}
+                initial={reducedMotion ? false : { opacity: 0, y: 30 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: 0.5 + categoryIndex * 0.08, duration: 0.6 }}
                 className="p-8 bg-gradient-to-br from-card/80 to-raised/50 backdrop-blur-sm border border-surface-line/50 rounded-2xl hover:border-purple-500/50 transition-all duration-300"
@@ -91,16 +62,16 @@ export function Skills() {
                 <h3 className={`text-2xl md:text-3xl mb-6 bg-gradient-to-r ${category.gradient} bg-clip-text text-transparent`}>
                   {category.title}
                 </h3>
-                <div className="flex flex-wrap gap-3">
+                <ul className="flex flex-wrap gap-3">
                   {category.skills.map((skill) => (
-                    <span
-                      key={skill}
+                    <li
+                      key={skill.id}
                       className="px-4 py-2 bg-raised/80 text-subtle-foreground dark:text-slate-200 text-sm rounded-full border border-surface-line/50"
                     >
-                      {skill}
-                    </span>
+                      {skill.label}
+                    </li>
                   ))}
-                </div>
+                </ul>
               </motion.div>
             ))}
           </div>
