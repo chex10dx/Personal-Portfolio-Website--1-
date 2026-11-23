@@ -17,11 +17,12 @@ export type Network = { bodies: Body[]; springs: Spring[]; width: number; height
 export type Pin = Point & { index: number };
 
 export function createNetwork(width: number, height: number, animate: boolean): Network {
-  const columns = width < 620 ? 2 : 3;
-  const compact = width < 470;
+  const columns = width < 620 ? 2 : width < 980 ? 3 : 4;
+  const rows = Math.ceil(skillCategories.length / columns);
+  const compact = columns === 2;
   const inset = compact ? 8 : 18;
   const cellWidth = (width - inset * 2) / columns;
-  const cellHeight = (height - inset * 2) / (6 / columns);
+  const cellHeight = (height - inset * 2) / rows;
   const bodies: Body[] = [];
 
   const add = (x: number, y: number, group: number, radius: number, labelWidth: number, labelAbove: boolean) => {
@@ -29,21 +30,16 @@ export function createNetwork(width: number, height: number, animate: boolean): 
   };
 
   skillCategories.forEach(({ skills }, group) => {
-    const x = inset + (group % columns + 0.5) * cellWidth;
-    const y = inset + (Math.floor(group / columns) + 0.5) * cellHeight;
-    const shoulder = skills.length === 7;
-    const rowLength = skills.length - Number(shoulder);
+    const row = Math.floor(group / columns);
+    const rowGroups = Math.min(columns, skillCategories.length - row * columns);
+    const x = inset + (group % columns + 0.5 + (columns - rowGroups) / 2) * cellWidth;
+    const y = inset + (row + 0.5) * cellHeight;
+    const rowLength = skills.length;
     const topCount = Math.ceil(rowLength / 2);
-    const hubX = x + (shoulder ? cellWidth * 0.14 : 0);
     const rise = cellHeight * (compact ? 0.28 : 0.29);
 
-    add(hubX, y - 3, group, compact ? 14 : 22, shoulder ? cellWidth * 0.65 : cellWidth - 14, false);
+    add(x, y - 5, group, compact ? 13 : 19, cellWidth - 14, false);
     skills.forEach((_, index) => {
-      if (shoulder && index === rowLength) {
-        add(x - cellWidth * 0.34, y - 4, group, compact ? 5 : 7, cellWidth * 0.34, false);
-        return;
-      }
-
       const top = index < topCount;
       const count = top ? topCount : rowLength - topCount;
       const slot = top ? index : index - topCount;

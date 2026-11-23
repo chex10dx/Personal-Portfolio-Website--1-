@@ -10,18 +10,18 @@ export function About() {
   const highlights = [
     {
       icon: Code2,
-      title: 'System Architecture',
-      description: 'Designing robust and scalable systems with .NET, APIs, and service-oriented approaches',
+      title: 'Enterprise System Design',
+      description: 'Contribute to design decisions about service boundaries, domain behavior, and data access in .NET applications.',
     },
     {
       icon: Zap,
-      title: 'Performance',
-      description: 'Improving backend and database performance with measurable impact',
+      title: 'Backend Troubleshooting',
+      description: 'Investigate API behavior, cross-service problems, background jobs, and SQL query performance.',
     },
     {
       icon: Users,
-      title: 'Leadership',
-      description: 'Leading engineering teams and improving quality, delivery speed, and reliability',
+      title: 'Technical Collaboration',
+      description: 'Clarify requirements with stakeholders, review code, and mentor junior developers.',
     },
   ];
 
@@ -54,7 +54,7 @@ export function About() {
               transition={{ delay: 0.3, duration: 0.6 }}
               className="text-4xl md:text-5xl lg:text-6xl text-foreground mb-6"
             >
-              Software Developer and System Architect
+              Enterprise .NET Engineering
             </motion.h2>
           </div>
 
@@ -66,17 +66,13 @@ export function About() {
               className="space-y-6"
             >
               <p className="text-lg md:text-xl text-subtle-foreground leading-relaxed">
-                I am a Full Stack Web Developer focused on building and optimizing complex systems
-                using <span className="text-brand-purple">C# and JavaScript</span>.
+                I specialize in enterprise applications built with <span className="text-brand-purple">C# and ASP.NET Core</span>. My work includes a financial remittance and payment platform with more than 30 communicating services and an enterprise ERP built with the ABP Framework.
               </p>
               <p className="text-lg md:text-xl text-subtle-foreground leading-relaxed">
-                My background includes designing, coding, and testing solutions across microservices,
-                REST and gRPC APIs, and full-stack web platforms using{' '}
-                <span className="text-brand-blue">.NET Core, ASP.NET Core, Blazor, and Next.js</span>.
+                I develop APIs and domain workflows, investigate backend and database issues, and contribute to architectural decisions about service communication, data access, and maintainability.
               </p>
               <p className="text-lg md:text-xl text-subtle-foreground leading-relaxed">
-                I prioritize clean architecture, maintainable code, and performance optimization to
-                deliver reliable products that scale.
+                I work with stakeholders to understand the business rules behind a change and with developers to review, test, and troubleshoot it. I also use AI coding agents to analyze user stories and plan changes for human review.
               </p>
             </motion.div>
 

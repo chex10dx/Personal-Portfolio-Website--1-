@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
+import { motion, AnimatePresence, useReducedMotion } from 'motion/react';
 import { Menu, Moon, Sun, X } from 'lucide-react';
 
 type NavbarProps = {
@@ -11,6 +11,7 @@ export function Navbar({ isDark, onToggleTheme }: NavbarProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const themeLabel = isDark ? 'Switch to light mode' : 'Switch to dark mode';
+  const reduced = useReducedMotion();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -25,7 +26,7 @@ export function Navbar({ isDark, onToggleTheme }: NavbarProps) {
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      element.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth' });
       setIsMobileMenuOpen(false);
     }
   };
@@ -52,7 +53,7 @@ export function Navbar({ isDark, onToggleTheme }: NavbarProps) {
       <div className="flex h-20 items-center gap-4 px-6 md:px-12">
         <button
           type="button"
-          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          onClick={() => window.scrollTo({ top: 0, behavior: reduced ? 'auto' : 'smooth' })}
           className="shrink-0 text-2xl font-semibold tracking-[0.24em] text-foreground transition-colors duration-300 hover:text-brand-cyan md:text-3xl"
         >
           TY
@@ -105,7 +106,7 @@ export function Navbar({ isDark, onToggleTheme }: NavbarProps) {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3 }}
+            transition={{ duration: reduced ? 0 : 0.3 }}
             className="border-b border-glass-line/10 bg-background/95 backdrop-blur-xl md:hidden"
           >
             <div className="px-6 py-4 space-y-4">

@@ -1,14 +1,11 @@
-import { motion } from 'motion/react';
-import { ArrowRight, ChevronDown } from 'lucide-react';
+import { motion, useReducedMotion } from 'motion/react';
+import { ChevronDown, Download } from 'lucide-react';
+import { portfolioLinks } from '../data/career';
+
+const secondaryAction = 'inline-flex items-center gap-2 rounded-full border border-glass-line/12 bg-glass px-5 py-3 text-sm font-medium text-foreground backdrop-blur-xl transition-colors hover:border-brand-cyan/40 hover:bg-raised';
 
 export function Hero() {
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
+  const reduced = useReducedMotion();
   return (
     <section
       id="home"
@@ -38,9 +35,9 @@ export function Hero() {
               transition={{ delay: 0.15, duration: 0.5 }}
               className="mb-6 inline-flex items-center gap-3 rounded-full border border-cyan-400/20 bg-glass px-4 py-2 backdrop-blur-xl"
             >
-              <span className="h-2.5 w-2.5 rounded-full bg-cyan-300 shadow-[0_0_14px_rgba(103,232,249,0.9)]" />
-              <span className="text-sm uppercase tracking-[0.28em] text-brand-cyan dark:text-cyan-100/80 md:text-base">
-                Full Stack Web Developer
+              <span aria-hidden="true" className="h-2.5 w-2.5 shrink-0 rounded-full bg-cyan-300 shadow-[0_0_14px_rgba(103,232,249,0.9)]" />
+              <span className="text-xs font-semibold uppercase tracking-[0.13em] text-brand-cyan sm:text-sm dark:text-cyan-100/80">
+                Senior .NET Software Engineer · Distributed Systems · Technical Leadership
               </span>
             </motion.div>
 
@@ -48,11 +45,11 @@ export function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.25, duration: 0.8 }}
-              className="mb-6 text-5xl leading-none md:text-6xl lg:text-7xl xl:text-[4.75rem]"
+              className="mb-6 text-4xl leading-[1.08] font-semibold sm:text-5xl xl:text-6xl"
             >
-              <span className="block text-foreground">Building scalable systems</span>
+              <span className="block text-foreground">Building scalable enterprise systems.</span>
               <span className="mt-2 block bg-gradient-to-r from-brand-cyan via-brand-purple to-brand-blue dark:from-cyan-200 dark:via-violet-200 dark:to-blue-300 bg-clip-text text-transparent">
-                with .NET precision and API performance.
+                Solving complex engineering problems.
               </span>
             </motion.h1>
 
@@ -60,52 +57,44 @@ export function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.38, duration: 0.8 }}
-              className="mx-auto mb-10 max-w-3xl text-lg leading-8 text-subtle-foreground md:text-2xl lg:mx-0"
+              className="mx-auto mb-8 max-w-3xl text-base leading-relaxed text-subtle-foreground md:text-lg lg:mx-0"
             >
-              I'm <span className="text-foreground">Tariq Yasser</span>, a Full Stack Web Developer and
-              System Architect based in Damascus, Syria. Strong in C# and JavaScript, with
-              hands-on experience designing, coding, and testing complex systems.
+              I’m <span className="font-semibold text-foreground">Tariq Yasser</span>. I develop and improve enterprise .NET applications, including financial remittance platforms and ERP systems. My work spans distributed services, domain workflows, backend troubleshooting, and helping developers deliver maintainable changes.
             </motion.p>
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5, duration: 0.8 }}
-              className="mb-12 flex flex-col items-center gap-4 sm:flex-row lg:justify-start"
+              className="mb-10 flex flex-wrap justify-center gap-3 lg:justify-start"
             >
-              <button
-                onClick={() => scrollToSection('projects')}
-                className="group inline-flex items-center gap-2 rounded-full bg-[linear-gradient(135deg,#4f46e5,#2563eb,#0e7490)] px-8 py-4 text-white shadow-[0_18px_50px_rgba(37,99,235,0.35)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_60px_rgba(79,70,229,0.45)]"
+              <a
+                href="#projects"
+                className="inline-flex items-center rounded-full bg-[linear-gradient(135deg,#4f46e5,#2563eb,#0e7490)] px-5 py-3 text-sm font-semibold text-white shadow-[0_12px_40px_rgba(37,99,235,0.28)] transition-shadow hover:shadow-[0_16px_48px_rgba(79,70,229,0.4)]"
               >
                 View Projects
-                <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
-              </button>
-
-              <button
-                onClick={() => scrollToSection('contact')}
-                className="rounded-full border border-glass-line/12 bg-glass px-8 py-4 text-foreground backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:border-brand-cyan/40 hover:bg-raised dark:hover:border-cyan-300/40 dark:hover:bg-white/[0.07]"
-              >
-                Contact Me
-              </button>
+              </a>
+              <a href="#skills" className={secondaryAction}>Explore Technical Expertise</a>
+              <a href={`${import.meta.env.BASE_URL}${portfolioLinks.resume}`} download className={secondaryAction}>
+                <Download size={16} aria-hidden="true" /> Download Resume
+              </a>
+              <a href="#contact" className={secondaryAction}>Contact Me</a>
             </motion.div>
 
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.64, duration: 0.8 }}
-              className="mb-16 grid gap-5 md:grid-cols-3 lg:mb-20"
+              className="mb-12 grid gap-3 text-left sm:grid-cols-3 lg:mb-14"
             >
               <div className="rounded-3xl border border-glass-line/8 bg-glass p-5 text-left backdrop-blur-xl">
-                <p className="text-sm uppercase tracking-[0.22em] text-muted-foreground">Specialty</p>
-                <p className="mt-3 text-lg text-foreground">C#, .NET, ASP.NET Core, Next.js</p>
+                <p className="text-sm font-semibold text-foreground">Enterprise & financial systems</p>
               </div>
               <div className="rounded-3xl border border-glass-line/8 bg-glass p-5 text-left backdrop-blur-xl">
-                <p className="text-sm uppercase tracking-[0.22em] text-muted-foreground">Focus</p>
-                <p className="mt-3 text-lg text-foreground">Microservices, APIs, and performance optimization</p>
+                <p className="text-sm font-semibold text-foreground">Distributed .NET architecture</p>
               </div>
               <div className="rounded-3xl border border-glass-line/8 bg-glass p-5 text-left backdrop-blur-xl">
-                <p className="text-sm uppercase tracking-[0.22em] text-muted-foreground">Based In</p>
-                <p className="mt-3 text-lg text-foreground">Damascus, Syria</p>
+                <p className="text-sm font-semibold text-foreground">Code quality & mentoring</p>
               </div>
             </motion.div>
             <motion.div
@@ -116,8 +105,8 @@ export function Hero() {
             >
               <span className="text-sm uppercase tracking-[0.28em] text-muted-foreground">Scroll to explore</span>
               <motion.div
-                animate={{ y: [0, 8, 0] }}
-                transition={{ repeat: Infinity, duration: 1.6, ease: 'easeInOut' }}
+                animate={reduced ? { y: 0 } : { y: [0, 8, 0] }}
+                transition={reduced ? { duration: 0 } : { repeat: Infinity, duration: 1.6, ease: 'easeInOut' }}
               >
                 <ChevronDown className="h-6 w-6 text-brand-cyan dark:text-cyan-300" />
               </motion.div>

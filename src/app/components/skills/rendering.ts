@@ -27,8 +27,19 @@ export function readPalette(stage: HTMLElement) {
 
 type Palette = ReturnType<typeof readPalette>;
 
+const compactCategoryLabels: Partial<Record<string, string>> = {
+  backend: 'Backend',
+  architecture: 'Architecture',
+  data: 'Data Management',
+  messaging: 'Messaging & Jobs',
+  frontend: 'Frontend',
+  devops: 'DevOps',
+  performance: 'Observability',
+  ai: 'AI Engineering',
+};
+
 export function prepareViews(ctx: CanvasRenderingContext2D, network: Network): NodeView[] {
-  const compact = network.width < 470;
+  const compact = network.width < 620;
   return network.bodies.map((body, index) => {
     const node = skillNodes[index];
     const category = node.type === 'category';
@@ -36,7 +47,8 @@ export function prepareViews(ctx: CanvasRenderingContext2D, network: Network): N
     const font = `${category ? 700 : 550} ${fontSize}px system-ui, sans-serif`;
     const lines: string[] = [];
     ctx.font = font;
-    for (const word of node.label.split(' ')) {
+    const label = (network.width < 980 && category ? compactCategoryLabels[node.id] : undefined) ?? node.label;
+    for (const word of label.split(' ')) {
       const previous = lines[lines.length - 1];
       if (previous && ctx.measureText(`${previous} ${word}`).width <= body.labelWidth) {
         lines[lines.length - 1] += ` ${word}`;

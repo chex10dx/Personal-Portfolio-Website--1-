@@ -1,6 +1,6 @@
 import { motion, useInView, useReducedMotion } from 'motion/react';
 import { useRef } from 'react';
-import { skillCategories } from '../data/techStack';
+import { developmentTopics, skillCategories } from '../data/techStack';
 import { TechStackNetwork } from './skills/TechStackNetwork';
 
 export function Skills() {
@@ -44,29 +44,29 @@ export function Skills() {
               transition={{ delay: 0.4, duration: 0.6 }}
               className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto"
             >
-              Tools and technologies used across enterprise .NET and full-stack delivery
+              Technologies and practices from enterprise .NET, web development, and day-to-day engineering work.
             </motion.p>
           </div>
 
           <TechStackNetwork />
 
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {skillCategories.map((category, categoryIndex) => (
               <motion.div
                 key={category.title}
                 initial={reducedMotion ? false : { opacity: 0, y: 30 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: 0.5 + categoryIndex * 0.08, duration: 0.6 }}
-                className="p-8 bg-gradient-to-br from-card/80 to-raised/50 backdrop-blur-sm border border-surface-line/50 rounded-2xl hover:border-purple-500/50 transition-all duration-300"
+                className="min-w-0 rounded-2xl border border-surface-line/50 bg-gradient-to-br from-card/80 to-raised/50 p-5 backdrop-blur-sm transition-colors duration-300 hover:border-purple-500/50 md:p-6"
               >
-                <h3 className={`text-2xl md:text-3xl mb-6 bg-gradient-to-r ${category.gradient} bg-clip-text text-transparent`}>
+                <h3 className={`mb-4 bg-gradient-to-r ${category.gradient} bg-clip-text text-xl text-transparent`}>
                   {category.title}
                 </h3>
                 <ul className="flex flex-wrap gap-3">
                   {category.skills.map((skill) => (
                     <li
                       key={skill.id}
-                      className="px-4 py-2 bg-raised/80 text-subtle-foreground dark:text-slate-200 text-sm rounded-full border border-surface-line/50"
+                      className="rounded-full border border-surface-line/50 bg-raised/80 px-3 py-1.5 text-sm text-subtle-foreground dark:text-slate-200"
                     >
                       {skill.label}
                     </li>
@@ -74,6 +74,14 @@ export function Skills() {
                 </ul>
               </motion.div>
             ))}
+          </div>
+
+          <div className="mt-8 rounded-2xl border border-surface-line/50 bg-glass p-6 md:p-8">
+            <h3 className="text-xl font-semibold text-foreground">Currently Exploring</h3>
+            <p className="mt-2 text-muted-foreground">Topics I’m developing through study and experimentation.</p>
+            <ul className="mt-4 grid gap-x-8 gap-y-2 text-sm text-subtle-foreground sm:grid-cols-2">
+              {developmentTopics.map((topic) => <li key={topic} className="border-l border-brand-purple/40 pl-3">{topic}</li>)}
+            </ul>
           </div>
         </motion.div>
       </div>

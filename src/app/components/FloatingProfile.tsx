@@ -1,4 +1,4 @@
-import { motion, useMotionTemplate, useScroll, useSpring, useTransform } from 'motion/react';
+import { motion, useMotionTemplate, useReducedMotion, useScroll, useSpring, useTransform } from 'motion/react';
 import { useEffect, useState } from 'react';
 import profileImage from '../../assets/TareqPic.png';
 
@@ -24,6 +24,7 @@ function getProfileMetrics(viewportWidth: number, viewportHeight: number) {
 export function FloatingProfile() {
   const [viewport, setViewport] = useState({ width: 1440, height: 900 });
   const { scrollY } = useScroll();
+  const reduced = useReducedMotion();
 
   useEffect(() => {
     const updateViewport = () => {
@@ -39,12 +40,14 @@ export function FloatingProfile() {
   }, []);
 
   const metrics = getProfileMetrics(viewport.width, viewport.height);
-  const rawProgress = useTransform(scrollY, [0, metrics.travel], [0, 1]);
-  const progress = useSpring(rawProgress, {
+  const rawProgress = useTransform(scrollY, [0, metrics.travel], [0, reduced ? 0 : 1]);
+  const animatedProgress = useSpring(rawProgress, {
     stiffness: 110,
     damping: 24,
     mass: 0.35,
   });
+  const staticProgress = useTransform(scrollY, (scroll) => Number(scroll > 80));
+  const progress = reduced ? staticProgress : animatedProgress;
 
   const x = useTransform(progress, [0, 1], [metrics.startX, metrics.finalX]);
   const y = useTransform(progress, [0, 1], [metrics.startY, metrics.finalY]);

@@ -67,7 +67,7 @@ export function TechStackNetwork() {
 
       <div
         ref={stage}
-        className="relative isolate h-[468px] cursor-grab overflow-hidden select-none sm:h-[580px] lg:h-[720px]
+        className="relative isolate h-[780px] cursor-grab overflow-hidden select-none lg:h-[720px]
           bg-[radial-gradient(ellipse_at_20%_14%,#e8e6ff,transparent_48%),radial-gradient(ellipse_at_83%_86%,#dceffb,transparent_50%),linear-gradient(150deg,#f9fbff,#f0f4fc)]
           dark:bg-[radial-gradient(ellipse_at_20%_14%,#191435,transparent_48%),radial-gradient(ellipse_at_83%_86%,#10253c,transparent_52%),linear-gradient(150deg,#080b1a,#080f20)]"
       >

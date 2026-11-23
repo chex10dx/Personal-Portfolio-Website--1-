@@ -1,76 +1,57 @@
-import { motion } from 'motion/react';
-import { ExternalLink, Github } from 'lucide-react';
-import { ImageWithFallback } from './figma/ImageWithFallback';
+import { motion, useReducedMotion } from 'motion/react';
+import { ChevronDown } from 'lucide-react';
+import type { CaseStudy } from '../data/caseStudies';
+import { ArchitectureDiagram } from './ArchitectureDiagram';
 
-export type Project = {
-  title: string;
-  description: string;
-  image: string;
-  tech: string[];
-  liveLink: string;
-  githubLink: string;
-  gradient: string;
-};
+export function ProjectCard({ project, featured = false }: { project: CaseStudy; featured?: boolean }) {
+  const reduced = useReducedMotion();
+  const details = [
+    { label: 'Technical challenge', text: project.challenge },
+    { label: 'Architecture and implementation', text: project.approach },
+    { label: 'My contributions', list: project.contributions },
+    { label: 'Outcome', text: project.outcome },
+  ];
 
-type ProjectCardProps = {
-  project: Project;
-  index: number;
-  isInView: boolean;
-};
-
-export function ProjectCard({ project, index, isInView }: ProjectCardProps) {
   return (
     <motion.article
-      initial={{ opacity: 0, y: 30 }}
-      animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ delay: 0.5 + index * 0.1, duration: 0.6 }}
-      className="group relative overflow-hidden rounded-2xl border border-surface-line/50 bg-gradient-to-br from-card/80 to-raised/50 backdrop-blur-sm transition-all duration-300 hover:border-purple-500/50"
+      id={project.id}
+      aria-labelledby={`${project.id}-title`}
+      initial={reduced ? false : { opacity: 0, y: 16 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: reduced ? 0 : 0.4 }}
+      className={`min-w-0 scroll-mt-24 rounded-3xl border border-surface-line/50 bg-gradient-to-br from-card/90 to-raised/65 p-5 shadow-[0_14px_42px_var(--glass-shadow)] sm:p-7 ${featured ? 'lg:p-10' : ''}`}
     >
-      <div className="relative h-64 overflow-hidden">
-        <ImageWithFallback
-          src={project.image}
-          alt={project.title}
-          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-image-shade via-image-shade/50 to-transparent opacity-30 dark:opacity-60" />
-      </div>
+      <header>
+        <p className="text-sm leading-relaxed font-medium text-brand-purple">{project.type}</p>
+        <h3 id={`${project.id}-title`} className={`mt-2 font-semibold text-foreground ${featured ? 'text-3xl sm:text-4xl' : 'text-xl'}`}>{project.title}</h3>
+        <p className="mt-3 max-w-3xl leading-relaxed text-subtle-foreground">{project.context}</p>
+      </header>
 
-      <div className="p-8">
-        <h3
-          className={`mb-4 bg-gradient-to-r ${project.gradient} bg-clip-text text-2xl text-transparent md:text-3xl`}
-        >
-          {project.title}
-        </h3>
-        <p className="mb-6 leading-relaxed text-subtle-foreground">{project.description}</p>
+      <ul aria-label="Technologies" className="mt-5 flex flex-wrap gap-2">
+        {project.technologies.map((technology) => (
+          <li key={technology} className="rounded-full border border-surface-line/50 bg-glass px-3 py-1 text-sm text-subtle-foreground">{technology}</li>
+        ))}
+      </ul>
 
-        <div className="mb-6 flex flex-wrap gap-2">
-          {project.tech.map((tech) => (
-            <span
-              key={tech}
-              className="rounded-full border border-surface-line/50 bg-raised/80 px-3 py-1 text-sm text-brand-purple dark:text-purple-300"
-            >
-              {tech}
-            </span>
+      {featured && <div className="mt-7"><ArchitectureDiagram /></div>}
+
+      <details open={featured ? true : undefined} className="group mt-6 border-t border-surface-line/50 pt-4">
+        <summary className="flex cursor-pointer list-none items-center justify-between gap-3 rounded-lg py-2 font-semibold text-brand-purple [&::-webkit-details-marker]:hidden">
+          Engineering details
+          <ChevronDown size={18} aria-hidden="true" className="shrink-0 motion-safe:transition-transform group-open:rotate-180" />
+        </summary>
+        <dl className={`mt-4 grid gap-5 text-sm leading-relaxed text-muted-foreground ${featured ? 'sm:grid-cols-2' : ''}`}>
+          {details.map(({ label, text, list }) => (
+            <div key={label}>
+              <dt className="font-semibold text-foreground">{label}</dt>
+              <dd className="mt-1">
+                {list ? <ul className="list-disc space-y-1 pl-5">{list.map((item) => <li key={item}>{item}</li>)}</ul> : text}
+              </dd>
+            </div>
           ))}
-        </div>
-
-        <div className="flex flex-wrap gap-4">
-          <a
-            href={project.liveLink}
-            className="flex items-center gap-2 rounded-lg bg-gradient-to-r from-purple-600 to-blue-600 px-6 py-3 text-white transition-transform duration-300 hover:scale-105"
-          >
-            <ExternalLink className="h-4 w-4" />
-            <span>Live Demo</span>
-          </a>
-          <a
-            href={project.githubLink}
-            className="flex items-center gap-2 rounded-lg border border-surface-line bg-raised px-6 py-3 text-foreground transition-all duration-300 hover:border-purple-500"
-          >
-            <Github className="h-4 w-4" />
-            <span>GitHub</span>
-          </a>
-        </div>
-      </div>
+        </dl>
+      </details>
     </motion.article>
   );
 }

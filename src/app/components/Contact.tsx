@@ -1,10 +1,11 @@
 import { motion } from 'motion/react';
 import { useInView } from 'motion/react';
 import { useRef, useState } from 'react';
-import { Mail, Send, MapPin, MessageCircle, Facebook, Linkedin, ArrowUpRight } from 'lucide-react';
+import { Mail, Send, MapPin, MessageCircle, Facebook, Linkedin, Github, Download } from 'lucide-react';
+import { portfolioLinks } from '../data/career';
 
 export function Contact() {
-  const recipientEmail = 'tareqyasser.dev@gmail.com';
+  const recipientEmail = portfolioLinks.email;
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
   const [formData, setFormData] = useState({
@@ -35,8 +36,8 @@ export function Contact() {
     {
       icon: Mail,
       label: 'Email',
-      value: 'tareqyasser.dev@gmail.com',
-      link: 'mailto:tareqyasser.dev@gmail.com',
+      value: recipientEmail,
+      link: `mailto:${recipientEmail}`,
     },
     {
       icon: MessageCircle,
@@ -54,7 +55,13 @@ export function Contact() {
       icon: Linkedin,
       label: 'LinkedIn',
       value: 'linkedin.com/in/tariq-yasser-78982731a',
-      link: 'https://www.linkedin.com/in/tariq-yasser-78982731a',
+      link: portfolioLinks.linkedIn,
+    },
+    {
+      icon: Github,
+      label: 'GitHub',
+      value: 'Portfolio source',
+      link: portfolioLinks.source,
     },
     {
       icon: MapPin,
@@ -93,7 +100,7 @@ export function Contact() {
               transition={{ delay: 0.3, duration: 0.6 }}
               className="text-4xl md:text-5xl lg:text-6xl text-foreground mb-6"
             >
-              Let&apos;s Work Together
+              Let&apos;s Build Reliable Software Together
             </motion.h2>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -101,7 +108,7 @@ export function Contact() {
               transition={{ delay: 0.4, duration: 0.6 }}
               className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto"
             >
-              Open to freelance and full-time opportunities in .NET and full-stack development.
+              I’m interested in enterprise software engineering, distributed systems, software architecture, and hands-on technical leadership. If you’re building complex systems or growing an engineering team, I’d be happy to connect.
             </motion.p>
           </div>
 
@@ -174,12 +181,11 @@ export function Contact() {
               className="space-y-6"
             >
               <div className="rounded-[2rem] border border-glass-line/10 bg-glass p-6 shadow-[0_18px_60px_var(--glass-shadow)] dark:shadow-[0_18px_60px_rgba(15,23,42,0.28)] backdrop-blur-xl md:p-8">
-                <div className="mb-6">
-                  <h3 className="text-2xl text-foreground">Contact Information</h3>
-                  <p className="mt-2 max-w-md text-sm leading-7 text-subtle-foreground">
-                    Reach out through the channel that feels easiest for you. Everything here is
-                    direct, clickable, and kept intentionally simple.
-                  </p>
+                <div className="mb-6 flex flex-wrap items-center justify-between gap-3">
+                  <h3 className="text-xl text-foreground">Contact Information</h3>
+                  <a href={`${import.meta.env.BASE_URL}${portfolioLinks.resume}`} download className="inline-flex items-center gap-2 rounded-lg px-2 py-1 text-sm font-semibold text-brand-purple hover:bg-raised">
+                    <Download size={16} aria-hidden="true" /> Download Resume
+                  </a>
                 </div>
                 <div className="space-y-3">
                   {contactInfo.map((info) => (
@@ -201,7 +207,6 @@ export function Contact() {
                               className="mt-2 inline-flex items-center gap-2 break-all text-base text-foreground transition-colors duration-300 hover:text-brand-cyan"
                             >
                               <span>{info.value}</span>
-                              <ArrowUpRight className="h-4 w-4 shrink-0" />
                             </a>
                           ) : (
                             <p className="mt-2 text-base text-foreground">{info.value}</p>
@@ -213,12 +218,6 @@ export function Contact() {
                 </div>
               </div>
 
-              <div className="rounded-[2rem] border border-brand-cyan/10 bg-gradient-to-br from-cyan-400/10 via-card/40 to-blue-500/10 p-6 shadow-[0_12px_40px_var(--glass-shadow)] dark:shadow-[0_12px_40px_rgba(8,47,73,0.2)] md:p-8">
-                <h3 className="text-xl text-foreground mb-3">Open to Opportunities</h3>
-                <p className="text-subtle-foreground leading-7">
-                  I am currently available for freelance projects and full-time positions in backend and full-stack roles.
-                </p>
-              </div>
             </motion.div>
           </div>
         </motion.div>

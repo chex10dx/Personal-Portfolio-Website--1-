@@ -22,7 +22,7 @@ export function Footer() {
             <h3 className="text-3xl md:text-4xl bg-gradient-to-r from-brand-purple to-brand-blue bg-clip-text text-transparent mb-2">
               Tariq Yasser
             </h3>
-            <p className="text-muted-foreground">Full Stack Web Developer</p>
+            <p className="text-muted-foreground">Senior .NET Software Engineer</p>
           </div>
 
           <div className="flex items-center justify-center gap-2 text-muted-foreground">
