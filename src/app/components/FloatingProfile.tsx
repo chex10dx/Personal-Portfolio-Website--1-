@@ -80,10 +80,10 @@ export function FloatingProfile() {
           className="absolute inset-0 rounded-full bg-[linear-gradient(135deg,rgba(139,92,246,0.95),rgba(59,130,246,0.9),rgba(34,211,238,0.88))] p-[2px] animate-spin-slow"
           style={{ opacity: ringOpacity }}
         >
-          <div className="h-full w-full rounded-full bg-[#050816]" />
+          <div className="h-full w-full rounded-full bg-background" />
         </motion.div>
         <motion.div
-          className="absolute overflow-hidden rounded-full border border-white/10 bg-slate-950"
+          className="absolute overflow-hidden rounded-full border border-glass-line/10 bg-section"
           style={{ inset: imageInset }}
         >
           <img src={profileImage} alt="Tariq Yasser" className="h-full w-full object-cover" />

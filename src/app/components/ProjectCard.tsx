@@ -24,7 +24,7 @@ export function ProjectCard({ project, index, isInView }: ProjectCardProps) {
       initial={{ opacity: 0, y: 30 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ delay: 0.5 + index * 0.1, duration: 0.6 }}
-      className="group relative overflow-hidden rounded-2xl border border-slate-700/50 bg-gradient-to-br from-slate-900/80 to-slate-800/50 backdrop-blur-sm transition-all duration-300 hover:border-purple-500/50"
+      className="group relative overflow-hidden rounded-2xl border border-surface-line/50 bg-gradient-to-br from-card/80 to-raised/50 backdrop-blur-sm transition-all duration-300 hover:border-purple-500/50"
     >
       <div className="relative h-64 overflow-hidden">
         <ImageWithFallback
@@ -32,7 +32,7 @@ export function ProjectCard({ project, index, isInView }: ProjectCardProps) {
           alt={project.title}
           className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/50 to-transparent opacity-60" />
+        <div className="absolute inset-0 bg-gradient-to-t from-image-shade via-image-shade/50 to-transparent opacity-30 dark:opacity-60" />
       </div>
 
       <div className="p-8">
@@ -41,20 +41,20 @@ export function ProjectCard({ project, index, isInView }: ProjectCardProps) {
         >
           {project.title}
         </h3>
-        <p className="mb-6 leading-relaxed text-slate-300">{project.description}</p>
+        <p className="mb-6 leading-relaxed text-subtle-foreground">{project.description}</p>
 
         <div className="mb-6 flex flex-wrap gap-2">
           {project.tech.map((tech) => (
             <span
               key={tech}
-              className="rounded-full border border-slate-700/50 bg-slate-800/80 px-3 py-1 text-sm text-purple-300"
+              className="rounded-full border border-surface-line/50 bg-raised/80 px-3 py-1 text-sm text-brand-purple dark:text-purple-300"
             >
               {tech}
             </span>
           ))}
         </div>
 
-        <div className="flex gap-4">
+        <div className="flex flex-wrap gap-4">
           <a
             href={project.liveLink}
             className="flex items-center gap-2 rounded-lg bg-gradient-to-r from-purple-600 to-blue-600 px-6 py-3 text-white transition-transform duration-300 hover:scale-105"
@@ -64,7 +64,7 @@ export function ProjectCard({ project, index, isInView }: ProjectCardProps) {
           </a>
           <a
             href={project.githubLink}
-            className="flex items-center gap-2 rounded-lg border border-slate-700 bg-slate-800 px-6 py-3 text-white transition-all duration-300 hover:border-purple-500"
+            className="flex items-center gap-2 rounded-lg border border-surface-line bg-raised px-6 py-3 text-foreground transition-all duration-300 hover:border-purple-500"
           >
             <Github className="h-4 w-4" />
             <span>GitHub</span>

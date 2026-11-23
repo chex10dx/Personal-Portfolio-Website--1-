@@ -26,7 +26,7 @@ export function About() {
   ];
 
   return (
-    <section id="about" className="relative py-24 md:py-32 bg-slate-950 overflow-hidden">
+    <section id="about" className="relative py-24 md:py-32 bg-section overflow-hidden">
       {/* Background gradient */}
       <div className="absolute inset-0">
         <div className="absolute top-0 left-1/2 w-96 h-96 bg-purple-600/10 rounded-full blur-3xl"></div>
@@ -44,7 +44,7 @@ export function About() {
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.2, duration: 0.6 }}
-              className="inline-block text-purple-400 mb-4 text-sm md:text-base tracking-wider uppercase"
+              className="inline-block text-brand-purple mb-4 text-sm md:text-base tracking-wider uppercase"
             >
               About Me
             </motion.span>
@@ -52,7 +52,7 @@ export function About() {
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.3, duration: 0.6 }}
-              className="text-4xl md:text-5xl lg:text-6xl text-white mb-6"
+              className="text-4xl md:text-5xl lg:text-6xl text-foreground mb-6"
             >
               Software Developer and System Architect
             </motion.h2>
@@ -65,16 +65,16 @@ export function About() {
               transition={{ delay: 0.4, duration: 0.8 }}
               className="space-y-6"
             >
-              <p className="text-lg md:text-xl text-slate-300 leading-relaxed">
+              <p className="text-lg md:text-xl text-subtle-foreground leading-relaxed">
                 I am a Full Stack Web Developer focused on building and optimizing complex systems
-                using <span className="text-purple-400">C# and JavaScript</span>.
+                using <span className="text-brand-purple">C# and JavaScript</span>.
               </p>
-              <p className="text-lg md:text-xl text-slate-300 leading-relaxed">
+              <p className="text-lg md:text-xl text-subtle-foreground leading-relaxed">
                 My background includes designing, coding, and testing solutions across microservices,
                 REST and gRPC APIs, and full-stack web platforms using{' '}
-                <span className="text-blue-400">.NET Core, ASP.NET Core, Blazor, and Next.js</span>.
+                <span className="text-brand-blue">.NET Core, ASP.NET Core, Blazor, and Next.js</span>.
               </p>
-              <p className="text-lg md:text-xl text-slate-300 leading-relaxed">
+              <p className="text-lg md:text-xl text-subtle-foreground leading-relaxed">
                 I prioritize clean architecture, maintainable code, and performance optimization to
                 deliver reliable products that scale.
               </p>
@@ -92,15 +92,15 @@ export function About() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={isInView ? { opacity: 1, y: 0 } : {}}
                   transition={{ delay: 0.8 + index * 0.1, duration: 0.6 }}
-                  className="group p-6 bg-gradient-to-br from-slate-900/50 to-slate-800/30 backdrop-blur-sm border border-slate-700/50 rounded-xl hover:border-purple-500/50 transition-all duration-300"
+                  className="group p-6 bg-gradient-to-br from-card/50 to-raised/30 backdrop-blur-sm border border-surface-line/50 rounded-xl hover:border-purple-500/50 transition-all duration-300"
                 >
                   <div className="flex items-start gap-4">
                     <div className="p-3 bg-gradient-to-br from-purple-600/20 to-blue-600/20 rounded-lg group-hover:scale-110 transition-transform duration-300">
-                      <highlight.icon className="w-6 h-6 text-purple-400" />
+                      <highlight.icon className="w-6 h-6 text-brand-purple" />
                     </div>
                     <div>
-                      <h3 className="text-xl text-white mb-2">{highlight.title}</h3>
-                      <p className="text-slate-400">{highlight.description}</p>
+                      <h3 className="text-xl text-foreground mb-2">{highlight.title}</h3>
+                      <p className="text-muted-foreground">{highlight.description}</p>
                     </div>
                   </div>
                 </motion.div>

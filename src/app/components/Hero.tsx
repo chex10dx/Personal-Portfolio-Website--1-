@@ -12,7 +12,7 @@ export function Hero() {
   return (
     <section
       id="home"
-      className="relative min-h-screen overflow-hidden bg-[radial-gradient(circle_at_top_left,#172554_0%,#090d1a_38%,#050816_72%)]"
+      className="relative min-h-screen overflow-hidden bg-[image:var(--hero-background)]"
     >
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute -left-24 top-20 h-72 w-72 rounded-full bg-violet-500/20 blur-[120px]" />
@@ -20,7 +20,7 @@ export function Hero() {
         <div className="absolute bottom-0 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full bg-fuchsia-500/10 blur-[140px]" />
       </div>
 
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.035)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.035)_1px,transparent_1px)] bg-[size:88px_88px] opacity-[0.16]" />
+      <div className="absolute inset-0 bg-[linear-gradient(var(--hero-grid-line)_1px,transparent_1px),linear-gradient(90deg,var(--hero-grid-line)_1px,transparent_1px)] bg-[size:88px_88px] opacity-35 dark:opacity-[0.16]" />
 
       <div className="relative z-10 mx-auto flex min-h-screen max-w-7xl items-center px-6 pb-20 pt-[22rem] md:px-12 md:pt-[24rem] lg:pt-32">
         <motion.div
@@ -36,10 +36,10 @@ export function Hero() {
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.15, duration: 0.5 }}
-              className="mb-6 inline-flex items-center gap-3 rounded-full border border-cyan-400/20 bg-white/[0.04] px-4 py-2 backdrop-blur-xl"
+              className="mb-6 inline-flex items-center gap-3 rounded-full border border-cyan-400/20 bg-glass px-4 py-2 backdrop-blur-xl"
             >
               <span className="h-2.5 w-2.5 rounded-full bg-cyan-300 shadow-[0_0_14px_rgba(103,232,249,0.9)]" />
-              <span className="text-sm uppercase tracking-[0.28em] text-cyan-100/80 md:text-base">
+              <span className="text-sm uppercase tracking-[0.28em] text-brand-cyan dark:text-cyan-100/80 md:text-base">
                 Full Stack Web Developer
               </span>
             </motion.div>
@@ -50,8 +50,8 @@ export function Hero() {
               transition={{ delay: 0.25, duration: 0.8 }}
               className="mb-6 text-5xl leading-none md:text-6xl lg:text-7xl xl:text-[4.75rem]"
             >
-              <span className="block text-white">Building scalable systems</span>
-              <span className="mt-2 block bg-gradient-to-r from-cyan-200 via-violet-200 to-blue-300 bg-clip-text text-transparent">
+              <span className="block text-foreground">Building scalable systems</span>
+              <span className="mt-2 block bg-gradient-to-r from-brand-cyan via-brand-purple to-brand-blue dark:from-cyan-200 dark:via-violet-200 dark:to-blue-300 bg-clip-text text-transparent">
                 with .NET precision and API performance.
               </span>
             </motion.h1>
@@ -60,9 +60,9 @@ export function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.38, duration: 0.8 }}
-              className="mx-auto mb-10 max-w-3xl text-lg leading-8 text-slate-300 md:text-2xl lg:mx-0"
+              className="mx-auto mb-10 max-w-3xl text-lg leading-8 text-subtle-foreground md:text-2xl lg:mx-0"
             >
-              I'm <span className="text-white">Tariq Yasser</span>, a Full Stack Web Developer and
+              I'm <span className="text-foreground">Tariq Yasser</span>, a Full Stack Web Developer and
               System Architect based in Damascus, Syria. Strong in C# and JavaScript, with
               hands-on experience designing, coding, and testing complex systems.
             </motion.p>
@@ -75,7 +75,7 @@ export function Hero() {
             >
               <button
                 onClick={() => scrollToSection('projects')}
-                className="group inline-flex items-center gap-2 rounded-full bg-[linear-gradient(135deg,#4f46e5,#2563eb,#06b6d4)] px-8 py-4 text-white shadow-[0_18px_50px_rgba(37,99,235,0.35)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_60px_rgba(79,70,229,0.45)]"
+                className="group inline-flex items-center gap-2 rounded-full bg-[linear-gradient(135deg,#4f46e5,#2563eb,#0e7490)] px-8 py-4 text-white shadow-[0_18px_50px_rgba(37,99,235,0.35)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_60px_rgba(79,70,229,0.45)]"
               >
                 View Projects
                 <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
@@ -83,7 +83,7 @@ export function Hero() {
 
               <button
                 onClick={() => scrollToSection('contact')}
-                className="rounded-full border border-white/12 bg-white/[0.04] px-8 py-4 text-white backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:border-cyan-300/40 hover:bg-white/[0.07]"
+                className="rounded-full border border-glass-line/12 bg-glass px-8 py-4 text-foreground backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:border-brand-cyan/40 hover:bg-raised dark:hover:border-cyan-300/40 dark:hover:bg-white/[0.07]"
               >
                 Contact Me
               </button>
@@ -95,17 +95,17 @@ export function Hero() {
               transition={{ delay: 0.64, duration: 0.8 }}
               className="mb-16 grid gap-5 md:grid-cols-3 lg:mb-20"
             >
-              <div className="rounded-3xl border border-white/8 bg-white/[0.04] p-5 text-left backdrop-blur-xl">
-                <p className="text-sm uppercase tracking-[0.22em] text-slate-400">Specialty</p>
-                <p className="mt-3 text-lg text-white">C#, .NET, ASP.NET Core, Next.js</p>
+              <div className="rounded-3xl border border-glass-line/8 bg-glass p-5 text-left backdrop-blur-xl">
+                <p className="text-sm uppercase tracking-[0.22em] text-muted-foreground">Specialty</p>
+                <p className="mt-3 text-lg text-foreground">C#, .NET, ASP.NET Core, Next.js</p>
               </div>
-              <div className="rounded-3xl border border-white/8 bg-white/[0.04] p-5 text-left backdrop-blur-xl">
-                <p className="text-sm uppercase tracking-[0.22em] text-slate-400">Focus</p>
-                <p className="mt-3 text-lg text-white">Microservices, APIs, and performance optimization</p>
+              <div className="rounded-3xl border border-glass-line/8 bg-glass p-5 text-left backdrop-blur-xl">
+                <p className="text-sm uppercase tracking-[0.22em] text-muted-foreground">Focus</p>
+                <p className="mt-3 text-lg text-foreground">Microservices, APIs, and performance optimization</p>
               </div>
-              <div className="rounded-3xl border border-white/8 bg-white/[0.04] p-5 text-left backdrop-blur-xl">
-                <p className="text-sm uppercase tracking-[0.22em] text-slate-400">Based In</p>
-                <p className="mt-3 text-lg text-white">Damascus, Syria</p>
+              <div className="rounded-3xl border border-glass-line/8 bg-glass p-5 text-left backdrop-blur-xl">
+                <p className="text-sm uppercase tracking-[0.22em] text-muted-foreground">Based In</p>
+                <p className="mt-3 text-lg text-foreground">Damascus, Syria</p>
               </div>
             </motion.div>
             <motion.div
@@ -114,12 +114,12 @@ export function Hero() {
               transition={{ delay: 0.85, duration: 0.8 }}
               className="flex flex-col items-center gap-3 lg:items-start"
             >
-              <span className="text-sm uppercase tracking-[0.28em] text-slate-400">Scroll to explore</span>
+              <span className="text-sm uppercase tracking-[0.28em] text-muted-foreground">Scroll to explore</span>
               <motion.div
                 animate={{ y: [0, 8, 0] }}
                 transition={{ repeat: Infinity, duration: 1.6, ease: 'easeInOut' }}
               >
-                <ChevronDown className="h-6 w-6 text-cyan-300" />
+                <ChevronDown className="h-6 w-6 text-brand-cyan dark:text-cyan-300" />
               </motion.div>
             </motion.div>
           </div>

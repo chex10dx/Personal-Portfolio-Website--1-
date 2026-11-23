@@ -7,11 +7,14 @@ import { Projects } from './components/Projects';
 import { Experience } from './components/Experience';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
+import { useTheme } from './useTheme';
 
 export default function App() {
+  const { theme, toggleTheme } = useTheme();
+
   return (
-    <div className="min-h-screen overflow-x-clip bg-[#050816] text-white">
-      <Navbar />
+    <div className="min-h-screen overflow-x-clip bg-background text-foreground">
+      <Navbar isDark={theme === 'dark'} onToggleTheme={toggleTheme} />
       <FloatingProfile />
       <Hero />
       <About />

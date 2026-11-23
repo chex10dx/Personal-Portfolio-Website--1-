@@ -65,7 +65,7 @@ export function Contact() {
   ];
 
   return (
-    <section id="contact" className="relative py-24 md:py-32 bg-slate-950 overflow-hidden">
+    <section id="contact" className="relative py-24 md:py-32 bg-section overflow-hidden">
       <div className="absolute inset-0">
         <div className="absolute top-1/4 left-1/2 w-96 h-96 bg-purple-600/10 rounded-full blur-3xl"></div>
         <div className="absolute bottom-1/4 right-1/2 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl"></div>
@@ -83,7 +83,7 @@ export function Contact() {
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.2, duration: 0.6 }}
-              className="inline-block text-purple-400 mb-4 text-sm md:text-base tracking-wider uppercase"
+              className="inline-block text-brand-purple mb-4 text-sm md:text-base tracking-wider uppercase"
             >
               Get In Touch
             </motion.span>
@@ -91,7 +91,7 @@ export function Contact() {
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.3, duration: 0.6 }}
-              className="text-4xl md:text-5xl lg:text-6xl text-white mb-6"
+              className="text-4xl md:text-5xl lg:text-6xl text-foreground mb-6"
             >
               Let&apos;s Work Together
             </motion.h2>
@@ -99,7 +99,7 @@ export function Contact() {
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.4, duration: 0.6 }}
-              className="text-lg md:text-xl text-slate-400 max-w-3xl mx-auto"
+              className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto"
             >
               Open to freelance and full-time opportunities in .NET and full-stack development.
             </motion.p>
@@ -113,7 +113,7 @@ export function Contact() {
             >
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
-                  <label htmlFor="name" className="block text-slate-300 mb-2">
+                  <label htmlFor="name" className="block text-subtle-foreground mb-2">
                     Name
                   </label>
                   <input
@@ -123,12 +123,12 @@ export function Contact() {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 bg-slate-900/50 border border-slate-700 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:border-purple-500 transition-colors duration-300"
+                    className="w-full px-4 py-3 bg-card/50 border border-field-line rounded-lg text-foreground placeholder-placeholder focus:border-brand-purple transition-colors duration-300"
                     placeholder="Your name"
                   />
                 </div>
                 <div>
-                  <label htmlFor="email" className="block text-slate-300 mb-2">
+                  <label htmlFor="email" className="block text-subtle-foreground mb-2">
                     Email
                   </label>
                   <input
@@ -138,12 +138,12 @@ export function Contact() {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 bg-slate-900/50 border border-slate-700 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:border-purple-500 transition-colors duration-300"
+                    className="w-full px-4 py-3 bg-card/50 border border-field-line rounded-lg text-foreground placeholder-placeholder focus:border-brand-purple transition-colors duration-300"
                     placeholder="your.email@example.com"
                   />
                 </div>
                 <div>
-                  <label htmlFor="message" className="block text-slate-300 mb-2">
+                  <label htmlFor="message" className="block text-subtle-foreground mb-2">
                     Message
                   </label>
                   <textarea
@@ -153,7 +153,7 @@ export function Contact() {
                     onChange={handleChange}
                     required
                     rows={6}
-                    className="w-full px-4 py-3 bg-slate-900/50 border border-slate-700 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:border-purple-500 transition-colors duration-300 resize-none"
+                    className="w-full px-4 py-3 bg-card/50 border border-field-line rounded-lg text-foreground placeholder-placeholder focus:border-brand-purple transition-colors duration-300 resize-none"
                     placeholder="Tell me about your project..."
                   />
                 </div>
@@ -173,10 +173,10 @@ export function Contact() {
               transition={{ delay: 0.6, duration: 0.6 }}
               className="space-y-6"
             >
-              <div className="rounded-[2rem] border border-white/10 bg-white/[0.04] p-6 shadow-[0_18px_60px_rgba(15,23,42,0.28)] backdrop-blur-xl md:p-8">
+              <div className="rounded-[2rem] border border-glass-line/10 bg-glass p-6 shadow-[0_18px_60px_var(--glass-shadow)] dark:shadow-[0_18px_60px_rgba(15,23,42,0.28)] backdrop-blur-xl md:p-8">
                 <div className="mb-6">
-                  <h3 className="text-2xl text-white">Contact Information</h3>
-                  <p className="mt-2 max-w-md text-sm leading-7 text-slate-300">
+                  <h3 className="text-2xl text-foreground">Contact Information</h3>
+                  <p className="mt-2 max-w-md text-sm leading-7 text-subtle-foreground">
                     Reach out through the channel that feels easiest for you. Everything here is
                     direct, clickable, and kept intentionally simple.
                   </p>
@@ -185,26 +185,26 @@ export function Contact() {
                   {contactInfo.map((info) => (
                     <div
                       key={info.label}
-                      className="rounded-2xl border border-white/8 bg-slate-900/45 p-4 transition-colors duration-300 hover:border-cyan-300/20 hover:bg-slate-900/65"
+                      className="rounded-2xl border border-glass-line/8 bg-raised/45 p-4 transition-colors duration-300 hover:border-brand-cyan/20 hover:bg-raised/70 dark:bg-card/45 dark:hover:border-cyan-300/20 dark:hover:bg-card/65"
                     >
                       <div className="flex items-start gap-4">
-                        <div className="rounded-2xl bg-gradient-to-br from-cyan-400/12 to-blue-400/10 p-3 ring-1 ring-white/8">
-                          <info.icon className="h-5 w-5 text-cyan-200" />
+                        <div className="rounded-2xl bg-gradient-to-br from-cyan-400/12 to-blue-400/10 p-3 ring-1 ring-glass-line/8">
+                          <info.icon className="h-5 w-5 text-brand-cyan" />
                         </div>
                         <div className="min-w-0 flex-1">
-                          <p className="text-sm uppercase tracking-[0.22em] text-slate-400">{info.label}</p>
+                          <p className="text-sm uppercase tracking-[0.22em] text-muted-foreground">{info.label}</p>
                           {info.link ? (
                             <a
                               href={info.link}
                               target="_blank"
                               rel="noreferrer"
-                              className="mt-2 inline-flex items-center gap-2 break-all text-base text-white transition-colors duration-300 hover:text-cyan-200"
+                              className="mt-2 inline-flex items-center gap-2 break-all text-base text-foreground transition-colors duration-300 hover:text-brand-cyan"
                             >
                               <span>{info.value}</span>
                               <ArrowUpRight className="h-4 w-4 shrink-0" />
                             </a>
                           ) : (
-                            <p className="mt-2 text-base text-white">{info.value}</p>
+                            <p className="mt-2 text-base text-foreground">{info.value}</p>
                           )}
                         </div>
                       </div>
@@ -213,9 +213,9 @@ export function Contact() {
                 </div>
               </div>
 
-              <div className="rounded-[2rem] border border-cyan-200/10 bg-gradient-to-br from-cyan-400/10 via-slate-900/40 to-blue-500/10 p-6 shadow-[0_12px_40px_rgba(8,47,73,0.2)] md:p-8">
-                <h3 className="text-xl text-white mb-3">Open to Opportunities</h3>
-                <p className="text-slate-300 leading-7">
+              <div className="rounded-[2rem] border border-brand-cyan/10 bg-gradient-to-br from-cyan-400/10 via-card/40 to-blue-500/10 p-6 shadow-[0_12px_40px_var(--glass-shadow)] dark:shadow-[0_12px_40px_rgba(8,47,73,0.2)] md:p-8">
+                <h3 className="text-xl text-foreground mb-3">Open to Opportunities</h3>
+                <p className="text-subtle-foreground leading-7">
                   I am currently available for freelance projects and full-time positions in backend and full-stack roles.
                 </p>
               </div>

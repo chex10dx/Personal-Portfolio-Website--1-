@@ -13,7 +13,7 @@ const projects: Project[] = [
     tech: ['Next.js', 'JavaScript', 'REST APIs'],
     liveLink: '#',
     githubLink: '#',
-    gradient: 'from-purple-600 to-pink-600',
+    gradient: 'from-purple-700 to-pink-700 dark:from-purple-600 dark:to-pink-600',
   },
   {
     title: 'E-commerce Platform with Payments',
@@ -24,7 +24,7 @@ const projects: Project[] = [
     tech: ['ASP.NET Core', 'C#', 'SQL Server', 'JWT'],
     liveLink: '#',
     githubLink: '#',
-    gradient: 'from-blue-600 to-cyan-600',
+    gradient: 'from-blue-700 to-cyan-700 dark:from-blue-600 dark:to-cyan-600',
   },
   {
     title: 'Microservices and API Platform',
@@ -35,7 +35,7 @@ const projects: Project[] = [
     tech: ['.NET', 'Microservices', 'RabbitMQ', 'Hangfire', 'Blazor','ABP Framework'],
     liveLink: '#',
     githubLink: '#',
-    gradient: 'from-green-600 to-emerald-600',
+    gradient: 'from-green-700 to-emerald-700 dark:from-green-600 dark:to-emerald-600',
   },
 ];
 
@@ -44,7 +44,7 @@ export function Projects() {
   const isInView = useInView(ref, { once: true, margin: '-100px' });
 
   return (
-    <section id="projects" className="relative py-24 md:py-32 bg-slate-950 overflow-hidden">
+    <section id="projects" className="relative py-24 md:py-32 bg-section overflow-hidden">
       <div className="absolute inset-0">
         <div className="absolute top-1/4 left-1/3 w-96 h-96 bg-purple-600/10 rounded-full blur-3xl"></div>
         <div className="absolute bottom-1/4 right-1/3 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl"></div>
@@ -62,7 +62,7 @@ export function Projects() {
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.2, duration: 0.6 }}
-              className="inline-block text-purple-400 mb-4 text-sm md:text-base tracking-wider uppercase"
+              className="inline-block text-brand-purple mb-4 text-sm md:text-base tracking-wider uppercase"
             >
               Portfolio
             </motion.span>
@@ -70,7 +70,7 @@ export function Projects() {
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.3, duration: 0.6 }}
-              className="text-4xl md:text-5xl lg:text-6xl text-white mb-6"
+              className="text-4xl md:text-5xl lg:text-6xl text-foreground mb-6"
             >
               Featured Projects
             </motion.h2>
@@ -78,7 +78,7 @@ export function Projects() {
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.4, duration: 0.6 }}
-              className="text-lg md:text-xl text-slate-400 max-w-3xl mx-auto"
+              className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto"
             >
               Real project work across full-stack delivery, secure commerce, and .NET microservices
             </motion.p>

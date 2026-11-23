@@ -64,7 +64,7 @@ export function Experience() {
   ];
 
   return (
-    <section id="experience" className="relative py-24 md:py-32 bg-gradient-to-b from-slate-900 to-slate-950 overflow-hidden">
+    <section id="experience" className="relative py-24 md:py-32 bg-gradient-to-b from-section-alt to-section overflow-hidden">
       <div className="absolute inset-0">
         <div className="absolute top-1/3 right-1/4 w-96 h-96 bg-purple-600/10 rounded-full blur-3xl"></div>
       </div>
@@ -81,7 +81,7 @@ export function Experience() {
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.2, duration: 0.6 }}
-              className="inline-block text-purple-400 mb-4 text-sm md:text-base tracking-wider uppercase"
+              className="inline-block text-brand-purple mb-4 text-sm md:text-base tracking-wider uppercase"
             >
               Experience
             </motion.span>
@@ -89,7 +89,7 @@ export function Experience() {
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.3, duration: 0.6 }}
-              className="text-4xl md:text-5xl lg:text-6xl text-white mb-6"
+              className="text-4xl md:text-5xl lg:text-6xl text-foreground mb-6"
             >
               Professional Experience
             </motion.h2>
@@ -97,7 +97,7 @@ export function Experience() {
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.4, duration: 0.6 }}
-              className="text-lg md:text-xl text-slate-400 max-w-3xl mx-auto"
+              className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto"
             >
               Building .NET systems, APIs, and scalable architectures with measurable impact
             </motion.p>
@@ -115,12 +115,12 @@ export function Experience() {
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={isInView ? { opacity: 1, scale: 1 } : {}}
                 transition={{ delay: 0.6 + index * 0.1, duration: 0.5 }}
-                className="text-center p-6 bg-gradient-to-br from-slate-900/80 to-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-2xl"
+                className="text-center p-6 bg-gradient-to-br from-card/80 to-raised/50 backdrop-blur-sm border border-surface-line/50 rounded-2xl"
               >
-                <div className="text-4xl md:text-5xl bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent mb-2">
+                <div className="text-4xl md:text-5xl bg-gradient-to-r from-brand-purple to-brand-blue bg-clip-text text-transparent mb-2">
                   {stat.number}
                 </div>
-                <div className="text-slate-400">{stat.label}</div>
+                <div className="text-muted-foreground">{stat.label}</div>
               </motion.div>
             ))}
           </motion.div>
@@ -134,30 +134,30 @@ export function Experience() {
                 transition={{ delay: 0.7 + index * 0.12, duration: 0.6 }}
                 className="relative"
               >
-                <div className="flex flex-col md:flex-row gap-6 p-8 bg-gradient-to-br from-slate-900/80 to-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-2xl hover:border-purple-500/50 transition-all duration-300">
+                <div className="flex flex-col md:flex-row gap-6 p-8 bg-gradient-to-br from-card/80 to-raised/50 backdrop-blur-sm border border-surface-line/50 rounded-2xl hover:border-purple-500/50 transition-all duration-300">
                   <div className="flex-shrink-0">
                     <div className="w-16 h-16 bg-gradient-to-br from-purple-600/20 to-blue-600/20 rounded-xl flex items-center justify-center">
-                      <exp.icon className="w-8 h-8 text-purple-400" />
+                      <exp.icon className="w-8 h-8 text-brand-purple" />
                     </div>
                   </div>
 
                   <div className="flex-grow">
                     <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
                       <div>
-                        <h3 className="text-2xl md:text-3xl text-white mb-2">{exp.role}</h3>
-                        <p className="text-xl text-purple-400">{exp.company}</p>
+                        <h3 className="text-2xl md:text-3xl text-foreground mb-2">{exp.role}</h3>
+                        <p className="text-xl text-brand-purple">{exp.company}</p>
                       </div>
                       <div className="mt-2 md:mt-0">
-                        <span className="inline-block px-4 py-2 bg-slate-800/80 text-slate-300 rounded-full text-sm border border-slate-700/50">
+                        <span className="inline-block px-4 py-2 bg-raised/80 text-subtle-foreground rounded-full text-sm border border-surface-line/50">
                           {exp.period}
                         </span>
                       </div>
                     </div>
-                    <p className="text-slate-300 mb-4 leading-relaxed">{exp.description}</p>
+                    <p className="text-subtle-foreground mb-4 leading-relaxed">{exp.description}</p>
                     <ul className="space-y-2">
                       {exp.achievements.map((achievement, idx) => (
-                        <li key={idx} className="flex items-start gap-2 text-slate-400">
-                          <span className="text-purple-400 mt-1">-</span>
+                        <li key={idx} className="flex items-start gap-2 text-muted-foreground">
+                          <span className="text-brand-purple mt-1">-</span>
                           <span>{achievement}</span>
                         </li>
                       ))}
