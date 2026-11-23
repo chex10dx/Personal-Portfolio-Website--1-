@@ -1,5 +1,4 @@
-import { motion } from 'motion/react';
-import { useInView } from 'motion/react';
+import { motion, useInView, useReducedMotion } from 'motion/react';
 import { useRef, useState } from 'react';
 import { Mail, Send, MapPin, MessageCircle, Facebook, Linkedin, Github, Download } from 'lucide-react';
 import { portfolioLinks } from '../data/career';
@@ -8,6 +7,7 @@ export function Contact() {
   const recipientEmail = portfolioLinks.email;
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
+  const reduced = useReducedMotion();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -114,9 +114,9 @@ export function Contact() {
 
           <div className="grid gap-12 lg:grid-cols-[minmax(0,1.1fr)_minmax(320px,0.9fr)]">
             <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              animate={isInView ? { opacity: 1, x: 0 } : {}}
-              transition={{ delay: 0.5, duration: 0.6 }}
+              initial={reduced ? false : { opacity: 0, y: 18 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={reduced ? { duration: 0 } : { delay: 0.5, duration: 0.6 }}
             >
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
@@ -175,9 +175,9 @@ export function Contact() {
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              animate={isInView ? { opacity: 1, x: 0 } : {}}
-              transition={{ delay: 0.6, duration: 0.6 }}
+              initial={reduced ? false : { opacity: 0, y: 18 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={reduced ? { duration: 0 } : { delay: 0.6, duration: 0.6 }}
               className="space-y-6"
             >
               <div className="rounded-[2rem] border border-glass-line/10 bg-glass p-6 shadow-[0_18px_60px_var(--glass-shadow)] dark:shadow-[0_18px_60px_rgba(15,23,42,0.28)] backdrop-blur-xl md:p-8">

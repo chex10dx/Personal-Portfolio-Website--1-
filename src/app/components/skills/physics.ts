@@ -47,7 +47,7 @@ export function createNetwork(width: number, height: number, animate: boolean): 
       const slotWidth = spread / count;
       const skillX = x + (slot + 0.5 - count / 2) * slotWidth;
       const skillY = y + (top ? -rise : rise) + (compact ? 0 : Math.abs(slot + 0.5 - count / 2) * (top ? 9 : -8));
-      add(skillX, skillY, group, compact ? 5 : 7, slotWidth - (compact ? 3 : 8), top);
+      add(skillX, skillY, group, compact ? 5 : 7, slotWidth - (compact ? 6 : 8), top);
     });
   });
 

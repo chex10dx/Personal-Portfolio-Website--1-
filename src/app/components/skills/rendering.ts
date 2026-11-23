@@ -38,6 +38,14 @@ const compactCategoryLabels: Partial<Record<string, string>> = {
   ai: 'AI Engineering',
 };
 
+const compactSkillLabels: Partial<Record<string, string>> = {
+  auth: 'Auth & Access',
+  blazor: 'Blazor WASM',
+  diagnostics: 'Diagnostics',
+  efcore: 'EF Core',
+  swagger: 'OpenAPI',
+};
+
 export function prepareViews(ctx: CanvasRenderingContext2D, network: Network): NodeView[] {
   const compact = network.width < 620;
   return network.bodies.map((body, index) => {
@@ -47,7 +55,8 @@ export function prepareViews(ctx: CanvasRenderingContext2D, network: Network): N
     const font = `${category ? 700 : 550} ${fontSize}px system-ui, sans-serif`;
     const lines: string[] = [];
     ctx.font = font;
-    const label = (network.width < 980 && category ? compactCategoryLabels[node.id] : undefined) ?? node.label;
+    const alias = category && network.width < 980 ? compactCategoryLabels[node.id] : compact ? compactSkillLabels[node.id] : undefined;
+    const label = alias ?? node.label;
     for (const word of label.split(' ')) {
       const previous = lines[lines.length - 1];
       if (previous && ctx.measureText(`${previous} ${word}`).width <= body.labelWidth) {
