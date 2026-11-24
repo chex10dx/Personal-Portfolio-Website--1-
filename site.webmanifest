@@ -4,7 +4,8 @@
   "lang": "en",
   "dir": "ltr",
   "id": "./",
-  "start_url": "./en",
+  "start_url": "./en/",
+  "scope": "./",
   "icons": [
     {
       "src": "favicon-192x192.png",
