@@ -7,8 +7,11 @@ export const career = [
 
 export const portfolioLinks = {
   email: 'tareqyasser.dev@gmail.com',
-  linkedIn: 'https://www.linkedin.com/in/tariq-yasser-78982731a',
-  source: 'https://github.com/chex10dx/Personal-Portfolio-Website--1-',
+  whatsapp: 'https://wa.me/963930675426',
+  facebook: 'https://www.facebook.com/tareq.yasser.1',
+  linkedIn: 'https://www.linkedin.com/in/eng-tariq-yasser',
+  github: 'https://github.com/chex10dx',
+  location: 'https://www.google.com/maps/search/?api=1&query=Damascus%2C%20Syria',
   resume: { en: 'tariq-yasser-resume.pdf', ar: 'tariq-yasser-resume-ar.pdf' },
 };
 

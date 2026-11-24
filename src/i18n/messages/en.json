@@ -1304,30 +1304,13 @@
     }
   },
   "contact": {
-    "eyebrow": "Get In Touch",
-    "title": "Let’s Build Reliable Software Together",
-    "description": "I’m interested in enterprise software engineering, distributed systems, software architecture, and hands-on technical leadership. If you’re building complex systems or growing an engineering team, I’d be happy to connect.",
-    "name": "Name",
-    "email": "Email",
-    "message": "Message",
-    "namePlaceholder": "Your name",
-    "emailPlaceholder": "your.email@example.com",
-    "messagePlaceholder": "Tell me about your project…",
-    "send": "Send Message",
     "info": "Contact Information",
+    "email": "Email",
     "whatsapp": "WhatsApp",
     "facebook": "Facebook",
     "linkedin": "LinkedIn",
     "github": "GitHub",
-    "source": "Portfolio source",
-    "location": "Location",
-    "city": "Damascus, Syria",
-    "subject": "Portfolio contact from {name}",
-    "errors": {
-      "name": "Enter your name.",
-      "email": "Enter a valid email address.",
-      "message": "Enter a message."
-    }
+    "location": "Google Maps"
   },
   "footer": {
     "credit": "Built with care by {name}"
