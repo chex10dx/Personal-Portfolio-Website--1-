@@ -24,4 +24,7 @@ async function start() {
   }
 }
 
-void start();
+void start().catch((error) => {
+  // Leave the prerendered page available if the initial locale fails to load.
+  console.error('Unable to start the portfolio:', error);
+});

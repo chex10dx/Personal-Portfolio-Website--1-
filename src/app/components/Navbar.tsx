@@ -29,6 +29,7 @@ export function Navbar({ isDark, onToggleTheme }: { isDark: boolean; onToggleThe
   return (
     <motion.nav
       aria-label={copy.label}
+      data-portfolio-nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: reduced ? 0 : 0.5 }}
@@ -48,7 +49,7 @@ export function Navbar({ isDark, onToggleTheme }: { isDark: boolean; onToggleThe
         </a>
 
         <div className="ms-auto flex shrink-0 items-center gap-2 lg:gap-4">
-          <div className="hidden items-center gap-3 rounded-full border border-glass-line/10 bg-glass px-4 py-3 shadow-[0_10px_40px_var(--glass-shadow)] backdrop-blur-xl md:flex lg:gap-8 lg:px-5 dark:bg-glass-line/[0.03]">
+          <div data-portfolio-nav-links className="hidden items-center gap-3 rounded-full border border-glass-line/10 bg-glass px-4 py-3 shadow-[0_10px_40px_var(--glass-shadow)] backdrop-blur-xl md:flex lg:gap-8 lg:px-5 dark:bg-glass-line/[0.03]">
             {navItems.map((section) => (
               <a key={section} href={`#${section}`} className="text-sm whitespace-nowrap text-subtle-foreground transition-colors hover:text-brand-cyan">
                 {copy[section]}
@@ -75,6 +76,7 @@ export function Navbar({ isDark, onToggleTheme }: { isDark: boolean; onToggleThe
 
           <button
             type="button"
+            data-portfolio-interactive
             onClick={onToggleTheme}
             aria-label={themeLabel}
             title={themeLabel}
@@ -85,6 +87,7 @@ export function Navbar({ isDark, onToggleTheme }: { isDark: boolean; onToggleThe
 
           <button
             type="button"
+            data-portfolio-interactive
             onClick={() => setIsMobileMenuOpen((open) => !open)}
             className="rounded-full border border-glass-line/10 bg-glass p-2 text-foreground hover:bg-raised hover:text-brand-cyan md:hidden"
             aria-label={copy.menu}

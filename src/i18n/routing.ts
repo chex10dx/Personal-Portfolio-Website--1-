@@ -12,7 +12,7 @@ export function directionOf(locale: Locale) {
 }
 
 export function localePath(locale: Locale, base = import.meta.env.BASE_URL) {
-  return `${base}${locale}`;
+  return `${base}${locale}/`;
 }
 
 export function pathLocale(pathname: string, base = import.meta.env.BASE_URL): Locale | null {

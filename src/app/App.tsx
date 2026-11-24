@@ -1,5 +1,6 @@
 import { Navbar } from './components/Navbar';
 import { MotionConfig } from 'motion/react';
+import { useEffect } from 'react';
 import { Hero } from './components/Hero';
 import { FloatingProfile } from './components/FloatingProfile';
 import { About } from './components/About';
@@ -14,6 +15,10 @@ import { useTheme } from './useTheme';
 
 export default function App() {
   const { theme, toggleTheme } = useTheme();
+
+  useEffect(() => {
+    document.getElementById('root')?.removeAttribute('data-portfolio-pending');
+  }, []);
 
   return (
     <MotionConfig reducedMotion="user">

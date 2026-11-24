@@ -25,19 +25,58 @@
           themeColor.content = themeColor.dataset[theme];
         })();
       </script>
-      <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-      <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-      <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-      <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png" />
-      <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+      <link rel="icon" type="image/x-icon" href="%BASE_URL%favicon.ico" />
+      <link rel="icon" type="image/png" sizes="16x16" href="%BASE_URL%favicon-16x16.png" />
+      <link rel="icon" type="image/png" sizes="32x32" href="%BASE_URL%favicon-32x32.png" />
+      <link rel="icon" type="image/png" sizes="48x48" href="%BASE_URL%favicon-48x48.png" />
+      <link rel="apple-touch-icon" sizes="180x180" href="%BASE_URL%apple-touch-icon.png" />
       <!-- portfolio-seo:start -->
       <title>Tariq Yasser | Senior .NET Software Engineer</title>
       <!-- portfolio-seo:end -->
-      <noscript><style>
-        #root [style*="opacity:0"] { opacity: 1 !important; transform: none !important; }
-        nav[style*="translateY"] { transform: none !important; }
-        #skills [role="region"] { display: none; }
-      </style></noscript>
+      <style>
+        /* Keep the static page readable until React mounts, even if the bundle fails to load. */
+        #root[data-portfolio-pending] :is([style="opacity:0"], [style^="opacity:0;"]) {
+          opacity: 1 !important;
+          transform: none !important;
+        }
+        #root[data-portfolio-pending] [data-portfolio-nav] {
+          transform: none !important;
+          background-color: var(--background);
+        }
+        #root[data-portfolio-pending] [data-portfolio-interactive] { display: none !important; }
+        #root[data-portfolio-pending] [data-portfolio-profile] {
+          position: absolute;
+          inset-inline-start: max(24px, 8vw);
+          top: max(126px, 22vh);
+          width: clamp(280px, 29vw, 420px) !important;
+          height: clamp(280px, 29vw, 420px) !important;
+          transform: none !important;
+        }
+        @media (width < 64rem) {
+          #root[data-portfolio-pending] [data-portfolio-profile] {
+            left: 50%;
+            right: auto;
+            top: 8rem;
+            width: clamp(10rem, 50vw, 13rem) !important;
+            height: clamp(10rem, 50vw, 13rem) !important;
+            transform: translateX(-50%) !important;
+          }
+        }
+        @media (width < 48rem) {
+          #root[data-portfolio-pending] [data-portfolio-nav-links] {
+            display: flex;
+            position: absolute;
+            inset-inline: 0;
+            top: 100%;
+            justify-content: safe center;
+            overflow-x: auto;
+            border-radius: 0;
+            background-color: var(--background);
+            padding-block: 0.5rem;
+          }
+          #root[data-portfolio-pending] main > section { scroll-margin-top: 7.5rem; }
+        }
+      </style>
     </head>
 
     <body>

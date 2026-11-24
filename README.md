@@ -5,20 +5,24 @@
 
   ## Running the code
 
-  Run `npm i` to install the dependencies.
+  Run `npm ci` to install the dependencies.
 
   Run `npm run dev` to start the development server.
 
 ## Languages and deployment
 
-The React portfolio uses Vite. `npm run build` writes the English and Arabic
-HTML pages to `dist/en/index.html` and `dist/ar/index.html`. Publish the complete
-`dist` directory to a static host with directory indexes. Serve `/en` and `/ar`
-from their respective indexes instead of rewriting those requests to the root page.
+Vite serves local development at `/` and builds for the GitHub Pages project path
+`/Personal-Portfolio-Website--1-/`. Run `npm run build` and `npm run preview` to
+test the production output at `http://localhost:4173/Personal-Portfolio-Website--1-/`.
+The repository root and the `en/` and `ar/` routes have their own static index files.
+The root serves English by default and points its canonical URL to `en/`.
+`.env.production` provides the public origin for canonical, Open Graph, and
+`hreflang` URLs.
 
-Set `VITE_SITE_URL` to the public HTTPS origin at build time to emit absolute
-canonical, Open Graph, and `hreflang` URLs in the static HTML. The root page is
-the English fallback and its canonical URL points to `/en`.
+In GitHub, set **Settings → Pages → Build and deployment → Source** to
+**GitHub Actions**. The Pages workflow installs the locked dependencies, builds,
+and publishes the complete `dist` directory on pushes to `main`. It can also be
+run manually against `main` from the **Actions** tab.
 
 Copy is in `src/i18n/messages/en.json` and `src/i18n/messages/ar.json`. Both
 catalogs use the same keys. Section IDs, contact links, dates, project

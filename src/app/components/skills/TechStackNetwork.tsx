@@ -55,6 +55,7 @@ export function TechStackNetwork() {
   return (
     <motion.div
       role="region"
+      data-portfolio-interactive
       aria-label={graph.title}
       initial={reducedMotion ? false : { opacity: 0 }}
       whileInView={{ opacity: 1 }}

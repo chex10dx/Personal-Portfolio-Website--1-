@@ -28,10 +28,15 @@ function findAnchor(hash: string) {
 function readingPosition(): ReadingPosition {
   const line = 82;
   const explicit = findAnchor(location.hash);
+  const explicitBounds = explicit?.getBoundingClientRect();
+  if (explicitBounds && explicitBounds.bottom > line && explicitBounds.top < window.innerHeight) {
+    return { hash: location.hash, offset: Math.max(0, line - explicitBounds.top) };
+  }
+
   const visible = [...document.querySelectorAll<HTMLElement>('main > section[id]')];
-  const anchor = [explicit, ...visible].find((section) => {
-    const bounds = section?.getBoundingClientRect();
-    return bounds && bounds.top <= line + 2 && bounds.bottom > line;
+  const anchor = visible.find((section) => {
+    const bounds = section.getBoundingClientRect();
+    return bounds.top <= line + 2 && bounds.bottom > line;
   });
   if (!anchor || anchor.id === 'home') return { hash: '', offset: window.scrollY };
   return { hash: `#${anchor.id}`, offset: Math.max(0, line - anchor.getBoundingClientRect().top) };
@@ -106,9 +111,13 @@ export function LocaleProvider({ initial, children }: { initial: LocalizedPage; 
       setStatus('idle');
     } catch {
       if (request.current !== ticket) return;
-      // An explicit history entry can still be loaded from its static page.
-      if (!push) location.reload();
-      else setStatus('error');
+      // Each locale is also available as a static page if its client chunk fails.
+      if (push && position) {
+        setStatus('error');
+        location.assign(`${localePath(locale)}${location.search}${position.hash}`);
+      } else {
+        location.reload();
+      }
     }
   }
 

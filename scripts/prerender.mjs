@@ -5,7 +5,7 @@ import { build, resolveConfig } from 'vite';
 
 const config = await resolveConfig({}, 'build', 'production');
 const outputDirectory = path.resolve(config.root, config.build.outDir);
-const tempRoot = path.resolve('node_modules/.vite-temp');
+const tempRoot = path.join(config.root, 'node_modules/.vite-temp');
 await mkdir(tempRoot, { recursive: true });
 const temp = await mkdtemp(path.join(tempRoot, 'portfolio-ssr-'));
 const written = [];
@@ -18,6 +18,7 @@ try {
   const { output } = await build({
     configFile: false,
     root: config.root,
+    mode: config.mode,
     base: config.base,
     envDir: config.envDir,
     publicDir: false,
@@ -52,13 +53,13 @@ try {
       .replace(/<!-- portfolio-seo:start -->[\s\S]*?<!-- portfolio-seo:end -->/, () => [
         `<title>${escapeHtml(title)}</title>`, ...tags,
       ].join('\n      '))
-      .replace('<div id="root"></div>', () => `<div id="root" data-locale="${locale}">${markup}</div>`);
+      .replace('<div id="root"></div>', () => `<div id="root" data-locale="${locale}" data-portfolio-pending>${markup}</div>`);
 
     const folder = path.join(outputDirectory, locale);
     await mkdir(folder, { recursive: true });
     await writeFile(path.join(folder, 'index.html'), html);
     if (locale === 'en') await writeFile(path.join(outputDirectory, 'index.html'), html);
-    console.log(`Prerendered /${locale}`);
+    console.log(`Prerendered ${config.base}${locale}/`);
   }
 } finally {
   await Promise.all(written.map((file) => unlink(file)));

@@ -66,6 +66,7 @@ export function FloatingProfile() {
   return (
     <motion.div
       aria-hidden="true"
+      data-portfolio-profile
       className="pointer-events-none fixed start-0 top-0 z-[60]"
       style={{
         x,
