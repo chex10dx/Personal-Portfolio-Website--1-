@@ -3,7 +3,7 @@ import path from 'path'
 import tailwindcss from '@tailwindcss/vite'
 import react from '@vitejs/plugin-react'
 
-const pagesBase = '/Personal-Portfolio-Website--1-/'
+const pagesBase = '/'
 
 export default defineConfig(({ command, isPreview }) => ({
   base: command === 'build' || isPreview ? pagesBase : '/',
