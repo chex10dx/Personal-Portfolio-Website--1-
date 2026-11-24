@@ -9,6 +9,19 @@ export default defineConfig({
     // Tailwind is not being actively used – do not remove them
     react(),
     tailwindcss(),
+    {
+      name: 'portfolio-locale-preview',
+      configurePreviewServer(server) {
+        server.middlewares.use((request, _response, next) => {
+          const base = server.config.base;
+          const url = request.url;
+          if (url?.startsWith(base)) {
+            request.url = base + url.slice(base.length).replace(/^(en|ar)(?=\?|$)/, '$1/');
+          }
+          next();
+        });
+      },
+    },
   ],
   resolve: {
     alias: {

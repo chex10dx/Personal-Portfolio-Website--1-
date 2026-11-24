@@ -1,0 +1,1509 @@
+{
+  "seo": {
+    "title": "Tariq Yasser | Senior .NET Software Engineer",
+    "description": "Tariq Yasser develops enterprise and financial software with C#, ASP.NET Core, ABP Framework, and microservices. Focused on distributed systems, software architecture, and hands-on technical leadership.",
+    "social": "Enterprise .NET engineering, financial remittance and ERP case studies, distributed systems, and technical leadership."
+  },
+  "common": {
+    "name": "Tariq Yasser",
+    "role": "Senior .NET Software Engineer",
+    "download": "Download Resume",
+    "loading": "Loading language…",
+    "loadError": "The language could not load. Please try again.",
+    "imageError": "Image unavailable"
+  },
+  "nav": {
+    "label": "Main navigation",
+    "home": "Back to top",
+    "about": "About",
+    "skills": "Skills",
+    "projects": "Projects",
+    "experience": "Experience",
+    "contact": "Contact",
+    "language": "Choose language",
+    "menu": "Toggle menu",
+    "light": "Switch to light mode",
+    "dark": "Switch to dark mode"
+  },
+  "hero": {
+    "role": "Senior .NET Software Engineer · Distributed Systems · Technical Leadership",
+    "heading": "Building scalable enterprise systems.",
+    "gradient": "Solving complex engineering problems.",
+    "intro": "I’m {name}. I develop and improve enterprise .NET applications, including financial remittance platforms and ERP systems. My work spans distributed services, domain workflows, backend troubleshooting, and helping developers deliver maintainable changes.",
+    "projects": "View Projects",
+    "expertise": "Explore Technical Expertise",
+    "contact": "Contact Me",
+    "highlights": [
+      "Enterprise & financial systems",
+      "Distributed .NET architecture",
+      "Code quality & mentoring"
+    ],
+    "scroll": "Scroll to explore"
+  },
+  "about": {
+    "eyebrow": "About Me",
+    "title": "Enterprise .NET Engineering",
+    "paragraphs": [
+      "I specialize in enterprise applications built with C# and ASP.NET Core. My work includes a financial remittance and payment platform with more than 30 communicating services and an enterprise ERP built with the ABP Framework.",
+      "I develop APIs and domain workflows, investigate backend and database issues, and contribute to architectural decisions about service communication, data access, and maintainability.",
+      "I work with stakeholders to understand the business rules behind a change and with developers to review, test, and troubleshoot it. I also use AI coding agents to analyze user stories and plan changes for human review."
+    ],
+    "cards": [
+      {
+        "title": "Enterprise System Design",
+        "description": "Contribute to design decisions about service boundaries, domain behavior, and data access in .NET applications."
+      },
+      {
+        "title": "Backend Troubleshooting",
+        "description": "Investigate API behavior, cross-service problems, background jobs, and SQL query performance."
+      },
+      {
+        "title": "Technical Collaboration",
+        "description": "Clarify requirements with stakeholders, review code, and mentor junior developers."
+      }
+    ]
+  },
+  "stack": {
+    "eyebrow": "Skills and Expertise",
+    "title": "Technical Stack",
+    "description": "My professional .NET and enterprise software experience, alongside the concepts and tools I study and explore.",
+    "exploring": "Currently Exploring",
+    "exploringDescription": "Areas I’m developing through study and experimentation.",
+    "graph": {
+      "title": "Technical stack network",
+      "explore": "Explore the network",
+      "all": "Network overview",
+      "overview": "{category} overview",
+      "controls": "Network view controls",
+      "zoomIn": "Zoom in",
+      "zoomOut": "Zoom out",
+      "reset": "Reset view",
+      "hint": "Select a category or technology in the network or menu to explore related skills.",
+      "mouseHint": "Drag nodes to move them or drag the background to pan. Scroll over the graph to zoom.",
+      "previous": "Previous set of skills",
+      "next": "Next set of skills",
+      "page": "Skill set {page} of {total}",
+      "touchPan": "Touch pan"
+    },
+    "categories": {
+      "backend": {
+        "label": "Backend Engineering & .NET",
+        "short": "Backend & .NET",
+        "description": "Server-side development, API design, background work, and the .NET runtime."
+      },
+      "architecture": {
+        "label": "Software Architecture & Design Patterns",
+        "short": "Architecture",
+        "description": "Domain boundaries, deployment choices, and patterns that keep systems maintainable."
+      },
+      "messaging": {
+        "label": "Distributed Systems & Reliability",
+        "short": "Distributed Systems",
+        "description": "Service communication, reliable messaging, and recovery from partial failures."
+      },
+      "data": {
+        "label": "Databases, Transactions & Concurrency",
+        "short": "Databases & Concurrency",
+        "description": "Data modeling, query behavior, and correctness when writes overlap."
+      },
+      "performance": {
+        "label": "Performance Engineering & Caching",
+        "short": "Performance & Caching",
+        "description": "Profiling, bottleneck investigation, and caching with explicit freshness trade-offs."
+      },
+      "observability": {
+        "label": "Observability & Monitoring",
+        "short": "Observability",
+        "description": "Instrumentation and telemetry for diagnosing behavior across service boundaries."
+      },
+      "quality": {
+        "label": "Testing & Engineering Quality",
+        "short": "Testing & Quality",
+        "description": "Test design, review, and automated checks for safer changes."
+      },
+      "devops": {
+        "label": "DevOps, Cloud & SaaS",
+        "short": "DevOps & Cloud",
+        "description": "Containerized environments, repeatable delivery, and cloud and tenant design."
+      },
+      "security": {
+        "label": "Security Engineering",
+        "short": "Security",
+        "description": "Identity, access control, and secure handling of requests, tokens, and secrets."
+      },
+      "ai": {
+        "label": "AI-Assisted Software Engineering",
+        "short": "AI Engineering",
+        "description": "AI-assisted analysis, implementation, and review with human validation of the results."
+      },
+      "frontend": {
+        "label": "Frontend Engineering",
+        "short": "Frontend",
+        "description": "Browser-based interfaces for enterprise workflows, client projects, and this portfolio."
+      }
+    },
+    "skills": {
+      "csharp": {
+        "label": "C#",
+        "description": "The language I use for .NET services, domain logic, and Blazor applications.",
+        "short": "C#"
+      },
+      "dotnet": {
+        "label": ".NET",
+        "description": "The runtime behind my backend services and enterprise applications.",
+        "short": ".NET"
+      },
+      "aspnet": {
+        "label": "ASP.NET Core",
+        "description": "Used to build web applications and HTTP APIs for enterprise workflows.",
+        "short": "ASP.NET Core"
+      },
+      "abp": {
+        "label": "ABP Framework",
+        "description": "Provides application and domain layers for the enterprise ERP and financial work.",
+        "short": "ABP Framework"
+      },
+      "rest": {
+        "label": "RESTful APIs",
+        "description": "HTTP interfaces for web clients and enterprise integrations.",
+        "short": "REST APIs"
+      },
+      "microservices": {
+        "label": "Microservices Architecture",
+        "description": "Experience contributing to financial workflows across independently deployable services.",
+        "short": "Microservices"
+      },
+      "monolith": {
+        "label": "Modular Monolith",
+        "description": "A shared deployment with business behavior organized into modules, as in the enterprise ERP.",
+        "short": "Modular Monolith"
+      },
+      "ddd": {
+        "label": "Domain-Driven Design (DDD)",
+        "description": "Organizes business rules around domain concepts and responsibilities.",
+        "short": "DDD"
+      },
+      "clean": {
+        "label": "Clean Architecture",
+        "description": "Separates business behavior from infrastructure concerns and external dependencies.",
+        "short": "Clean Architecture"
+      },
+      "distributed": {
+        "label": "Distributed Systems",
+        "description": "Service interaction, asynchronous work, and consistency across application boundaries.",
+        "short": "Distributed Systems"
+      },
+      "sqlserver": {
+        "label": "SQL Server",
+        "description": "Relational storage for transactional workflows, queries, and reporting.",
+        "short": "SQL Server"
+      },
+      "efcore": {
+        "label": "Entity Framework Core",
+        "description": "Maps .NET objects to relational data and supports queries and migrations.",
+        "short": "EF Core"
+      },
+      "redis": {
+        "label": "Redis",
+        "description": "In-memory caching for frequently accessed application data.",
+        "short": "Redis"
+      },
+      "rabbitmq": {
+        "label": "RabbitMQ",
+        "description": "Message broker for coordinating asynchronous service workflows.",
+        "short": "RabbitMQ"
+      },
+      "hangfire": {
+        "label": "Hangfire",
+        "description": "Persistent scheduling and execution of background jobs in .NET.",
+        "short": "Hangfire"
+      },
+      "async": {
+        "label": "Asynchronous Processing",
+        "description": "Moves work out of synchronous request paths when it can complete independently.",
+        "short": "Asynchronous Processing"
+      },
+      "grpc": {
+        "label": "gRPC",
+        "description": "Typed service contracts and remote calls for service-to-service communication.",
+        "short": "gRPC"
+      },
+      "blazor": {
+        "label": "Blazor WebAssembly",
+        "description": "Used for browser interfaces in enterprise .NET applications.",
+        "short": "Blazor WASM"
+      },
+      "javascript": {
+        "label": "JavaScript",
+        "description": "Used in frontend development with Next.js and Vue.",
+        "short": "JavaScript"
+      },
+      "typescript": {
+        "label": "TypeScript",
+        "description": "Type-safe frontend development, including this portfolio.",
+        "short": "TypeScript"
+      },
+      "react": {
+        "label": "React",
+        "description": "Component-based UI development, including this portfolio.",
+        "short": "React"
+      },
+      "nextjs": {
+        "label": "Next.js",
+        "description": "Used to build the freelance clinic ERP.",
+        "short": "Next.js"
+      },
+      "vue": {
+        "label": "Vue",
+        "description": "A component-based framework for reactive web interfaces.",
+        "short": "Vue"
+      },
+      "git": {
+        "label": "Git",
+        "description": "Tracks changes, supports review, and makes source history traceable.",
+        "short": "Git"
+      },
+      "github": {
+        "label": "GitHub",
+        "description": "Hosts source for this portfolio and supports Git-based collaboration.",
+        "short": "GitHub"
+      },
+      "unit": {
+        "label": "Unit Testing",
+        "description": "Checks individual rules and application behavior in isolation.",
+        "short": "Unit Testing"
+      },
+      "integration": {
+        "label": "Integration Testing",
+        "description": "Checks interactions across APIs, data operations, and application components.",
+        "short": "Integration Testing"
+      },
+      "reviews": {
+        "label": "Code Reviews",
+        "description": "Reviews changes for behavior, reliability, and maintainability.",
+        "short": "Code Reviews"
+      },
+      "debugging": {
+        "label": "Debugging",
+        "description": "Traces faults across APIs, background jobs, and database operations.",
+        "short": "Debugging"
+      },
+      "swagger": {
+        "label": "Swagger / OpenAPI",
+        "description": "Describes HTTP API contracts and makes them easier to inspect.",
+        "short": "OpenAPI"
+      },
+      "postman": {
+        "label": "Postman",
+        "description": "Explores API requests and supports API and integration testing.",
+        "short": "Postman"
+      },
+      "diagnostics": {
+        "label": "Application Diagnostics",
+        "description": "Investigates backend problems using application behavior and available logs.",
+        "short": "Diagnostics"
+      },
+      "queries": {
+        "label": "Query Optimization",
+        "description": "Investigates and improves database query behavior in .NET applications.",
+        "short": "Query Optimization"
+      },
+      "auth": {
+        "label": "Authentication",
+        "description": "Verifies the identity of a user or service.",
+        "short": "Authentication"
+      },
+      "jwt": {
+        "label": "JWT",
+        "description": "Token-based authentication in existing .NET API work.",
+        "short": "JWT"
+      },
+      "permissions": {
+        "label": "Permission-Based Authorization",
+        "description": "Applies access rules to enterprise workflows and operations.",
+        "short": "Permissions"
+      },
+      "agents": {
+        "label": "AI Coding Agents",
+        "description": "Help inspect code and surface implementation options for developer review.",
+        "short": "AI Coding Agents"
+      },
+      "stories": {
+        "label": "User Story Analysis",
+        "description": "Turns requirements into clearer acceptance criteria and open questions.",
+        "short": "User Story Analysis"
+      },
+      "planning": {
+        "label": "Implementation Planning",
+        "description": "Breaks work into reviewable changes, dependencies, and tests.",
+        "short": "Implementation Planning"
+      },
+      "linq": {
+        "label": "LINQ"
+      },
+      "di": {
+        "label": "Dependency Injection"
+      },
+      "middleware": {
+        "label": "Middleware"
+      },
+      "aspire": {
+        "label": ".NET Aspire"
+      },
+      "background-service": {
+        "label": "BackgroundService",
+        "description": "A .NET base class for implementing the execution loop of a long-running hosted service."
+      },
+      "hosted-service": {
+        "label": "IHostedService"
+      },
+      "async-programming": {
+        "label": "Asynchronous Programming",
+        "description": "Lets work such as I/O complete without holding the calling thread while it waits."
+      },
+      "tap": {
+        "label": "Task-Based Asynchronous Pattern (TAP)"
+      },
+      "cancellation": {
+        "label": "CancellationToken",
+        "description": "Carries a cooperative request to cancel work. The operation decides how to stop and release resources."
+      },
+      "thread-safety": {
+        "label": "Thread Safety"
+      },
+      "memory-management": {
+        "label": "Memory Management"
+      },
+      "garbage-collection": {
+        "label": "Garbage Collection"
+      },
+      "disposal": {
+        "label": "IDisposable / IAsyncDisposable",
+        "description": "Provide deterministic cleanup through synchronous or asynchronous disposal."
+      },
+      "layered": {
+        "label": "Layered Architecture"
+      },
+      "cqrs": {
+        "label": "CQRS"
+      },
+      "event-driven": {
+        "label": "Event-Driven Architecture"
+      },
+      "design-patterns": {
+        "label": "Design Patterns"
+      },
+      "solid": {
+        "label": "SOLID Principles"
+      },
+      "separation": {
+        "label": "Separation of Concerns"
+      },
+      "adr": {
+        "label": "Architecture Decision Records (ADRs)"
+      },
+      "documentation": {
+        "label": "Technical Documentation"
+      },
+      "api-design": {
+        "label": "API Design"
+      },
+      "system-design": {
+        "label": "System Design"
+      },
+      "scalability": {
+        "label": "Scalability"
+      },
+      "maintainability": {
+        "label": "Maintainability"
+      },
+      "service-communication": {
+        "label": "Microservices Communication"
+      },
+      "distributed-events": {
+        "label": "Distributed Events"
+      },
+      "dead-letter": {
+        "label": "Dead-Letter Queues",
+        "description": "Retain undeliverable or repeatedly failing messages for inspection and controlled recovery."
+      },
+      "message-ordering": {
+        "label": "Message Ordering"
+      },
+      "saga": {
+        "label": "Saga Pattern",
+        "description": "Coordinates local transactions across services and applies compensating actions where appropriate. Each service commits its own changes."
+      },
+      "outbox": {
+        "label": "Transactional Outbox Pattern",
+        "description": "Writes the business change and an outgoing message to the same local transaction. A separate relay publishes persisted messages and can redeliver them.",
+        "short": "Transactional Outbox"
+      },
+      "eventual-consistency": {
+        "label": "Eventual Consistency",
+        "description": "Allows service views to differ temporarily and converge as pending changes are processed."
+      },
+      "inbox": {
+        "label": "Inbox Pattern",
+        "description": "Records received message IDs with local processing so redelivery can be detected."
+      },
+      "idempotent-consumers": {
+        "label": "Idempotent Consumers",
+        "description": "Repeated delivery of the same message produces the same business effect as processing it once."
+      },
+      "idempotency-key": {
+        "label": "Idempotency Keys",
+        "description": "An operation associates a stable key with the original request and outcome so retries can safely avoid duplicate side effects."
+      },
+      "distributed-transactions": {
+        "label": "Advanced Distributed Transactions",
+        "description": "Studies the trade-offs between coordinated commits and workflows that rely on local transactions, retries, and compensation."
+      },
+      "circuit-breaker": {
+        "label": "Circuit Breaker Pattern",
+        "description": "Temporarily stops calls to a failing dependency after a failure threshold, then probes for recovery."
+      },
+      "retry": {
+        "label": "Retry Policies",
+        "description": "Retry eligible transient failures within a limit, accounting for the operation’s side effects."
+      },
+      "timeout": {
+        "label": "Timeout Policies"
+      },
+      "fallback": {
+        "label": "Fallback Strategies"
+      },
+      "backoff": {
+        "label": "Exponential Backoff"
+      },
+      "polly": {
+        "label": "Polly"
+      },
+      "rate-limiting": {
+        "label": "Rate Limiting"
+      },
+      "health-checks": {
+        "label": "Health Checks"
+      },
+      "fault-tolerance": {
+        "label": "Fault Tolerance"
+      },
+      "resilience": {
+        "label": "Resilience Engineering"
+      },
+      "postgresql": {
+        "label": "PostgreSQL"
+      },
+      "oracle": {
+        "label": "Oracle Database"
+      },
+      "mongodb": {
+        "label": "MongoDB"
+      },
+      "sql": {
+        "label": "SQL"
+      },
+      "nosql": {
+        "label": "NoSQL"
+      },
+      "transactions": {
+        "label": "Database Transactions",
+        "description": "Group database operations into a unit of work with a defined commit or rollback boundary."
+      },
+      "stored-procedures": {
+        "label": "Stored Procedures"
+      },
+      "indexing": {
+        "label": "Database Indexing"
+      },
+      "execution-plans": {
+        "label": "Execution Plans"
+      },
+      "isolation": {
+        "label": "Transaction Isolation Levels"
+      },
+      "deadlocks": {
+        "label": "Deadlock Detection"
+      },
+      "row-versioning": {
+        "label": "Row Versioning",
+        "description": "Database engines can retain versions of row data so transactions can read an earlier, consistent view."
+      },
+      "migrations": {
+        "label": "Database Migrations"
+      },
+      "data-modeling": {
+        "label": "Data Modeling"
+      },
+      "optimistic-concurrency": {
+        "label": "Optimistic Concurrency",
+        "description": "Detects conflicting writes by comparing the original concurrency token with the stored value. The application can then reload, merge, or reject the change.",
+        "short": "Optimistic concurrency"
+      },
+      "concurrency-stamps": {
+        "label": "Concurrency Stamps",
+        "description": "Application-managed values that change on updates and can serve as concurrency tokens."
+      },
+      "rowversion": {
+        "label": "SQL Server rowversion (RowVersion)",
+        "description": "A SQL Server-generated binary value that changes on row updates and can serve as a concurrency token."
+      },
+      "pessimistic-concurrency": {
+        "label": "Pessimistic Concurrency",
+        "description": "Uses database locking and isolation behavior to restrict overlapping operations. Lock scope and behavior vary by engine.",
+        "short": "Pessimistic concurrency"
+      },
+      "transaction-locking": {
+        "label": "Transaction Locking"
+      },
+      "updlock": {
+        "label": "SQL Server UPDLOCK",
+        "description": "A SQL Server table hint that requests update locks on reads and holds them until the transaction ends."
+      },
+      "data-consistency": {
+        "label": "Data Consistency"
+      },
+      "race-conditions": {
+        "label": "Race Condition Prevention"
+      },
+      "concurrent-updates": {
+        "label": "Concurrent Update Handling"
+      },
+      "profiling": {
+        "label": "Performance Profiling"
+      },
+      "memory-leaks": {
+        "label": "Memory Leak Detection",
+        "description": "Compares memory snapshots and retention paths to find objects that stay reachable longer than intended."
+      },
+      "gc-analysis": {
+        "label": "Garbage Collection Analysis"
+      },
+      "cpu-memory-profiling": {
+        "label": "CPU and Memory Profiling"
+      },
+      "bottlenecks": {
+        "label": "Bottleneck Investigation"
+      },
+      "benchmarking": {
+        "label": "Performance Benchmarking"
+      },
+      "latency-analysis": {
+        "label": "Latency Analysis"
+      },
+      "throughput-optimization": {
+        "label": "Throughput Optimization"
+      },
+      "connection-pooling": {
+        "label": "Connection Pooling"
+      },
+      "redis-caching": {
+        "label": "Redis Caching",
+        "short": "Redis Caching"
+      },
+      "cache-aside": {
+        "label": "Cache-Aside Pattern",
+        "description": "Reads from the cache first, then loads and caches the value from the data store on a miss."
+      },
+      "distributed-caching": {
+        "label": "Distributed Caching"
+      },
+      "cache-invalidation": {
+        "label": "Cache Invalidation"
+      },
+      "cache-stampede": {
+        "label": "Cache Stampede Prevention"
+      },
+      "otel": {
+        "label": "OpenTelemetry",
+        "description": "An open framework for instrumenting software and collecting and exporting traces, metrics, and logs."
+      },
+      "tracing": {
+        "label": "Distributed Tracing",
+        "description": "Follows an operation across services by linking the spans that record its individual steps."
+      },
+      "context-propagation": {
+        "label": "Trace Context Propagation"
+      },
+      "trace-id": {
+        "label": "Trace IDs"
+      },
+      "span-id": {
+        "label": "Span IDs"
+      },
+      "correlation-id": {
+        "label": "Correlation IDs"
+      },
+      "instrumentation": {
+        "label": "Instrumentation"
+      },
+      "metrics": {
+        "label": "Metrics Collection",
+        "short": "Metrics"
+      },
+      "request-rate": {
+        "label": "Request Rate"
+      },
+      "error-rate": {
+        "label": "Error Rate"
+      },
+      "throughput": {
+        "label": "Throughput"
+      },
+      "cpu-utilization": {
+        "label": "CPU Utilization"
+      },
+      "memory-utilization": {
+        "label": "Memory Utilization"
+      },
+      "p50": {
+        "label": "p50 Latency",
+        "description": "Median latency."
+      },
+      "p90": {
+        "label": "p90 Latency",
+        "description": "90th-percentile latency."
+      },
+      "p95": {
+        "label": "p95 Latency",
+        "description": "95th-percentile latency."
+      },
+      "p99": {
+        "label": "p99 Latency",
+        "description": "99th-percentile latency."
+      },
+      "histograms": {
+        "label": "Histograms",
+        "description": "Group observations into buckets so distributions and approximate percentiles can be analyzed."
+      },
+      "structured-logging": {
+        "label": "Structured Logging"
+      },
+      "centralized-logging": {
+        "label": "Centralized Logging"
+      },
+      "log-correlation": {
+        "label": "Log Correlation"
+      },
+      "error-tracking": {
+        "label": "Error Tracking"
+      },
+      "grafana": {
+        "label": "Grafana"
+      },
+      "prometheus": {
+        "label": "Prometheus"
+      },
+      "elasticsearch": {
+        "label": "Elasticsearch"
+      },
+      "kibana": {
+        "label": "Kibana"
+      },
+      "service-health": {
+        "label": "Service Health Monitoring"
+      },
+      "alerting": {
+        "label": "Alerting"
+      },
+      "sli": {
+        "label": "Service Level Indicators (SLIs)",
+        "description": "Measurements of service behavior, such as the proportion of eligible requests that succeed."
+      },
+      "slo": {
+        "label": "Service Level Objectives (SLOs)",
+        "description": "Targets for a service level indicator over a defined time window."
+      },
+      "availability": {
+        "label": "Availability Monitoring"
+      },
+      "contract-testing": {
+        "label": "Contract Testing",
+        "description": "Checks that a provider and its consumers agree on the requests, responses, or messages they exchange."
+      },
+      "api-testing": {
+        "label": "API Testing"
+      },
+      "load-testing": {
+        "label": "Load Testing",
+        "description": "Measures behavior under an expected or target workload."
+      },
+      "stress-testing": {
+        "label": "Stress Testing",
+        "description": "Pushes beyond expected load or capacity to observe limits, failure modes, and recovery."
+      },
+      "performance-testing": {
+        "label": "Performance Testing"
+      },
+      "regression": {
+        "label": "Regression Testing"
+      },
+      "mocking": {
+        "label": "Mocking"
+      },
+      "xunit": {
+        "label": "xUnit"
+      },
+      "testcontainers": {
+        "label": "Testcontainers"
+      },
+      "k6": {
+        "label": "k6"
+      },
+      "sonarqube": {
+        "label": "SonarQube"
+      },
+      "static-analysis": {
+        "label": "Static Code Analysis"
+      },
+      "quality-gates": {
+        "label": "Quality Gates"
+      },
+      "technical-debt": {
+        "label": "Technical Debt Management"
+      },
+      "docker": {
+        "label": "Docker"
+      },
+      "compose": {
+        "label": "Docker Compose"
+      },
+      "containerization": {
+        "label": "Containerization"
+      },
+      "infrastructure": {
+        "label": "Infrastructure Fundamentals"
+      },
+      "environment-config": {
+        "label": "Environment Configuration"
+      },
+      "ci": {
+        "label": "Continuous Integration (CI)",
+        "short": "CI"
+      },
+      "cd": {
+        "label": "Continuous Delivery (CD)",
+        "short": "CD"
+      },
+      "github-actions": {
+        "label": "GitHub Actions"
+      },
+      "azure-devops": {
+        "label": "Azure DevOps"
+      },
+      "automated-builds": {
+        "label": "Automated Builds"
+      },
+      "automated-tests": {
+        "label": "Automated Tests"
+      },
+      "pipelines": {
+        "label": "Deployment Pipelines"
+      },
+      "deployment-automation": {
+        "label": "Deployment Automation"
+      },
+      "infrastructure-automation": {
+        "label": "Infrastructure Automation"
+      },
+      "devsecops": {
+        "label": "DevSecOps"
+      },
+      "blue-green": {
+        "label": "Blue-Green Deployment"
+      },
+      "canary": {
+        "label": "Canary Deployment"
+      },
+      "rolling": {
+        "label": "Rolling Deployment"
+      },
+      "rollback": {
+        "label": "Rollback Strategies"
+      },
+      "zero-downtime": {
+        "label": "Zero-Downtime Deployment Concepts"
+      },
+      "azure": {
+        "label": "Microsoft Azure"
+      },
+      "aws": {
+        "label": "AWS"
+      },
+      "cloud-native": {
+        "label": "Cloud-Native Architecture"
+      },
+      "cloud-cost": {
+        "label": "Cloud Cost Optimization Concepts"
+      },
+      "infra-monitoring": {
+        "label": "Infrastructure Monitoring"
+      },
+      "multi-tenancy": {
+        "label": "Multi-Tenancy",
+        "description": "Serves multiple tenants from a shared system with explicit isolation boundaries for tenant data and behavior."
+      },
+      "saas-architecture": {
+        "label": "SaaS Architecture"
+      },
+      "tenant-isolation": {
+        "label": "Tenant Isolation"
+      },
+      "tenant-resolution": {
+        "label": "Tenant Resolution"
+      },
+      "tenant-databases": {
+        "label": "Shared vs. Separate Tenant Databases"
+      },
+      "feature-management": {
+        "label": "Feature Management"
+      },
+      "config-management": {
+        "label": "Configuration Management"
+      },
+      "authorization": {
+        "label": "Authorization",
+        "description": "Decides which actions an identity can take on a given resource."
+      },
+      "openid-connect": {
+        "label": "OpenID Connect",
+        "description": "Adds an identity layer to OAuth 2.0 so a client can verify a user’s identity through an ID token."
+      },
+      "openiddict": {
+        "label": "OpenIddict"
+      },
+      "oauth": {
+        "label": "OAuth 2.0",
+        "description": "A framework for delegated access to protected resources."
+      },
+      "rbac": {
+        "label": "Role-Based Access Control (RBAC)"
+      },
+      "token-validation": {
+        "label": "Token Validation"
+      },
+      "api-security": {
+        "label": "API Security"
+      },
+      "owasp": {
+        "label": "OWASP Top 10"
+      },
+      "secure-coding": {
+        "label": "Secure Coding"
+      },
+      "secrets": {
+        "label": "Secrets Management"
+      },
+      "input-validation": {
+        "label": "Input Validation"
+      },
+      "tls": {
+        "label": "HTTPS / TLS"
+      },
+      "least-privilege": {
+        "label": "Least Privilege"
+      },
+      "security-testing": {
+        "label": "Security Testing Concepts"
+      },
+      "codex": {
+        "label": "OpenAI Codex"
+      },
+      "claude": {
+        "label": "Claude"
+      },
+      "cursor": {
+        "label": "Cursor"
+      },
+      "copilot": {
+        "label": "GitHub Copilot"
+      },
+      "gemini": {
+        "label": "Google Gemini"
+      },
+      "vertex-ai": {
+        "label": "Google Vertex AI",
+        "description": "An area of study in Google Cloud’s managed AI tooling and model evaluation."
+      },
+      "cloud-agents": {
+        "label": "Cloud-Based Coding Agents"
+      },
+      "requirements": {
+        "label": "Requirement Breakdown"
+      },
+      "ai-analysis": {
+        "label": "AI-Assisted Code Analysis"
+      },
+      "ai-debugging": {
+        "label": "AI-Assisted Debugging"
+      },
+      "ai-review": {
+        "label": "AI-Assisted Code Review"
+      },
+      "test-generation": {
+        "label": "Test Generation"
+      },
+      "documentation-generation": {
+        "label": "Documentation Generation"
+      },
+      "agentic-workflows": {
+        "label": "Agentic Development Workflows"
+      },
+      "prompting": {
+        "label": "Prompt Engineering"
+      },
+      "human-validation": {
+        "label": "Human-in-the-Loop Validation",
+        "description": "Reviews suggested changes against requirements, inspects diffs, and runs checks before accepting the result."
+      },
+      "ai-integration": {
+        "label": "AI Agent Integration"
+      },
+      "html": {
+        "label": "HTML"
+      },
+      "css": {
+        "label": "CSS"
+      },
+      "tailwind": {
+        "label": "Tailwind CSS"
+      }
+    },
+    "groups": {
+      "dotnetPlatform": {
+        "label": ".NET platform & APIs"
+      },
+      "backgroundWork": {
+        "label": "Asynchrony & background work"
+      },
+      "runtime": {
+        "label": "Runtime & memory"
+      },
+      "architectureStyles": {
+        "label": "Architecture styles"
+      },
+      "designPractice": {
+        "label": "Design & documentation"
+      },
+      "communication": {
+        "label": "Service communication",
+        "description": "Brokers and persistent job queues let work survive process restarts. Acknowledgments, dead-letter handling, and ordering rules make delivery behavior explicit."
+      },
+      "crossServiceConsistency": {
+        "label": "Consistency & reliable workflows",
+        "description": "Local transactions, an outbox, and duplicate detection help keep services consistent over time. A saga coordinates steps and compensations across service boundaries."
+      },
+      "failureHandling": {
+        "label": "Partial failures & recovery",
+        "description": "Timeouts bound waiting, backoff spaces out safe retries, and circuit breakers reduce repeated calls to a failing service. Fallbacks can keep unaffected operations available."
+      },
+      "storage": {
+        "label": "Database engines & access"
+      },
+      "databaseEngineering": {
+        "label": "Database engineering"
+      },
+      "concurrency": {
+        "label": "Concurrency & consistency",
+        "description": "Optimistic concurrency checks a token for conflicting writes. Pessimistic strategies control access through locks whose behavior and syntax depend on the database engine and isolation level."
+      },
+      "profiling": {
+        "label": "Profiling & diagnostics"
+      },
+      "caching": {
+        "label": "Caching strategies"
+      },
+      "telemetry": {
+        "label": "OpenTelemetry & trace context"
+      },
+      "metrics": {
+        "label": "Metrics & latency percentiles"
+      },
+      "logging": {
+        "label": "Logging & diagnostics"
+      },
+      "monitoring": {
+        "label": "Monitoring tools"
+      },
+      "reliabilityIndicators": {
+        "label": "Reliability indicators"
+      },
+      "testStrategies": {
+        "label": "Testing strategies"
+      },
+      "testTools": {
+        "label": "Testing tools & contracts"
+      },
+      "qualityPractices": {
+        "label": "Engineering quality"
+      },
+      "containers": {
+        "label": "Containers & infrastructure"
+      },
+      "delivery": {
+        "label": "Integration & delivery"
+      },
+      "deployment": {
+        "label": "Deployment strategies"
+      },
+      "cloud": {
+        "label": "Cloud platforms & architecture"
+      },
+      "saas": {
+        "label": "SaaS & tenant design"
+      },
+      "identity": {
+        "label": "Identity & access"
+      },
+      "secureDevelopment": {
+        "label": "Secure development"
+      },
+      "aiTools": {
+        "label": "AI tools & agents"
+      },
+      "aiWorkflows": {
+        "label": "AI-assisted workflows"
+      },
+      "web": {
+        "label": "Modern web interfaces"
+      }
+    },
+    "proficiency": {
+      "professional": {
+        "label": "Professional Experience",
+        "description": "Documented hands-on work in production systems."
+      },
+      "knowledge": {
+        "label": "Technical Knowledge",
+        "description": "Concepts and tools I understand or have practiced."
+      },
+      "exploring": {
+        "label": "Currently Exploring",
+        "description": "Areas I’m learning or evaluating."
+      }
+    },
+    "actions": {
+      "more": "Show more",
+      "less": "Show less",
+      "close": "Close skill details",
+      "related": "Related skills",
+      "alsoIn": "Also in"
+    },
+    "patterns": {
+      "title": "Design Patterns",
+      "description": "Examples of how common patterns create objects, compose interfaces, and coordinate behavior.",
+      "example": "Example",
+      "types": {
+        "creational": "Creational",
+        "structural": "Structural",
+        "behavioral": "Behavioral"
+      },
+      "items": {
+        "singleton": {
+          "label": "Singleton",
+          "description": "Restricts a type to one instance and provides a shared point of access.",
+          "example": "A .NET DI container can share one configured instance throughout its lifetime. Shared state needs a thread-safety strategy."
+        },
+        "factory": {
+          "label": "Factory",
+          "description": "Encapsulates object creation behind a common abstraction.",
+          "example": "A factory can choose a notification sender based on the channel while the caller uses one sender interface."
+        },
+        "builder": {
+          "label": "Builder",
+          "description": "Assembles a complex object through a series of steps.",
+          "example": "A report builder can collect columns, filters, and sorting rules before constructing the report definition."
+        },
+        "prototype": {
+          "label": "Prototype",
+          "description": "Creates an object by copying an existing one that serves as a template.",
+          "example": "A configuration template can be copied and customized. Mutable collections may need independent copies."
+        },
+        "adapter": {
+          "label": "Adapter",
+          "description": "Translates an existing interface into the interface a client expects.",
+          "example": "An adapter can map a payment provider’s requests and responses to interfaces defined by the application."
+        },
+        "decorator": {
+          "label": "Decorator",
+          "description": "Wraps an object behind the same interface to add composable behavior.",
+          "example": "A decorator can time calls to a repository and then delegate each call to the wrapped repository."
+        },
+        "proxy": {
+          "label": "Proxy",
+          "description": "Acts as a stand-in for an object and controls access to it.",
+          "example": "A proxy can defer creating an expensive resource until the first call that needs it."
+        },
+        "observer": {
+          "label": "Observer",
+          "description": "Lets subscribers receive updates when a subject publishes a change.",
+          "example": "A C# event can notify several subscribers when a record changes. Subscribers can detach when their lifetime ends."
+        },
+        "strategy": {
+          "label": "Strategy",
+          "description": "Makes alternative behaviors interchangeable through a common interface.",
+          "example": "A pricing service can choose a fee calculation strategy based on the payment channel."
+        },
+        "command": {
+          "label": "Command",
+          "description": "Encapsulates a request and its parameters in a value that a handler can execute.",
+          "example": "A command can carry the fields required to register a payment while a handler applies validation and business rules."
+        }
+      }
+    },
+    "observability": {
+      "title": "From application to diagnosis",
+      "illustrative": "Illustrative telemetry flow",
+      "application": "Application",
+      "logs": "Logs",
+      "metrics": "Metrics",
+      "traces": "Traces",
+      "diagnosis": "Monitoring & diagnosis",
+      "percentiles": "Latency percentiles",
+      "percentileDescription": "Each percentile gives the latency at or below which that share of requests completed."
+    },
+    "cases": {
+      "title": "Engineering case studies",
+      "description": "Skills applied in the featured projects."
+    }
+  },
+  "projects": {
+    "title": "Featured Engineering Projects",
+    "description": "Case studies in financial systems, enterprise ERP, and full-stack delivery.",
+    "technologies": "Technologies",
+    "details": "Engineering details",
+    "challenge": "Technical challenge",
+    "approach": "Architecture and implementation",
+    "contributions": "My contributions",
+    "outcome": "Outcome",
+    "cases": {
+      "financial-remittance": {
+        "title": "Financial Remittance & Payment Platform",
+        "type": "Enterprise financial platform · Distributed microservices",
+        "context": "I contributed to a platform with more than 30 communicating services that supports remittances, payments, liquidity management, currency exchange, and financial reporting.",
+        "challenge": "Financial workflows cross service boundaries. A backend change can affect downstream data, permissions, or a background job even when the API response looks correct.",
+        "approach": "Blazor WebAssembly interfaces call .NET APIs and application services. Domain logic handles business rules, EF Core and SQL Server support persistence, Redis supports caching, and RabbitMQ and Hangfire cover asynchronous messaging and background jobs.",
+        "contributions": [
+          "Developed APIs and application services for financial workflows, including validation and permission checks.",
+          "Traced service interactions and investigated consistency issues across API calls, messages, background work, and database operations.",
+          "Wrote and optimized database queries, debugged backend issues, reviewed changes, and worked with stakeholders and other developers."
+        ],
+        "outcome": "Contributed backend and integration changes to a working financial platform while keeping the boundaries between application, domain, messaging, and data concerns clear."
+      },
+      "enterprise-erp": {
+        "title": "Enterprise ERP Platform",
+        "type": "Enterprise resource planning · Modular monolith",
+        "context": "I contributed to an ABP-based ERP with a Blazor WebAssembly interface and shared business data.",
+        "challenge": "ERP modules need to share data and business rules without making each module depend on the implementation details of another.",
+        "approach": "Worked within a modular monolith, using domain and application layers to separate rules, use cases, and database access within one deployment.",
+        "contributions": [
+          "Implemented business modules, application APIs, and domain workflows.",
+          "Built database operations with Entity Framework Core and SQL Server while following the platform’s module conventions."
+        ],
+        "outcome": "Delivered business functionality within the existing ERP architecture and its established module boundaries."
+      },
+      "clinic-erp": {
+        "title": "Clinic ERP System",
+        "type": "Freelance full-stack delivery",
+        "context": "Built a custom ERP for clinic workflows and day-to-day business operations.",
+        "challenge": "Translate clinic-specific requirements into workflows that fit how the client operates.",
+        "approach": "Used Next.js and JavaScript for the web application and REST APIs for application interactions.",
+        "contributions": [
+          "Worked from client requirements and built the application around clinic workflows."
+        ],
+        "outcome": "Delivered a custom clinic ERP as a freelance project."
+      },
+      "commerce-payments": {
+        "title": "E-commerce Platform with Payments",
+        "type": "Back-end development · Payment integration",
+        "context": "Developed an ASP.NET Core e-commerce platform with an integrated payment flow.",
+        "challenge": "Bring payment processing into the commerce workflow while enforcing access rules on authenticated operations.",
+        "approach": "Used a .NET back end with JWT authentication and SQL Server for relational data.",
+        "contributions": [
+          "Implemented back-end features and integrated payments into the application workflow."
+        ],
+        "outcome": "Delivered an e-commerce application with payment integration."
+      }
+    },
+    "terms": {
+      "microservices": "Microservices",
+      "ddd": "Domain-Driven Design",
+      "rest": "REST APIs"
+    }
+  },
+  "diagram": {
+    "title": "Conceptual architecture",
+    "instruction": "Select a layer to see its role in the platform.",
+    "layers": [
+      {
+        "title": "Web interface",
+        "technology": "Blazor WebAssembly",
+        "detail": "The browser interface presents financial workflows and calls application APIs."
+      },
+      {
+        "title": "Application APIs",
+        "technology": "ASP.NET Core · ABP",
+        "detail": "Application services expose use cases and apply validation and permissions at the application boundary."
+      },
+      {
+        "title": "Domain workflows",
+        "technology": "C# · Domain-Driven Design",
+        "detail": "Domain logic models financial rules. Service interactions coordinate workflows that cross business boundaries."
+      },
+      {
+        "title": "Data access",
+        "technology": "EF Core · SQL Server · Redis",
+        "detail": "EF Core and SQL Server handle relational data. Redis supports caching where appropriate."
+      },
+      {
+        "title": "Asynchronous work",
+        "technology": "RabbitMQ · Hangfire",
+        "detail": "RabbitMQ supports asynchronous service communication. Hangfire runs scheduled and background jobs outside the request path."
+      }
+    ]
+  },
+  "career": {
+    "title": "Professional Experience",
+    "description": "Hands-on engineering across financial systems, enterprise ERP, and client-facing web applications.",
+    "present": "Present",
+    "jobs": {
+      "dotnet": {
+        "role": "Software Developer (.NET)",
+        "company": "Mis Company.",
+        "summary": "Develop enterprise .NET software across a financial remittance and payment platform and an ABP-based ERP.",
+        "contributions": [
+          "Developed APIs, application services, and domain workflows for financial and ERP features.",
+          "Investigated service-to-service communication, backend defects, and data consistency issues. Optimized database queries and added automated coverage for important behavior.",
+          "Worked with stakeholders to clarify requirements, reviewed code, and mentored junior developers through implementation and troubleshooting."
+        ]
+      },
+      "freelance": {
+        "role": "Freelance Next.js Developer",
+        "company": "Self-Employed",
+        "summary": "Developed custom web applications for client-specific requirements.",
+        "contributions": [
+          "Built the Clinic ERP System with Next.js to support clinic operations."
+        ]
+      },
+      "aspnet": {
+        "role": "ASP.NET Core Developer",
+        "company": "LLC Company.",
+        "summary": "Developed .NET backend features for web applications.",
+        "contributions": [
+          "Developed the E-commerce Platform with Payments and integrated payment processing into the application."
+        ]
+      },
+      "junior": {
+        "role": "Junior .NET Developer",
+        "company": "SYC Solution",
+        "summary": "Built and documented REST APIs and implemented backend data and access features.",
+        "contributions": [
+          "Used SQL Server and Entity Framework Core for data access, JWT for authentication, and Swagger and Postman for API work."
+        ]
+      }
+    }
+  },
+  "contact": {
+    "eyebrow": "Get In Touch",
+    "title": "Let’s Build Reliable Software Together",
+    "description": "I’m interested in enterprise software engineering, distributed systems, software architecture, and hands-on technical leadership. If you’re building complex systems or growing an engineering team, I’d be happy to connect.",
+    "name": "Name",
+    "email": "Email",
+    "message": "Message",
+    "namePlaceholder": "Your name",
+    "emailPlaceholder": "your.email@example.com",
+    "messagePlaceholder": "Tell me about your project…",
+    "send": "Send Message",
+    "info": "Contact Information",
+    "whatsapp": "WhatsApp",
+    "facebook": "Facebook",
+    "linkedin": "LinkedIn",
+    "github": "GitHub",
+    "source": "Portfolio source",
+    "location": "Location",
+    "city": "Damascus, Syria",
+    "subject": "Portfolio contact from {name}",
+    "errors": {
+      "name": "Enter your name.",
+      "email": "Enter a valid email address.",
+      "message": "Enter a message."
+    }
+  },
+  "footer": {
+    "credit": "Built with care by {name}"
+  },
+  "architecture": {
+    "title": "Software Architecture & Engineering Practices",
+    "description": "Designing maintainable, resilient, and scalable systems for complex business environments.",
+    "items": [
+      {
+        "title": "Distributed Systems",
+        "description": "Work across service boundaries, balancing request-response APIs with asynchronous messaging and investigating consistency when data moves between services."
+      },
+      {
+        "title": "Domain-Driven Design",
+        "description": "Model business rules in domain code, coordinate use cases through application services, and give each module a clear responsibility."
+      },
+      {
+        "title": "Event-Driven Architecture",
+        "description": "Use RabbitMQ for asynchronous service communication and Hangfire for background jobs that can run outside a request."
+      },
+      {
+        "title": "API Design & Integration",
+        "description": "Build REST APIs and work with gRPC contracts, validation, and authorization at the boundaries between clients and services."
+      },
+      {
+        "title": "Performance & Optimization",
+        "description": "Trace slow workflows to query behavior, database access patterns, or background processing. Use Redis caching where it fits the workload."
+      },
+      {
+        "title": "Security & Reliability",
+        "description": "Apply authentication and permissions at application boundaries. Consider transaction scope, failure paths, and clear error handling when changing workflows."
+      },
+      {
+        "title": "Code Quality & Maintainability",
+        "description": "Use clear interfaces, focused responsibilities, reviews, and automated tests to make changes easier to reason about and regressions easier to catch."
+      },
+      {
+        "title": "Engineering Collaboration",
+        "description": "Clarify requirements with stakeholders, discuss technical trade-offs with teammates, and help junior developers troubleshoot and review changes."
+      }
+    ]
+  },
+  "leadership": {
+    "title": "Technical Ownership & Engineering Leadership",
+    "description": "Combining hands-on engineering with collaboration, mentoring, and architectural thinking.",
+    "items": [
+      {
+        "title": "Hands-on Problem Solving",
+        "description": "Follow backend issues through logs, service interactions, and SQL queries to isolate the cause before changing behavior."
+      },
+      {
+        "title": "Architecture & Technical Decisions",
+        "description": "Contribute to design discussions about service boundaries, dependencies, and the cost of maintaining a solution over time."
+      },
+      {
+        "title": "Code Quality & Reviews",
+        "description": "Review correctness, edge cases, readability, and test coverage. Explain the trade-offs behind suggested changes."
+      },
+      {
+        "title": "Mentoring & Knowledge Sharing",
+        "description": "Support junior developers through code discussions, technical guidance, and hands-on troubleshooting."
+      },
+      {
+        "title": "Stakeholder Collaboration",
+        "description": "Turn business requirements into reviewable workflows, clarify edge cases, and validate proposed behavior with stakeholders."
+      },
+      {
+        "title": "Engineering Improvement",
+        "description": "Look for repeatable improvements in testing, automation, and AI-assisted planning that reduce friction in day-to-day work."
+      }
+    ]
+  },
+  "ai": {
+    "title": "AI-Assisted Software Engineering",
+    "description": "Using AI tools to support analysis and implementation while keeping technical decisions under human control.",
+    "items": [
+      {
+        "title": "Requirements to Implementation",
+        "description": "Use coding agents to unpack user stories, identify missing acceptance criteria, and break work into reviewable changes."
+      },
+      {
+        "title": "AI-Assisted Code Analysis",
+        "description": "Explore unfamiliar code paths, trace dependencies, compare implementation options, and surface debugging hypotheses."
+      },
+      {
+        "title": "Engineering Productivity",
+        "description": "Use AI to draft documentation, suggest test cases, and accelerate repetitive investigation and development tasks."
+      },
+      {
+        "title": "Human-Led Architecture",
+        "description": "Review suggestions for correctness, maintainability, security, and fit with existing architecture. Keep design decisions and final approval with the engineer."
+      }
+    ]
+  },
+  "principles": {
+    "title": "How I Approach Engineering",
+    "items": [
+      {
+        "title": "Build for Maintainability",
+        "description": "Keep software understandable, testable, and adaptable as requirements change."
+      },
+      {
+        "title": "Understand the Business",
+        "description": "Clarify the workflow, constraints, and desired outcome before choosing an implementation."
+      },
+      {
+        "title": "Solve Problems at the Root",
+        "description": "Trace failures to the system behavior that caused them and verify the fix with a regression check."
+      },
+      {
+        "title": "Improve Continuously",
+        "description": "Use feedback, tests, reviews, and experimentation to make the next change easier to deliver."
+      }
+    ]
+  },
+  "delivery": {
+    "title": "Engineering Quality & Delivery Practices",
+    "description": "How I approach the software development lifecycle, from defining a change to learning from its release.",
+    "items": [
+      {
+        "title": "Requirements Analysis",
+        "description": "Clarify the workflow with stakeholders, document acceptance criteria and edge cases, and agree on what a successful delivery looks like."
+      },
+      {
+        "title": "Solution Design",
+        "description": "Compare options against business constraints. Document API contracts, data changes, and integration behavior for the people who will build and review the change."
+      },
+      {
+        "title": "Architecture & Technical Planning",
+        "description": "Map dependencies, design for testability, identify delivery risks, and split changes into reviewable steps. Record significant trade-offs and technical debt."
+      },
+      {
+        "title": "Implementation",
+        "description": "Keep changes focused, follow existing conventions, and build explicit validation and error handling around business rules."
+      },
+      {
+        "title": "Code Review",
+        "description": "Review behavior, maintainability, and compatibility with the architecture. Discuss trade-offs and ask for regression coverage where a change could affect existing users."
+      },
+      {
+        "title": "Automated Testing",
+        "description": "Test business rules in isolation and verify critical API and database interactions. Reproduce defects in regression tests when their cause is understood."
+      },
+      {
+        "title": "Build & Deployment",
+        "description": "Use consistent builds, CI checks, and deployment steps. Document configuration, database migrations, and rollback considerations before release."
+      },
+      {
+        "title": "Monitoring & Continuous Improvement",
+        "description": "Use logs and performance signals to investigate release behavior. Share root-cause findings and prioritize follow-up work with the teams affected."
+      }
+    ]
+  },
+  "devops": {
+    "title": "DevOps, Reliability & Continuous Delivery",
+    "description": "Connecting software development with repeatable builds, reliable deployment, and useful operational feedback.",
+    "example": "Example CI/CD pipeline",
+    "stages": [
+      "Code",
+      "Build",
+      "Test",
+      "Quality Checks",
+      "Deployment",
+      "Monitoring"
+    ],
+    "caption": "Version control starts a repeatable build. Automated tests and quality gates check the release candidate, and post-release logs and monitoring help teams investigate failures and performance changes.",
+    "operations": "Operational considerations",
+    "operationsDescription": "Check environment configuration and migrations, use diagnostics to investigate database and application performance, and document how to verify or roll back a release.",
+    "exploring": "Areas I’m developing",
+    "exploringDescription": "Docker and repeatable environments, cloud infrastructure and cost trade-offs, zero-downtime releases, DevSecOps, deployment automation, and advanced observability."
+  },
+  "resume": {
+    "title": "Resume",
+    "profile": "Profile",
+    "work": "Selected Engineering Work",
+    "skills": "Technical Skills",
+    "summary": "Enterprise .NET engineer with experience in financial remittance, payments, and ERP. Develops APIs and domain workflows, investigates distributed and database issues, contributes to design decisions, and mentors other developers."
+  }
+}

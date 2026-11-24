@@ -1,4 +1,5 @@
-import { skillCategories, skillEdges, skillNodes } from '../../data/techStack';
+import { skillCategories } from '../../data/techStack';
+import type { GraphData } from './networkData';
 
 export type Point = { x: number; y: number };
 export type Body = Point & {
@@ -8,67 +9,57 @@ export type Body = Point & {
   vy: number;
   radius: number;
   labelWidth: number;
-  labelAbove: boolean;
   group: number;
 };
 
 type Spring = { source: number; target: number; length: number; strength: number };
-export type Network = { bodies: Body[]; springs: Spring[]; width: number; height: number };
+export type Network = GraphData & { bodies: Body[]; springs: Spring[]; width: number; height: number };
 export type Pin = Point & { index: number };
 
-export function createNetwork(width: number, height: number, animate: boolean): Network {
-  const columns = width < 620 ? 2 : width < 980 ? 3 : 4;
-  const rows = Math.ceil(skillCategories.length / columns);
-  const compact = columns === 2;
-  const inset = compact ? 8 : 18;
-  const cellWidth = (width - inset * 2) / columns;
-  const cellHeight = (height - inset * 2) / rows;
-  const bodies: Body[] = [];
+const groupIndex = new Map(skillCategories.map(({ id }, index) => [id, index]));
 
-  const add = (x: number, y: number, group: number, radius: number, labelWidth: number, labelAbove: boolean) => {
-    bodies.push({ x, y, homeX: x, homeY: y, vx: 0, vy: 0, radius, labelWidth, labelAbove, group });
-  };
-
-  skillCategories.forEach(({ skills }, group) => {
-    const row = Math.floor(group / columns);
-    const rowGroups = Math.min(columns, skillCategories.length - row * columns);
-    const x = inset + (group % columns + 0.5 + (columns - rowGroups) / 2) * cellWidth;
-    const y = inset + (row + 0.5) * cellHeight;
-    const rowLength = skills.length;
-    const topCount = Math.ceil(rowLength / 2);
-    const rise = cellHeight * (compact ? 0.28 : 0.29);
-
-    add(x, y - 5, group, compact ? 13 : 19, cellWidth - 14, false);
-    skills.forEach((_, index) => {
-      const top = index < topCount;
-      const count = top ? topCount : rowLength - topCount;
-      const slot = top ? index : index - topCount;
-      const spread = cellWidth * (compact ? 0.94 : 0.92);
-      const slotWidth = spread / count;
-      const skillX = x + (slot + 0.5 - count / 2) * slotWidth;
-      const skillY = y + (top ? -rise : rise) + (compact ? 0 : Math.abs(slot + 0.5 - count / 2) * (top ? 9 : -8));
-      add(skillX, skillY, group, compact ? 5 : 7, slotWidth - (compact ? 6 : 8), top);
-    });
+export function createNetwork(width: number, height: number, graph: GraphData, animate: boolean): Network {
+  const compact = width < 600;
+  const columns = compact ? 2 : width < 900 ? 3 : 4;
+  const rows = Math.ceil(graph.nodes.length / 2 / columns);
+  const cellWidth = width / columns;
+  const cellHeight = height / rows;
+  const skillColumns = compact ? 2 : 4;
+  const skillWidth = width / skillColumns;
+  const skillRows = Math.ceil((graph.nodes.length - 1) / skillColumns);
+  const bodies = graph.nodes.map((node, index): Body => {
+    const group = groupIndex.get(node.category)!;
+    const category = node.type === 'category';
+    let x = width / 2;
+    let y = height / 2;
+    let labelWidth = Math.min(width - 28, 320);
+    if (graph.overview) {
+      const row = Math.floor(group / columns);
+      const rowGroups = Math.min(columns, graph.nodes.length / 2 - row * columns);
+      x = (group % columns + 0.5 + (columns - rowGroups) / 2) * cellWidth;
+      y = (row + (category ? 0.24 : 0.67)) * cellHeight;
+      if (!category) x += cellWidth * (group % 2 ? -0.12 : 0.12);
+      labelWidth = cellWidth * (category ? 0.88 : 0.73);
+    } else if (!category) {
+      const row = Math.floor((index - 1) / skillColumns);
+      const rowStart = row * skillColumns;
+      const rowLength = Math.min(skillColumns, graph.nodes.length - 1 - rowStart);
+      x = (index - 1 - rowStart + 0.5 + (skillColumns - rowLength) / 2) * skillWidth;
+      const slots = compact && skillRows > 2 ? [0.10, 0.28, 0.64, 0.82] : [0.22, 0.73];
+      y = slots[row] * height;
+      labelWidth = skillWidth - 16;
+    }
+    const radius = category ? node.id === 'frontend' && graph.overview ? 9 : compact ? 12 : 16 : compact ? 5 : 7;
+    const startY = animate && !category ? y + (height / 2 - y) * 0.025 : y;
+    return { x, y: startY, homeX: x, homeY: y, vx: 0, vy: 0, radius, labelWidth, group };
   });
 
-  const springs = skillEdges.map(({ source, target, crossCategory }) => ({
+  const springs = graph.edges.map(({ source, target, crossCategory }) => ({
     source, target,
-    length: Math.hypot(bodies[target].x - bodies[source].x, bodies[target].y - bodies[source].y) * 0.98,
-    strength: crossCategory ? 0.85 : 4.8,
+    length: Math.hypot(bodies[target].homeX - bodies[source].homeX, bodies[target].homeY - bodies[source].homeY),
+    strength: crossCategory ? 0.65 : 4.2,
   }));
-  if (animate) {
-    let hub = bodies[0];
-    bodies.forEach((body, index) => {
-      if (skillNodes[index].type === 'category') {
-        hub = body;
-      } else {
-        body.x += (hub.x - body.x) * 0.19;
-        body.y += (hub.y - body.y) * 0.19;
-      }
-    });
-  }
-
-  return { bodies, springs, width, height };
+  return { ...graph, bodies, springs, width, height };
 }
 
 export function advanceNetwork(network: Network, dt: number, pin: Pin | null) {
@@ -95,12 +86,11 @@ export function advanceNetwork(network: Network, dt: number, pin: Pin | null) {
       const b = bodies[j];
       const dx = b.x - a.x || 0.01;
       const dy = b.y - a.y;
-      const gap = a.radius + b.radius + 11;
-      const reach = gap + 25;
+      const gap = a.radius + b.radius + 6;
       const distanceSquared = dx * dx + dy * dy;
-      if (distanceSquared >= reach * reach) continue;
+      if (distanceSquared >= gap * gap) continue;
       const distance = Math.sqrt(distanceSquared);
-      const repulsion = ((reach - distance) * 2 + Math.max(0, gap - distance) * 32) * dt / distance;
+      const repulsion = (gap - distance) * 32 * dt / distance;
       a.vx -= dx * repulsion;
       a.vy -= dy * repulsion;
       b.vx += dx * repulsion;
@@ -122,6 +112,6 @@ export function advanceNetwork(network: Network, dt: number, pin: Pin | null) {
     }
 
     body.x = Math.max(body.radius + 8, Math.min(width - body.radius - 8, body.x));
-    body.y = Math.max(body.radius + 20, Math.min(height - body.radius - 20, body.y));
+    body.y = Math.max(body.radius + 10, Math.min(height - body.radius - 10, body.y));
   });
 }

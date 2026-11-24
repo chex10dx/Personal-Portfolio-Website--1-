@@ -4,11 +4,14 @@ import { advanceNetwork, createNetwork } from './physics';
 import type { Network, Pin, Point } from './physics';
 import { paintNetwork, prepareViews, readPalette } from './rendering';
 import type { Camera, NodeView } from './rendering';
+import type { GraphData, SkillNode } from './networkData';
+import type { StackCopy } from './SkillDetails';
+import type { Locale } from '../../../i18n/routing';
 
 type Controls = {
   zoom: (factor: number) => void;
   reset: () => void;
-  select: (index: number) => void;
+  setGraph: (graph: GraphData, activeId?: SkillNode['id']) => void;
 };
 
 type Gesture = {
@@ -22,11 +25,23 @@ type Gesture = {
 };
 
 export function useNetworkCanvas(
-  stageRef: RefObject<HTMLDivElement>,
-  canvasRef: RefObject<HTMLCanvasElement>,
-  onSelect: (index: number) => void,
+  stageRef: RefObject<HTMLDivElement | null>,
+  canvasRef: RefObject<HTMLCanvasElement | null>,
+  onSelect: (node: SkillNode | null) => void,
+  locale: Locale,
+  copy: StackCopy,
+  graph: GraphData,
+  activeId?: SkillNode['id'],
 ) {
   const controls = useRef<Controls | null>(null);
+  const strings = useRef({ locale, copy });
+  const initialGraph = useRef(graph);
+  const refreshLabels = useRef<(() => void) | null>(null);
+
+  useEffect(() => {
+    strings.current = { locale, copy };
+    refreshLabels.current?.();
+  }, [locale, copy]);
 
   useEffect(() => {
     const stageElement = stageRef.current;
@@ -43,18 +58,44 @@ export function useNetworkCanvas(
     const camera: Camera = { x: 0, y: 0, scale: 1 };
     let palette = readPalette(stage);
     let reduced = motion.matches;
+    let currentGraph = initialGraph.current;
+    let selectedId: SkillNode['id'] | undefined;
     let network: Network | null = null;
     let views: NodeView[] = [];
     let ratio = 1;
     let frame = 0;
     let last = 0;
     let clock = 0;
-    let settlingUntil = 2.7;
+    let settlingUntil = 1.9;
+    let motionUntil = 1.9;
     let inView = false;
     let hovered = -1;
     let active = -1;
     let pin: Pin | null = null;
     let gesture: Gesture | null = null;
+    let disposed = false;
+    let labelRevision = 0;
+
+    function measureLabels(keepStyles: boolean) {
+      if (!network) return;
+      views = prepareViews(ctx, network, strings.current.copy, strings.current.locale, keepStyles ? views : undefined);
+    }
+
+    function redrawLabels() {
+      const revision = ++labelRevision;
+      measureLabels(true);
+      draw(1);
+      if (strings.current.locale !== 'ar') return;
+      void Promise.all([500, 700].map((weight) => document.fonts.load(`${weight} 12px "IBM Plex Sans Arabic"`, 'العربية')))
+        .then(() => {
+          if (disposed || revision !== labelRevision) return;
+          measureLabels(true);
+          draw(1);
+        })
+        .catch(() => {
+          // The system Arabic font remains available if the webfont fails to load.
+        });
+    }
 
     function draw(ease: number) {
       if (!network) return;
@@ -62,6 +103,8 @@ export function useNetworkCanvas(
       if (coarse.matches) {
         targets.forEach((target, index) => {
           const view = views[index];
+          target.hidden = !view;
+          if (!view) return;
           const x = view.x * camera.scale + camera.x;
           const y = view.y * camera.scale + camera.y;
           const radius = Math.max(12, view.size * camera.scale + 3);
@@ -81,7 +124,7 @@ export function useNetworkCanvas(
     }
 
     function updateLoop() {
-      const shouldRun = inView && !document.hidden && !reduced;
+      const shouldRun = inView && !document.hidden && !reduced && (pin !== null || clock < motionUntil);
       if (shouldRun && !frame) frame = requestAnimationFrame(animate);
       if (!shouldRun) {
         if (frame) cancelAnimationFrame(frame);
@@ -104,29 +147,50 @@ export function useNetworkCanvas(
       ratio = nextRatio;
       canvas.width = Math.round(width * ratio);
       canvas.height = Math.round(height * ratio);
-      network = createNetwork(width, height, !reduced && clock < 0.5);
-      views = prepareViews(ctx, network);
-      pin = null;
-      if (gesture) endGesture(gesture.id);
-      hovered = -1;
-      resetCamera();
-      settlingUntil = clock + 2.7;
-      draw(1);
+      rebuild(width, height);
     }
 
-    function select(index: number) {
-      active = index;
+    function rebuild(width: number, height: number) {
+      if (gesture) endGesture(gesture.id);
+      resetCamera();
+      clock = 0;
+      last = 0;
+      network = createNetwork(width, height, currentGraph, !reduced);
+      active = currentGraph.nodes.findIndex(({ id }) => id === selectedId);
       hovered = -1;
-      onSelect(index);
+      settlingUntil = motionUntil = 1.9;
+      measureLabels(false);
+      draw(1);
+      updateLoop();
+    }
+
+    function setGraph(next: GraphData, nextId?: SkillNode['id']) {
+      const changed = next !== currentGraph;
+      currentGraph = next;
+      selectedId = nextId;
+      if (!network) return;
+      if (changed) {
+        rebuild(network.width, network.height);
+        return;
+      }
+      active = currentGraph.nodes.findIndex(({ id }) => id === selectedId);
+      hovered = -1;
       draw(1);
     }
 
     function reset() {
-      if (network) network = createNetwork(network.width, network.height, false);
-      pin = null;
-      hovered = -1;
-      resetCamera();
-      select(-1);
+      onSelect(null);
+      if (network) rebuild(network.width, network.height);
+    }
+
+    function updateHover(index: number) {
+      if (hovered === index) return;
+      hovered = index;
+      if (reduced) draw(1);
+      else {
+        motionUntil = Math.max(motionUntil, clock + 0.22);
+        updateLoop();
+      }
     }
 
     function zoom(factor: number, point?: Point) {
@@ -166,7 +230,7 @@ export function useNetworkCanvas(
           best = distance;
           nearest = index;
         }
-        if (Math.abs(x - view.labelX) <= view.labelWidth / 2 + 3 && y >= view.labelTop - 2
+        if (view.showLabel && Math.abs(x - view.labelX) <= view.labelWidth / 2 + 3 && y >= view.labelTop - 2
           && y <= view.labelTop + view.lines.length * view.lineHeight + 2) label = index;
       }
       return nearest >= 0 ? nearest : label;
@@ -185,20 +249,14 @@ export function useNetworkCanvas(
         offset: node ? { x: node.x - world.x, y: node.y - world.y } : { x: 0, y: 0 },
         camera: { x: camera.x, y: camera.y },
       };
-      if (!touch || target !== undefined) stage.setPointerCapture(event.pointerId);
+      if (!touch || target !== undefined || stage.dataset.touchPan === 'true') stage.setPointerCapture(event.pointerId);
     }
 
     function pointerMove(event: PointerEvent) {
       if (!network) return;
       const point = localPoint(event);
       if (!gesture) {
-        if (event.pointerType !== 'touch') {
-          const next = hit(point);
-          if (next !== hovered) {
-            hovered = next;
-            if (reduced) draw(1);
-          }
-        }
+        if (event.pointerType !== 'touch') updateHover(hit(point));
         return;
       }
       if (event.pointerId !== gesture.id) return;
@@ -211,12 +269,12 @@ export function useNetworkCanvas(
         const world = worldPoint(point);
         pin = { index: gesture.index, x: world.x + gesture.offset.x, y: world.y + gesture.offset.y };
         hovered = gesture.index;
-        settlingUntil = clock + 2.7;
+        settlingUntil = motionUntil = clock + 1.8;
         if (reduced) {
           advanceNetwork(network, 1 / 30, pin);
           draw(1);
-        }
-      } else if (!gesture.touch) {
+        } else updateLoop();
+      } else if (!gesture.touch || stage.dataset.touchPan === 'true') {
         camera.x = gesture.camera.x + dx;
         camera.y = gesture.camera.y + dy;
         hovered = -1;
@@ -234,23 +292,21 @@ export function useNetworkCanvas(
 
     function pointerUp(event: PointerEvent) {
       if (gesture?.id !== event.pointerId) return;
-      if (!gesture.moved) select(gesture.index);
+      const { moved, index } = gesture;
       endGesture(event.pointerId);
-      hovered = event.pointerType === 'touch' ? -1 : hit(localPoint(event));
-      if (reduced) draw(1);
+      if (!moved) onSelect(currentGraph.nodes[index] ?? null);
+      updateHover(event.pointerType === 'touch' ? -1 : hit(localPoint(event)));
     }
 
     function pointerCancel(event: PointerEvent) {
       if (gesture?.id !== event.pointerId) return;
       endGesture(event.pointerId);
-      hovered = -1;
-      if (reduced) draw(1);
+      updateHover(-1);
     }
 
     function pointerLeave() {
       if (gesture) return;
-      hovered = -1;
-      if (reduced) draw(1);
+      updateHover(-1);
     }
 
     function wheel(event: WheelEvent) {
@@ -265,13 +321,13 @@ export function useNetworkCanvas(
 
     function updateMotion() {
       reduced = motion.matches;
-      if (network && reduced) network = createNetwork(network.width, network.height, false);
-      updateLoop();
-      draw(1);
+      if (network) rebuild(network.width, network.height);
     }
 
-    controls.current = { select, reset, zoom };
+    controls.current = { setGraph, reset, zoom };
+    refreshLabels.current = redrawLabels;
     resize();
+    if (strings.current.locale === 'ar') redrawLabels();
     const resizeObserver = new ResizeObserver(resize);
     const intersectionObserver = new IntersectionObserver(([entry]) => {
       inView = entry.isIntersecting;
@@ -300,6 +356,7 @@ export function useNetworkCanvas(
     coarse.addEventListener('change', () => draw(1), { signal });
 
     return () => {
+      disposed = true;
       if (frame) cancelAnimationFrame(frame);
       if (gesture) endGesture(gesture.id);
       resizeObserver.disconnect();
@@ -307,8 +364,13 @@ export function useNetworkCanvas(
       themeObserver.disconnect();
       listeners.abort();
       controls.current = null;
+      refreshLabels.current = null;
     };
   }, [stageRef, canvasRef, onSelect]);
+
+  useEffect(() => {
+    controls.current?.setGraph(graph, activeId);
+  }, [graph, activeId]);
 
   return controls;
 }

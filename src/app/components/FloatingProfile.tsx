@@ -1,6 +1,8 @@
-import { motion, useMotionTemplate, useReducedMotion, useScroll, useSpring, useTransform } from 'motion/react';
+import { motion, useMotionTemplate, useScroll, useSpring, useTransform } from 'motion/react';
 import { useEffect, useState } from 'react';
 import profileImage from '../../assets/TareqPic.png';
+import { useLocale } from '../../i18n/LocaleProvider';
+import { usePortfolioReducedMotion } from '../usePortfolioMotion';
 
 function getProfileMetrics(viewportWidth: number, viewportHeight: number) {
   const isDesktop = viewportWidth >= 1024;
@@ -24,7 +26,9 @@ function getProfileMetrics(viewportWidth: number, viewportHeight: number) {
 export function FloatingProfile() {
   const [viewport, setViewport] = useState({ width: 1440, height: 900 });
   const { scrollY } = useScroll();
-  const reduced = useReducedMotion();
+  const reduced = usePortfolioReducedMotion();
+  const { direction, messages } = useLocale();
+  const inline = direction === 'rtl' ? -1 : 1;
 
   useEffect(() => {
     const updateViewport = () => {
@@ -49,7 +53,7 @@ export function FloatingProfile() {
   const staticProgress = useTransform(scrollY, (scroll) => Number(scroll > 80));
   const progress = reduced ? staticProgress : animatedProgress;
 
-  const x = useTransform(progress, [0, 1], [metrics.startX, metrics.finalX]);
+  const x = useTransform(progress, [0, 1], [inline * metrics.startX, inline * metrics.finalX]);
   const y = useTransform(progress, [0, 1], [metrics.startY, metrics.finalY]);
   const size = useTransform(progress, [0, 1], [metrics.startSize, metrics.finalSize]);
   const glowOpacity = useTransform(progress, [0, 1], [0.55, 0.26]);
@@ -62,7 +66,7 @@ export function FloatingProfile() {
   return (
     <motion.div
       aria-hidden="true"
-      className="pointer-events-none fixed left-0 top-0 z-[60]"
+      className="pointer-events-none fixed start-0 top-0 z-[60]"
       style={{
         x,
         y,
@@ -90,7 +94,7 @@ export function FloatingProfile() {
           className="absolute overflow-hidden rounded-full border border-glass-line/10 bg-section"
           style={{ inset: imageInset }}
         >
-          <img src={profileImage} alt="Tariq Yasser" className="h-full w-full object-cover" />
+          <img src={profileImage} alt={messages.common.name} className="h-full w-full object-cover" />
         </motion.div>
       </motion.div>
     </motion.div>

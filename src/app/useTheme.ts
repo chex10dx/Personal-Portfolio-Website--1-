@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 type Theme = 'light' | 'dark';
 
@@ -16,11 +16,13 @@ function getSavedTheme(): Theme | null {
 }
 
 export function useTheme() {
-  const [savedTheme, setSavedTheme] = useState(getSavedTheme);
-  const [systemDark, setSystemDark] = useState(() => matchMedia(systemThemeQuery).matches);
+  const [savedTheme, setSavedTheme] = useState<Theme | null>(null);
+  const [systemDark, setSystemDark] = useState(false);
+  const [ready, setReady] = useState(false);
   const theme = savedTheme ?? (systemDark ? 'dark' : 'light');
 
-  useLayoutEffect(() => {
+  useEffect(() => {
+    if (!ready) return;
     const root = document.documentElement;
     root.classList.toggle('dark', theme === 'dark');
     root.style.colorScheme = theme;
@@ -35,7 +37,7 @@ export function useTheme() {
     if (themeColor && color) {
       themeColor.content = color;
     }
-  }, [theme]);
+  }, [ready, theme]);
 
   useEffect(() => {
     const query = matchMedia(systemThemeQuery);
@@ -49,6 +51,8 @@ export function useTheme() {
     query.addEventListener('change', updateSystemTheme);
     window.addEventListener('storage', updateSavedTheme);
     updateSystemTheme();
+    setSavedTheme(getSavedTheme());
+    setReady(true);
     return () => {
       query.removeEventListener('change', updateSystemTheme);
       window.removeEventListener('storage', updateSavedTheme);

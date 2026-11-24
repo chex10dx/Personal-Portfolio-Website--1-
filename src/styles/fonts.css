@@ -1,0 +1,20 @@
+@import '@fontsource/ibm-plex-sans-arabic/arabic-400.css';
+@import '@fontsource/ibm-plex-sans-arabic/arabic-500.css';
+@import '@fontsource/ibm-plex-sans-arabic/arabic-600.css';
+@import '@fontsource/ibm-plex-sans-arabic/arabic-700.css';
+
+html[lang='ar'] {
+  font-family: 'IBM Plex Sans Arabic', system-ui, sans-serif;
+}
+
+html[lang='ar'] :where(h1, h2, h3, h4) {
+  line-height: 1.42;
+}
+
+html[lang='ar'] :where(.tracking-wider, .uppercase) {
+  letter-spacing: normal;
+}
+
+[dir='rtl'] .mirror-in-rtl {
+  scale: -1 1;
+}

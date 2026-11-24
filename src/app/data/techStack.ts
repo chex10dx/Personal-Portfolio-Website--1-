@@ -1,154 +1,155 @@
-export const skillCategories = [
-  {
-    id: 'backend', title: 'Backend Engineering', color: ['#7040c5', '#c4a2ff'],
-    gradient: 'from-purple-700 to-pink-700 dark:from-purple-600 dark:to-pink-600',
-    skills: [
-      { id: 'csharp', label: 'C#', description: 'The language I use for .NET services, domain logic, and Blazor applications.' },
-      { id: 'dotnet', label: '.NET', description: 'The runtime behind my backend services and enterprise applications.' },
-      { id: 'aspnet', label: 'ASP.NET Core', description: 'Used to build web applications, HTTP APIs, and gRPC services.' },
-      { id: 'abp', label: 'ABP Framework', description: 'Provides application and domain layers for the enterprise ERP and financial work.' },
-      { id: 'rest', label: 'REST APIs', description: 'HTTP interfaces for web clients and enterprise integrations.' },
-    ],
-  },
-  {
-    id: 'architecture', title: 'Software Architecture', color: ['#2458b7', '#8abaff'],
-    gradient: 'from-blue-700 to-cyan-700 dark:from-blue-600 dark:to-cyan-600',
-    skills: [
-      { id: 'microservices', label: 'Microservices', description: 'Experience contributing to financial workflows across independently deployable services.' },
-      { id: 'monolith', label: 'Modular Monoliths', description: 'A shared deployment with business behavior organized into modules, as in the enterprise ERP.' },
-      { id: 'ddd', label: 'Domain-Driven Design', description: 'Organizes business rules around domain concepts and responsibilities.' },
-      { id: 'clean', label: 'Clean Architecture', description: 'Separates business behavior from infrastructure concerns and external dependencies.' },
-      { id: 'distributed', label: 'Distributed Systems', description: 'Service interaction, asynchronous work, and consistency across application boundaries.' },
-    ],
-  },
-  {
-    id: 'data', title: 'Databases & Data Management', color: ['#176b60', '#79d7b9'],
-    gradient: 'from-green-700 to-emerald-700 dark:from-green-600 dark:to-emerald-600',
-    skills: [
-      { id: 'sqlserver', label: 'SQL Server', description: 'Relational storage for transactional workflows, queries, and reporting.' },
-      { id: 'efcore', label: 'Entity Framework Core', description: 'Maps .NET objects to relational data and supports queries and migrations.' },
-      { id: 'redis', label: 'Redis', description: 'In-memory caching for frequently accessed application data.' },
-    ],
-  },
-  {
-    id: 'messaging', title: 'Messaging & Background Processing', color: ['#a04433', '#ffb291'],
-    gradient: 'from-orange-700 to-red-700 dark:from-orange-600 dark:to-red-600',
-    skills: [
-      { id: 'rabbitmq', label: 'RabbitMQ', description: 'Message broker for coordinating asynchronous service workflows.' },
-      { id: 'hangfire', label: 'Hangfire', description: 'Persistent scheduling and execution of background jobs in .NET.' },
-      { id: 'async', label: 'Asynchronous Processing', description: 'Moves work out of synchronous request paths when it can complete independently.' },
-      { id: 'grpc', label: 'gRPC', description: 'Typed service contracts and remote calls for service-to-service communication.' },
-    ],
-  },
-  {
-    id: 'frontend', title: 'Frontend Engineering', color: ['#843c9e', '#e4a8f7'],
-    gradient: 'from-fuchsia-700 to-violet-700 dark:from-fuchsia-600 dark:to-violet-600',
-    skills: [
-      { id: 'blazor', label: 'Blazor WebAssembly', description: 'Used for browser interfaces in enterprise .NET applications.' },
-      { id: 'javascript', label: 'JavaScript', description: 'Used in frontend development with Next.js and Vue.' },
-      { id: 'typescript', label: 'TypeScript', description: 'Type-safe frontend development, including this portfolio.' },
-      { id: 'react', label: 'React', description: 'Component-based UI development, including this portfolio.' },
-      { id: 'nextjs', label: 'Next.js', description: 'Used to build the freelance clinic ERP.' },
-      { id: 'vue', label: 'Vue', description: 'A component-based framework for reactive web interfaces.' },
-    ],
-  },
-  {
-    id: 'devops', title: 'DevOps & Infrastructure', color: ['#126b80', '#84dcea'],
-    gradient: 'from-teal-700 to-sky-700 dark:from-teal-600 dark:to-sky-600',
-    skills: [
-      { id: 'git', label: 'Git', description: 'Tracks changes, supports review, and makes source history traceable.' },
-      { id: 'github', label: 'GitHub', description: 'Hosts source for this portfolio and supports Git-based collaboration.' },
-    ],
-  },
-  {
-    id: 'quality', title: 'Quality & Testing', color: ['#7040c5', '#c4a2ff'],
-    gradient: 'from-purple-700 to-pink-700 dark:from-purple-600 dark:to-pink-600',
-    skills: [
-      { id: 'unit', label: 'Unit Testing', description: 'Checks individual rules and application behavior in isolation.' },
-      { id: 'integration', label: 'Integration Testing', description: 'Checks interactions across APIs, data operations, and application components.' },
-      { id: 'reviews', label: 'Code Reviews', description: 'Reviews changes for behavior, reliability, and maintainability.' },
-      { id: 'debugging', label: 'Debugging', description: 'Traces faults across APIs, background jobs, and database operations.' },
-      { id: 'swagger', label: 'Swagger / OpenAPI', description: 'Describes HTTP API contracts and makes them easier to inspect.' },
-      { id: 'postman', label: 'Postman', description: 'Explores API requests and supports API and integration testing.' },
-    ],
-  },
-  {
-    id: 'performance', title: 'Observability & Performance', color: ['#2458b7', '#8abaff'],
-    gradient: 'from-blue-700 to-cyan-700 dark:from-blue-600 dark:to-cyan-600',
-    skills: [
-      { id: 'diagnostics', label: 'Application Diagnostics', description: 'Investigates backend problems using application behavior and available logs.' },
-      { id: 'queries', label: 'Query Optimization', description: 'Investigates and improves database query behavior in .NET applications.' },
-    ],
-  },
-  {
-    id: 'security', title: 'Security', color: ['#176b60', '#79d7b9'],
-    gradient: 'from-green-700 to-emerald-700 dark:from-green-600 dark:to-emerald-600',
-    skills: [
-      { id: 'auth', label: 'Authentication & Authorization', description: 'Establishes identity and enforces access at API and application boundaries.' },
-      { id: 'jwt', label: 'JWT', description: 'Token-based authentication in existing .NET API work.' },
-      { id: 'permissions', label: 'Permission Management', description: 'Applies access rules to enterprise workflows and operations.' },
-    ],
-  },
-  {
-    id: 'ai', title: 'AI-Assisted Engineering', color: ['#843c9e', '#e4a8f7'],
-    gradient: 'from-fuchsia-700 to-violet-700 dark:from-fuchsia-600 dark:to-violet-600',
-    skills: [
-      { id: 'agents', label: 'AI Coding Agents', description: 'Help inspect code and surface implementation options for developer review.' },
-      { id: 'stories', label: 'User Story Analysis', description: 'Turns requirements into clearer acceptance criteria and open questions.' },
-      { id: 'planning', label: 'Implementation Planning', description: 'Breaks work into reviewable changes, dependencies, and tests.' },
-    ],
-  },
-] as const;
+export type Proficiency = 'professional' | 'knowledge' | 'exploring';
 
-export const developmentTopics = [
-  'CQRS, SOLID, and design patterns',
-  'Docker, cloud-native systems, and Azure / AWS infrastructure',
-  'CI/CD automation, quality gates, and DevSecOps',
-  'Advanced observability and monitoring',
-  'SaaS multi-tenancy and zero-downtime deployment',
-  'Infrastructure automation and cost optimization',
-  'OAuth 2.0 and OpenIddict',
-  'AI product integration',
-];
-
-type SkillNode = {
+type SkillGroup = {
   id: string;
-  label: string;
-  category: string;
-  type: 'category' | 'technology';
-  description?: string;
+  skills: readonly string[];
 };
 
-export const skillNodes = skillCategories.flatMap<SkillNode>((category) => [
-  { id: category.id, label: category.title, category: category.id, type: 'category' },
-  ...category.skills.map((skill): SkillNode => ({ ...skill, category: category.id, type: 'technology' })),
+type Category = {
+  id: string;
+  color: readonly [string, string];
+  highlights: readonly string[];
+  groups: readonly SkillGroup[];
+};
+
+export const skillCategories = [
+  {
+    id: 'backend', color: ['#7040c5', '#c4a2ff'], highlights: ['dotnet', 'csharp', 'aspnet', 'abp'],
+    groups: [
+      { id: 'dotnetPlatform', skills: ['dotnet', 'csharp', 'aspnet', 'abp', 'linq', 'di', 'middleware', 'rest', 'grpc', 'aspire'] },
+      { id: 'backgroundWork', skills: ['hangfire', 'background-service', 'hosted-service', 'async-programming', 'tap', 'cancellation', 'thread-safety'] },
+      { id: 'runtime', skills: ['memory-management', 'garbage-collection', 'disposal'] },
+    ],
+  },
+  {
+    id: 'architecture', color: ['#2458b7', '#8abaff'], highlights: ['microservices', 'ddd', 'monolith', 'clean'],
+    groups: [
+      { id: 'architectureStyles', skills: ['microservices', 'ddd', 'monolith', 'clean', 'layered', 'cqrs', 'event-driven'] },
+      { id: 'designPractice', skills: ['design-patterns', 'solid', 'separation', 'adr', 'documentation', 'api-design', 'system-design', 'scalability', 'maintainability'] },
+    ],
+  },
+  {
+    id: 'messaging', color: ['#6441a5', '#c4a2ff'], highlights: ['rabbitmq', 'saga', 'outbox', 'circuit-breaker'],
+    groups: [
+      { id: 'communication', skills: ['rabbitmq', 'distributed', 'service-communication', 'async', 'distributed-events', 'dead-letter', 'message-ordering'] },
+      { id: 'crossServiceConsistency', skills: ['saga', 'outbox', 'eventual-consistency', 'inbox', 'idempotent-consumers', 'idempotency-key', 'distributed-transactions'] },
+      { id: 'failureHandling', skills: ['circuit-breaker', 'retry', 'timeout', 'fallback', 'backoff', 'polly', 'rate-limiting', 'health-checks', 'fault-tolerance', 'resilience'] },
+    ],
+  },
+  {
+    id: 'data', color: ['#176b60', '#79d7b9'], highlights: ['sqlserver', 'postgresql', 'transactions', 'optimistic-concurrency'],
+    groups: [
+      { id: 'storage', skills: ['sqlserver', 'postgresql', 'oracle', 'mongodb', 'redis', 'sql', 'nosql', 'efcore'] },
+      { id: 'databaseEngineering', skills: ['transactions', 'stored-procedures', 'indexing', 'queries', 'execution-plans', 'isolation', 'deadlocks', 'row-versioning', 'migrations', 'data-modeling'] },
+      { id: 'concurrency', skills: ['optimistic-concurrency', 'concurrency-stamps', 'rowversion', 'pessimistic-concurrency', 'transaction-locking', 'updlock', 'data-consistency', 'race-conditions', 'concurrent-updates'] },
+    ],
+  },
+  {
+    id: 'performance', color: ['#2458b7', '#8abaff'], highlights: ['diagnostics', 'redis-caching', 'profiling', 'cache-aside'],
+    groups: [
+      { id: 'profiling', skills: ['diagnostics', 'profiling', 'memory-leaks', 'gc-analysis', 'cpu-memory-profiling', 'bottlenecks', 'benchmarking', 'latency-analysis', 'throughput-optimization', 'connection-pooling'] },
+      { id: 'caching', skills: ['redis-caching', 'cache-aside', 'distributed-caching', 'cache-invalidation', 'cache-stampede'] },
+    ],
+  },
+  {
+    id: 'observability', color: ['#5046b3', '#a9b1ff'], highlights: ['otel', 'tracing', 'metrics', 'grafana'],
+    groups: [
+      { id: 'telemetry', skills: ['otel', 'tracing', 'context-propagation', 'trace-id', 'span-id', 'correlation-id', 'instrumentation'] },
+      { id: 'metrics', skills: ['metrics', 'request-rate', 'error-rate', 'throughput', 'cpu-utilization', 'memory-utilization', 'p50', 'p90', 'p95', 'p99', 'histograms'] },
+      { id: 'logging', skills: ['structured-logging', 'centralized-logging', 'log-correlation', 'error-tracking'] },
+      { id: 'monitoring', skills: ['grafana', 'prometheus', 'elasticsearch', 'kibana'] },
+      { id: 'reliabilityIndicators', skills: ['service-health', 'alerting', 'sli', 'slo', 'availability'] },
+    ],
+  },
+  {
+    id: 'quality', color: ['#7040c5', '#c4a2ff'], highlights: ['reviews', 'unit', 'integration', 'contract-testing'],
+    groups: [
+      { id: 'testStrategies', skills: ['unit', 'integration', 'contract-testing', 'api-testing', 'load-testing', 'stress-testing', 'performance-testing', 'regression', 'mocking'] },
+      { id: 'testTools', skills: ['xunit', 'testcontainers', 'k6', 'postman', 'swagger'] },
+      { id: 'qualityPractices', skills: ['reviews', 'debugging', 'sonarqube', 'static-analysis', 'quality-gates', 'technical-debt'] },
+    ],
+  },
+  {
+    id: 'devops', color: ['#126b80', '#84dcea'], highlights: ['docker', 'ci', 'azure', 'multi-tenancy'],
+    groups: [
+      { id: 'containers', skills: ['docker', 'compose', 'containerization', 'infrastructure', 'environment-config', 'git', 'github'] },
+      { id: 'delivery', skills: ['ci', 'cd', 'github-actions', 'azure-devops', 'automated-builds', 'automated-tests', 'pipelines', 'deployment-automation', 'infrastructure-automation', 'devsecops'] },
+      { id: 'deployment', skills: ['blue-green', 'canary', 'rolling', 'rollback', 'zero-downtime'] },
+      { id: 'cloud', skills: ['azure', 'aws', 'cloud-native', 'cloud-cost', 'infra-monitoring'] },
+      { id: 'saas', skills: ['multi-tenancy', 'saas-architecture', 'tenant-isolation', 'tenant-resolution', 'tenant-databases', 'feature-management', 'config-management'] },
+    ],
+  },
+  {
+    id: 'security', color: ['#176b60', '#79d7b9'], highlights: ['auth', 'authorization', 'jwt', 'openid-connect'],
+    groups: [
+      { id: 'identity', skills: ['auth', 'authorization', 'jwt', 'openid-connect', 'openiddict', 'oauth', 'rbac', 'permissions', 'token-validation'] },
+      { id: 'secureDevelopment', skills: ['api-security', 'owasp', 'secure-coding', 'secrets', 'input-validation', 'tls', 'least-privilege', 'security-testing'] },
+    ],
+  },
+  {
+    id: 'ai', color: ['#843c9e', '#e4a8f7'], highlights: ['agents', 'codex', 'claude', 'cursor'],
+    groups: [
+      { id: 'aiTools', skills: ['agents', 'codex', 'claude', 'cursor', 'copilot', 'gemini', 'vertex-ai', 'cloud-agents'] },
+      { id: 'aiWorkflows', skills: ['stories', 'planning', 'requirements', 'ai-analysis', 'ai-debugging', 'ai-review', 'test-generation', 'documentation-generation', 'agentic-workflows', 'prompting', 'human-validation', 'ai-integration'] },
+    ],
+  },
+  {
+    id: 'frontend', color: ['#843c9e', '#e4a8f7'], highlights: ['blazor', 'react', 'nextjs', 'typescript'],
+    groups: [
+      { id: 'web', skills: ['blazor', 'react', 'nextjs', 'typescript', 'javascript', 'html', 'css', 'tailwind', 'vue'] },
+    ],
+  },
+] as const satisfies readonly Category[];
+
+export type CategoryId = typeof skillCategories[number]['id'];
+type CatalogGroup = typeof skillCategories[number]['groups'][number];
+export type SkillId = CatalogGroup['skills'][number];
+
+// Work history and portfolio case studies support this set. General concepts and
+// tools default to knowledge unless they are explicitly tracked as exploration.
+const professional = new Set<SkillId>([
+  'csharp', 'dotnet', 'aspnet', 'abp', 'rest', 'hangfire', 'microservices', 'ddd', 'monolith',
+  'rabbitmq', 'distributed', 'service-communication', 'async', 'sqlserver', 'redis', 'efcore',
+  'queries', 'data-consistency', 'diagnostics', 'redis-caching', 'bottlenecks', 'reviews', 'debugging',
+  'auth', 'authorization', 'jwt', 'permissions', 'blazor', 'nextjs', 'javascript',
 ]);
 
-const nodeIndex = new Map(skillNodes.map((node, index) => [node.id, index]));
-const relationships = [
-  ['csharp', 'dotnet'], ['csharp', 'blazor'], ['dotnet', 'aspnet'], ['aspnet', 'abp'], ['aspnet', 'rest'],
-  ['abp', 'ddd'], ['abp', 'efcore'], ['abp', 'monolith'], ['microservices', 'distributed'],
-  ['microservices', 'rabbitmq'], ['microservices', 'grpc'], ['grpc', 'aspnet'], ['async', 'rabbitmq'],
-  ['async', 'hangfire'], ['dotnet', 'hangfire'], ['efcore', 'sqlserver'], ['efcore', 'queries'],
-  ['rest', 'swagger'], ['rest', 'postman'], ['rest', 'auth'], ['auth', 'jwt'], ['auth', 'permissions'],
-  ['javascript', 'nextjs'], ['typescript', 'react'], ['react', 'nextjs'], ['javascript', 'vue'],
-  ['git', 'github'], ['git', 'reviews'], ['unit', 'dotnet'], ['integration', 'rest'],
-  ['debugging', 'diagnostics'], ['agents', 'stories'], ['stories', 'planning'], ['planning', 'reviews'],
-];
+const exploring = new Set<SkillId>([
+  'aspire', 'cqrs', 'saga', 'outbox', 'inbox', 'distributed-transactions', 'otel', 'instrumentation',
+  'prometheus', 'grafana', 'elasticsearch', 'kibana', 'sli', 'slo', 'k6', 'testcontainers',
+  'sonarqube', 'quality-gates', 'docker', 'compose', 'github-actions', 'azure-devops', 'pipelines',
+  'deployment-automation', 'infrastructure-automation', 'devsecops', 'blue-green', 'canary',
+  'rolling', 'zero-downtime', 'azure', 'aws', 'cloud-native', 'cloud-cost', 'infra-monitoring',
+  'multi-tenancy', 'saas-architecture', 'tenant-isolation', 'tenant-resolution', 'tenant-databases',
+  'openiddict', 'oauth', 'openid-connect', 'cloud-agents', 'vertex-ai', 'agentic-workflows', 'ai-integration',
+]);
 
-const links = [
-  ...skillCategories.flatMap(({ id, skills }) => skills.map((skill) => [id, skill.id])),
-  ...relationships,
-];
+export function proficiencyOf(skill: SkillId): Proficiency {
+  if (professional.has(skill)) return 'professional';
+  return exploring.has(skill) ? 'exploring' : 'knowledge';
+}
 
-export const skillEdges = links.map(([from, to]) => {
-  const source = nodeIndex.get(from)!;
-  const target = nodeIndex.get(to)!;
-  return { source, target, crossCategory: skillNodes[source].category !== skillNodes[target].category };
-});
+export const learningTopics = [
+  'multi-tenancy', 'pipelines', 'cloud-native', 'zero-downtime', 'instrumentation',
+  'distributed-transactions', 'devsecops', 'ai-integration', 'k6',
+] as const satisfies readonly SkillId[];
 
-export const connections = skillNodes.map(() => new Set<number>());
-for (const { source, target } of skillEdges) {
-  connections[source].add(target);
-  connections[target].add(source);
+export const designPatterns = {
+  creational: ['singleton', 'factory', 'builder', 'prototype'],
+  structural: ['adapter', 'decorator', 'proxy'],
+  behavioral: ['observer', 'strategy', 'command'],
+} as const;
+
+const sharedSkills: Partial<Record<CatalogGroup['id'], readonly SkillId[]>> = {
+  dotnetPlatform: ['efcore', 'blazor'],
+  runtime: ['memory-leaks'],
+  communication: ['grpc', 'microservices', 'hangfire'],
+  concurrency: ['idempotency-key'],
+  profiling: ['queries'],
+  logging: ['diagnostics'],
+  reliabilityIndicators: ['health-checks'],
+};
+
+export function skillsInGroup(group: CatalogGroup): readonly SkillId[] {
+  return [...group.skills, ...(sharedSkills[group.id] ?? [])];
 }

@@ -1,41 +1,20 @@
 export const career = [
-  {
-    role: 'Software Developer (.NET)',
-    company: 'Mis Company.',
-    period: 'December 2023 – Present',
-    summary: 'Develop enterprise .NET software across a financial remittance and payment platform and an ABP-based ERP.',
-    contributions: [
-      'Developed APIs, application services, and domain workflows for financial and ERP features.',
-      'Investigated service-to-service communication, backend defects, and data consistency issues. Optimized database queries and added automated coverage for important behavior.',
-      'Worked with stakeholders to clarify requirements, reviewed code, and mentored junior developers through implementation and troubleshooting.',
-    ],
-  },
-  {
-    role: 'Freelance Next.js Developer',
-    company: 'Self-Employed',
-    period: 'June 2021 – December 2022',
-    summary: 'Developed custom web applications for client-specific requirements.',
-    contributions: ['Built the Clinic ERP System with Next.js to support clinic operations.'],
-  },
-  {
-    role: 'ASP.NET Core Developer',
-    company: 'LLC Company.',
-    period: 'April 2020 – June 2021',
-    summary: 'Developed .NET backend features for web applications.',
-    contributions: ['Developed the E-commerce Platform with Payments and integrated payment processing into the application.'],
-  },
-  {
-    role: 'Junior .NET Developer',
-    company: 'SYC Solution',
-    period: 'May 2019 – April 2020',
-    summary: 'Built and documented REST APIs and implemented backend data and access features.',
-    contributions: ['Used SQL Server and Entity Framework Core for data access, JWT for authentication, and Swagger and Postman for API work.'],
-  },
-];
+  { id: 'dotnet', start: '2023-12', end: null },
+  { id: 'freelance', start: '2021-06', end: '2022-12' },
+  { id: 'aspnet', start: '2020-04', end: '2021-06' },
+  { id: 'junior', start: '2019-05', end: '2020-04' },
+] as const;
 
 export const portfolioLinks = {
   email: 'tareqyasser.dev@gmail.com',
   linkedIn: 'https://www.linkedin.com/in/tariq-yasser-78982731a',
   source: 'https://github.com/chex10dx/Personal-Portfolio-Website--1-',
-  resume: 'tariq-yasser-resume.pdf',
+  resume: { en: 'tariq-yasser-resume.pdf', ar: 'tariq-yasser-resume-ar.pdf' },
 };
+
+export function formatCareerMonth(month: string, locale: 'en' | 'ar') {
+  const date = new Date(`${month}-01T00:00:00Z`);
+  return new Intl.DateTimeFormat(locale === 'ar' ? 'ar-SY' : 'en', {
+    month: 'long', year: 'numeric', timeZone: 'UTC',
+  }).format(date);
+}

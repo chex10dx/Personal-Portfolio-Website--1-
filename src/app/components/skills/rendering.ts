@@ -1,4 +1,7 @@
-import { connections, skillCategories, skillEdges, skillNodes } from '../../data/techStack';
+import { skillCategories } from '../../data/techStack';
+import type { SkillNode } from './networkData';
+import { skillText, type StackCopy } from './SkillDetails';
+import type { Locale } from '../../../i18n/routing';
 import type { Network, Point } from './physics';
 
 export type Camera = Point & { scale: number };
@@ -12,7 +15,9 @@ export type NodeView = Point & {
   labelX: number;
   labelWidth: number;
   labelTop: number;
+  showLabel: boolean;
   font: string;
+  direction: CanvasDirection;
 };
 
 export function readPalette(stage: HTMLElement) {
@@ -27,36 +32,27 @@ export function readPalette(stage: HTMLElement) {
 
 type Palette = ReturnType<typeof readPalette>;
 
-const compactCategoryLabels: Partial<Record<string, string>> = {
-  backend: 'Backend',
-  architecture: 'Architecture',
-  data: 'Data Management',
-  messaging: 'Messaging & Jobs',
-  frontend: 'Frontend',
-  devops: 'DevOps',
-  performance: 'Observability',
-  ai: 'AI Engineering',
-};
+const arabic = /\p{Script=Arabic}/u;
 
-const compactSkillLabels: Partial<Record<string, string>> = {
-  auth: 'Auth & Access',
-  blazor: 'Blazor WASM',
-  diagnostics: 'Diagnostics',
-  efcore: 'EF Core',
-  swagger: 'OpenAPI',
-};
+export function nodeText(node: SkillNode, copy: StackCopy) {
+  return node.type === 'category' ? copy.categories[node.id] : skillText(copy, node.id);
+}
 
-export function prepareViews(ctx: CanvasRenderingContext2D, network: Network): NodeView[] {
-  const compact = network.width < 620;
+export function prepareViews(ctx: CanvasRenderingContext2D, network: Network, copy: StackCopy, locale: Locale, previous: NodeView[] = []): NodeView[] {
+  const compact = network.width < 600;
   return network.bodies.map((body, index) => {
-    const node = skillNodes[index];
+    const node = network.nodes[index];
     const category = node.type === 'category';
-    const fontSize = category ? (compact ? 11 : 15) : (compact ? 10 : 12);
-    const font = `${category ? 700 : 550} ${fontSize}px system-ui, sans-serif`;
+    const text = nodeText(node, copy);
+    const label = (network.overview || compact ? text.short : undefined) ?? text.label;
+    const isArabic = locale === 'ar' && arabic.test(label);
+    const fontSize = category ? (compact ? 13 : 15) : 12;
+    const family = isArabic ? '"IBM Plex Sans Arabic", system-ui, sans-serif' : 'system-ui, sans-serif';
+    const font = `${category ? 700 : isArabic ? 500 : 550} ${fontSize}px ${family}`;
+    const direction = isArabic ? 'rtl' : 'ltr';
     const lines: string[] = [];
     ctx.font = font;
-    const alias = category && network.width < 980 ? compactCategoryLabels[node.id] : compact ? compactSkillLabels[node.id] : undefined;
-    const label = alias ?? node.label;
+    ctx.direction = direction;
     for (const word of label.split(' ')) {
       const previous = lines[lines.length - 1];
       if (previous && ctx.measureText(`${previous} ${word}`).width <= body.labelWidth) {
@@ -67,8 +63,8 @@ export function prepareViews(ctx: CanvasRenderingContext2D, network: Network): N
     }
     const labelWidth = Math.min(body.labelWidth, Math.max(...lines.map((line) => ctx.measureText(line).width)));
     return {
-      x: body.x, y: body.y, size: body.radius, opacity: 1, scale: 1,
-      lines, lineHeight: fontSize + 2, labelWidth, labelX: body.x, labelTop: 0, font,
+      x: body.x, y: body.y, size: body.radius, opacity: previous[index]?.opacity ?? 1, scale: previous[index]?.scale ?? 1,
+      lines, lineHeight: fontSize + (isArabic ? 5 : 3), labelWidth, labelX: body.x, labelTop: 0, showLabel: true, font, direction,
     };
   });
 }
@@ -104,14 +100,16 @@ export function paintNetwork(
   ctx.scale(camera.scale, camera.scale);
 
   const focus = hovered >= 0 ? hovered : active;
-  const related = focus >= 0 ? connections[focus] : null;
+  const related = focus >= 0 ? network.edges
+    .filter(({ source, target }) => source === focus || target === focus)
+    .map(({ source, target }) => source === focus ? target : source) : [];
   const nodesScale = animated ? clock : 0;
 
   for (let index = 0; index < views.length; index++) {
     const node = bodies[index];
     const view = views[index];
-    const category = skillNodes[index].type === 'category';
-    const bright = focus === -1 || focus === index || related?.has(index);
+    const category = network.nodes[index].type === 'category';
+    const bright = focus === -1 || focus === index || related.includes(index);
     const offset = animated ? (category ? 0 : 0.13) + node.group * 0.055 : 0;
     const reveal = animated ? Math.max(0, Math.min(1, (clock - offset) * 4)) : 1;
     view.opacity += ((bright ? 1 : 0.32) - view.opacity) * ease;
@@ -119,16 +117,39 @@ export function paintNetwork(
     view.x = node.x + Math.sin(nodesScale * 0.85 + index * 1.73) * (animated ? 1.8 : 0);
     view.y = node.y + Math.cos(nodesScale * 0.77 + index * 1.21) * (animated ? 1.9 : 0);
     view.size = node.radius * view.scale * (0.86 + reveal * 0.14) * (1 + Math.sin(nodesScale * 1.35 + index) * (animated ? 0.025 : 0));
-    const labelHeight = view.lineHeight * view.lines.length;
-    const above = view.y - view.size - 5 - labelHeight;
-    const below = view.y + view.size + (category ? 7 : 5);
-    view.labelTop = (node.labelAbove && above >= 4) || below + labelHeight > height - 4 ? above : below;
-    const half = view.labelWidth / 2 + 4;
+    view.showLabel = false;
+    const half = view.labelWidth / 2 + 5;
     view.labelX = Math.max(half, Math.min(width - half, view.x));
   }
 
+  for (let priority = 0; priority < 3; priority++) {
+    views.forEach((view, index) => {
+      const category = network.nodes[index].type === 'category';
+      if (priority !== (index === focus ? 0 : category ? 1 : 2)) return;
+      const lineBlock = view.lineHeight * view.lines.length;
+      const positionBelow = view.y + view.size + 5;
+      const positionAbove = view.y - view.size - 5 - lineBlock;
+      for (const top of [positionBelow, positionAbove]) {
+        if (top < 3 || top + lineBlock > height - 3) continue;
+        const overlaps = views.some((other, otherIndex) => {
+          if (otherIndex === index) return false;
+          const overlapsDot = Math.abs(view.labelX - other.x) < view.labelWidth / 2 + other.size + 4
+            && top < other.y + other.size + 2 && top + lineBlock > other.y - other.size - 2;
+          const overlapsLabel = other.showLabel && Math.abs(view.labelX - other.labelX) < (view.labelWidth + other.labelWidth) / 2 + 6
+            && top < other.labelTop + other.lineHeight * other.lines.length + 2 && top + lineBlock + 2 > other.labelTop;
+          return overlapsDot || overlapsLabel;
+        });
+        if (!overlaps) {
+          view.labelTop = top;
+          view.showLabel = true;
+          break;
+        }
+      }
+    });
+  }
+
   ctx.lineCap = 'round';
-  for (const { source, target, crossCategory } of skillEdges) {
+  for (const { source, target, crossCategory } of network.edges) {
     const a = views[source];
     const b = views[target];
     const emphasis = focus === source || focus === target;
@@ -152,7 +173,7 @@ export function paintNetwork(
   for (let index = 0; index < views.length; index++) {
     const view = views[index];
     const body = bodies[index];
-    const category = skillNodes[index].type === 'category';
+    const category = network.nodes[index].type === 'category';
     const color = skillCategories[body.group].color[Number(palette.dark)];
     const emphasized = index === focus;
     const start = category ? 0 : 0.13;
@@ -200,12 +221,14 @@ export function paintNetwork(
   // Paint labels last so a connection never crosses over readable text.
   for (let index = 0; index < views.length; index++) {
     const view = views[index];
+    if (!view.showLabel) continue;
     const body = bodies[index];
-    const category = skillNodes[index].type === 'category';
+    const category = network.nodes[index].type === 'category';
     const start = category ? 0.06 : 0.26;
     const reveal = animated ? Math.max(0, Math.min(1, (clock - start - body.group * 0.055) * 4)) : 1;
-    ctx.globalAlpha = reveal * view.opacity;
+    ctx.globalAlpha = reveal * Math.max(0.66, view.opacity);
     ctx.font = view.font;
+    ctx.direction = view.direction;
     ctx.fillStyle = category || index === focus ? palette.text : palette.muted;
     ctx.strokeStyle = palette.dot;
     ctx.lineWidth = 1.8;

@@ -1,5 +1,6 @@
+import { usePortfolioReducedMotion } from '../usePortfolioMotion';
 import type { ReactNode } from 'react';
-import { motion, useReducedMotion } from 'motion/react';
+import { motion } from 'motion/react';
 
 type PortfolioSectionProps = {
   id: string;
@@ -10,7 +11,7 @@ type PortfolioSectionProps = {
 };
 
 export function PortfolioSection({ id, title, description, alternate, children }: PortfolioSectionProps) {
-  const reduced = useReducedMotion();
+  const reduced = usePortfolioReducedMotion();
 
   return (
     <section id={id} aria-labelledby={`${id}-title`} className={`py-16 md:py-24 ${alternate ? 'bg-section-alt' : 'bg-section'}`}>

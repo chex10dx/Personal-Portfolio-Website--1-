@@ -1,3 +1,4 @@
+import { useLocale } from '../../i18n/LocaleProvider';
 import { motion } from 'motion/react';
 import { useInView } from 'motion/react';
 import { useRef } from 'react';
@@ -7,23 +8,9 @@ export function About() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
 
-  const highlights = [
-    {
-      icon: Code2,
-      title: 'Enterprise System Design',
-      description: 'Contribute to design decisions about service boundaries, domain behavior, and data access in .NET applications.',
-    },
-    {
-      icon: Zap,
-      title: 'Backend Troubleshooting',
-      description: 'Investigate API behavior, cross-service problems, background jobs, and SQL query performance.',
-    },
-    {
-      icon: Users,
-      title: 'Technical Collaboration',
-      description: 'Clarify requirements with stakeholders, review code, and mentor junior developers.',
-    },
-  ];
+  const { messages, direction } = useLocale();
+  const copy = messages.about;
+  const icons = [Code2, Zap, Users];
 
   return (
     <section id="about" className="relative py-24 md:py-32 bg-section overflow-hidden">
@@ -46,7 +33,7 @@ export function About() {
               transition={{ delay: 0.2, duration: 0.6 }}
               className="inline-block text-brand-purple mb-4 text-sm md:text-base tracking-wider uppercase"
             >
-              About Me
+              {copy.eyebrow}
             </motion.span>
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
@@ -54,53 +41,50 @@ export function About() {
               transition={{ delay: 0.3, duration: 0.6 }}
               className="text-4xl md:text-5xl lg:text-6xl text-foreground mb-6"
             >
-              Enterprise .NET Engineering
+              {copy.title}
             </motion.h2>
           </div>
 
           <div className="grid md:grid-cols-2 gap-12 items-center mb-20">
             <motion.div
-              initial={{ opacity: 0, x: -50 }}
+              initial={{ opacity: 0, x: direction === 'rtl' ? 50 : -50 }}
               animate={isInView ? { opacity: 1, x: 0 } : {}}
               transition={{ delay: 0.4, duration: 0.8 }}
               className="space-y-6"
             >
-              <p className="text-lg md:text-xl text-subtle-foreground leading-relaxed">
-                I specialize in enterprise applications built with <span className="text-brand-purple">C# and ASP.NET Core</span>. My work includes a financial remittance and payment platform with more than 30 communicating services and an enterprise ERP built with the ABP Framework.
-              </p>
-              <p className="text-lg md:text-xl text-subtle-foreground leading-relaxed">
-                I develop APIs and domain workflows, investigate backend and database issues, and contribute to architectural decisions about service communication, data access, and maintainability.
-              </p>
-              <p className="text-lg md:text-xl text-subtle-foreground leading-relaxed">
-                I work with stakeholders to understand the business rules behind a change and with developers to review, test, and troubleshoot it. I also use AI coding agents to analyze user stories and plan changes for human review.
-              </p>
+              {copy.paragraphs.map((paragraph, index) => (
+                <p key={index} className="text-lg leading-relaxed text-subtle-foreground md:text-xl">{paragraph}</p>
+              ))}
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, x: 50 }}
+              initial={{ opacity: 0, x: direction === 'rtl' ? -50 : 50 }}
               animate={isInView ? { opacity: 1, x: 0 } : {}}
               transition={{ delay: 0.6, duration: 0.8 }}
               className="space-y-6"
             >
-              {highlights.map((highlight, index) => (
-                <motion.div
-                  key={highlight.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={isInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ delay: 0.8 + index * 0.1, duration: 0.6 }}
-                  className="group p-6 bg-gradient-to-br from-card/50 to-raised/30 backdrop-blur-sm border border-surface-line/50 rounded-xl hover:border-purple-500/50 transition-all duration-300"
-                >
-                  <div className="flex items-start gap-4">
-                    <div className="p-3 bg-gradient-to-br from-purple-600/20 to-blue-600/20 rounded-lg group-hover:scale-110 transition-transform duration-300">
-                      <highlight.icon className="w-6 h-6 text-brand-purple" />
+              {copy.cards.map((highlight, index) => {
+                const Icon = icons[index];
+                return (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={isInView ? { opacity: 1, y: 0 } : {}}
+                    transition={{ delay: 0.8 + index * 0.1, duration: 0.6 }}
+                    className="group rounded-xl border border-surface-line/50 bg-gradient-to-br from-card/50 to-raised/30 p-6 backdrop-blur-sm transition-colors hover:border-purple-500/50"
+                  >
+                    <div className="flex items-start gap-4">
+                      <div className="rounded-lg bg-gradient-to-br from-purple-600/20 to-blue-600/20 p-3 motion-safe:transition-transform motion-safe:group-hover:scale-110">
+                        <Icon aria-hidden="true" className="size-6 text-brand-purple" />
+                      </div>
+                      <div>
+                        <h3 className="mb-2 text-xl text-foreground">{highlight.title}</h3>
+                        <p className="text-muted-foreground">{highlight.description}</p>
+                      </div>
                     </div>
-                    <div>
-                      <h3 className="text-xl text-foreground mb-2">{highlight.title}</h3>
-                      <p className="text-muted-foreground">{highlight.description}</p>
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
+                  </motion.div>
+                );
+              })}
             </motion.div>
           </div>
         </motion.div>

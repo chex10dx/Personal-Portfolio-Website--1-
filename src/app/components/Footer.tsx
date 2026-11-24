@@ -1,8 +1,10 @@
+import { useLocale } from '../../i18n/LocaleProvider';
 import { motion } from 'motion/react';
 import { Heart } from 'lucide-react';
 
 export function Footer() {
-  const currentYear = new Date().getFullYear();
+  const { locale, messages } = useLocale();
+  const year = new Intl.NumberFormat(locale === 'ar' ? 'ar-SY' : 'en', { useGrouping: false }).format(new Date().getUTCFullYear());
 
   return (
     <footer className="relative py-12 bg-section border-t border-surface-line/50 dark:border-slate-800/50 overflow-hidden">
@@ -20,15 +22,15 @@ export function Footer() {
         >
           <div className="mb-6">
             <h3 className="text-3xl md:text-4xl bg-gradient-to-r from-brand-purple to-brand-blue bg-clip-text text-transparent mb-2">
-              Tariq Yasser
+              {messages.common.name}
             </h3>
-            <p className="text-muted-foreground">Senior .NET Software Engineer</p>
+            <p className="text-muted-foreground">{messages.common.role}</p>
           </div>
 
           <div className="flex items-center justify-center gap-2 text-muted-foreground">
-            <span>� {currentYear} Built with</span>
-            <Heart className="w-4 h-4 text-brand-purple fill-brand-purple" />
-            <span>by Tariq Yasser</span>
+            <span suppressHydrationWarning>© {year}</span>
+            <Heart aria-hidden="true" className="h-4 w-4 shrink-0 text-brand-purple fill-brand-purple" />
+            <span>{messages.footer.credit.replace('{name}', messages.common.name)}</span>
           </div>
         </motion.div>
       </div>
